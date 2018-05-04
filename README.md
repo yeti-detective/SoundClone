@@ -46,15 +46,15 @@
 
 
 ## FE
-  /
-  /login
-  /stream
-  /you/likes
-  /you/playlists
-  /you/albums
-  /you/stations
-  /you/following
-  /you/history
-  /you/collection (recently played, likes, etc)
-  /:current_user[:username]
-  /:username/:song_title
+  GET /
+  GET /login
+  GET /stream
+  GET /you/likes
+  GET /you/playlists
+  GET /you/albums
+  GET /you/stations
+  GET /you/following
+  GET /you/history
+  GET /you/collection (recently played, likes, etc)
+  GET /:current_user[:username]
+  GET /:username/:song_title
