@@ -10931,10 +10931,6 @@ var _store = __webpack_require__(221);
 
 var _store2 = _interopRequireDefault(_store);
 
-var _fifthson = __webpack_require__(307);
-
-var _fifthson2 = _interopRequireDefault(_fifthson);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -10948,7 +10944,7 @@ document.addEventListener('DOMContentLoaded', function () {
       null,
       'FIFTHSON!'
     ),
-    _react2.default.createElement('img', { src: _fifthson2.default })
+    _react2.default.createElement('img', { src: '{window.staticAssets.fifthSon}' })
   ), document.getElementById('root'));
 });
 
@@ -26307,12 +26303,6 @@ function isIterateeCall(value, index, object) {
 
 module.exports = isIterateeCall;
 
-
-/***/ }),
-/* 307 */
-/***/ (function(module, exports) {
-
-module.exports = "/assets/webpack-assets/fifthson7e96d4756ac16c303b7afadf405b5b08.jpg";
 
 /***/ })
 /******/ ]);
