@@ -2,7 +2,7 @@ var path = require("path");
 
 module.exports = {
   context: __dirname,
-  entry: "./frontend/bench_bnb.jsx",
+  entry: "./frontend/soundclone.js",
   output: {
     path: path.resolve(__dirname, 'app', 'assets', 'javascripts'),
     filename: "bundle.js"
@@ -16,11 +16,25 @@ module.exports = {
         query: {
           presets: ['env', 'react']
         }
+      },
+      {
+        test: /\.(jpg|jpeg|png)(\?.*)?$/,
+        use: {
+          loader: 'file-loader',
+          options: {
+            name: "[name][md5:hash].[ext]",
+            outputPath: "webpack-assets/",
+            publicPath: "/assets/webpack-assets/"
+          }
+        }
       }
     ]
   },
   devtool: 'source-map',
   resolve: {
-    extensions: [".js", ".jsx", "*"]
+    extensions: [".js", ".jsx", "*"],
+    alias: {
+      assets: path.resolve('./app/assets')
+    }
   }
 };

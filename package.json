@@ -6,6 +6,7 @@
     "babel-loader": "^7.1.1",
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
+    "file-loader": "^1.1.11",
     "lodash": "^4.17.4",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
@@ -13,7 +14,6 @@
     "react-router": "^4.1.2",
     "react-router-dom": "^4.1.2",
     "redux": "^3.7.2",
-    "redux-logger": "^3.0.6",
     "redux-thunk": "^2.2.0",
     "webpack": "^3.4.1"
   },
@@ -25,7 +25,8 @@
     "test": "test"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "webpack --watch"
   },
   "repository": {
     "type": "git",
@@ -39,5 +40,8 @@
   "bugs": {
     "url": "https://github.com/yeti-detective/SoundClone/issues"
   },
-  "homepage": "https://github.com/yeti-detective/SoundClone#readme"
+  "homepage": "https://github.com/yeti-detective/SoundClone#readme",
+  "devDependencies": {
+    "redux-logger": "^3.0.6"
+  }
 }
