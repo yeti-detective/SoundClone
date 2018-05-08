@@ -10933,6 +10933,19 @@ var _store2 = _interopRequireDefault(_store);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+var FifthSon = function FifthSon() {
+  return _react2.default.createElement(
+    'div',
+    null,
+    _react2.default.createElement(
+      'h1',
+      null,
+      'FIFTHSON!'
+    ),
+    _react2.default.createElement('img', { src: window.staticAssets.fifthSon })
+  );
+};
+
 document.addEventListener('DOMContentLoaded', function () {
   // const store = configureStore();
   // window.store = store;
