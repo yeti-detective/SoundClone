@@ -27,6 +27,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "webpack",
     "watch": "webpack --watch"
   },
   "repository": {
@@ -44,5 +45,9 @@
   "homepage": "https://github.com/yeti-detective/SoundClone#readme",
   "devDependencies": {
     "redux-logger": "^3.0.6"
+  },
+  "engines": {
+    "node": "6.7.0",
+    "npm": "6.0.0"
   }
 }

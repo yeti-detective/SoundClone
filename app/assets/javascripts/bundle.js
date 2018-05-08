@@ -10931,34 +10931,16 @@ var _store = __webpack_require__(221);
 
 var _store2 = _interopRequireDefault(_store);
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _fifthson = __webpack_require__(307);
 
-var FifthSon = function FifthSon() {
-  return _react2.default.createElement(
-    'div',
-    null,
-    _react2.default.createElement(
-      'h1',
-      null,
-      'FIFTHSON!'
-    ),
-    _react2.default.createElement('img', { src: window.staticAssets.fifthSon })
-  );
-};
+var _fifthson2 = _interopRequireDefault(_fifthson);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 document.addEventListener('DOMContentLoaded', function () {
   // const store = configureStore();
   // window.store = store;
-  _reactDom2.default.render(_react2.default.createElement(
-    'div',
-    null,
-    _react2.default.createElement(
-      'h1',
-      null,
-      'FIFTHSON!'
-    ),
-    _react2.default.createElement('img', { src: '{window.staticAssets.fifthSon}' })
-  ), document.getElementById('root'));
+  _reactDom2.default.render(_react2.default.createElement(_fifthson2.default, null), document.getElementById('root'));
 });
 
 /***/ }),
@@ -26316,6 +26298,38 @@ function isIterateeCall(value, index, object) {
 
 module.exports = isIterateeCall;
 
+
+/***/ }),
+/* 307 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(119);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var FifthSon = function FifthSon() {
+  return _react2.default.createElement(
+    'div',
+    null,
+    _react2.default.createElement(
+      'h1',
+      null,
+      'FIFTHSON!'
+    ),
+    _react2.default.createElement('img', { src: window.staticAssets.fifthSon })
+  );
+};
+
+exports.default = FifthSon;
 
 /***/ })
 /******/ ]);
