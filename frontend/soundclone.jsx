@@ -12,6 +12,16 @@ import { login, signup, logout } from './actions/session_actions';
 document.addEventListener('DOMContentLoaded', () => {
   let store;
 
+  if (window.currentUser) {
+    store = configureStore({entities: {
+      users: { [window.currentUser.id]: window.currentUser }
+    },
+    session: { id: window.currentUser.id }
+  });
+  delete window.currentUser;
+} else {
+  store = configureStore();
+}
   // TEST CODE //
   window.store = store;
   window.signup = signup;
@@ -19,15 +29,5 @@ document.addEventListener('DOMContentLoaded', () => {
   window.logout = logout;
   // END TEST CODE //
 
-  if (window.currentUser) {
-    store = configureStore({entities: {
-        users: { [window.currentUser.id]: window.currentUser }
-      },
-      session: { id: window.currentUser.id }
-    });
-    delete window.currentUser;
-  } else {
-    store = configureStore();
-  }
   ReactDOM.render(<Root store={store} />, document.getElementById('root'));
 });
