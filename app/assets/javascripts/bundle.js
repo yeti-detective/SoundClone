@@ -446,9 +446,11 @@ var LoginModal = function (_Component) {
 
     _this.state = {
       username: '',
-      password: ''
+      password: '',
+      loginStep: 1
     };
     _this.handleSubmit = _this.handleSubmit.bind(_this);
+    _this.goBack = _this.goBack.bind(_this);
     return _this;
   }
 
@@ -465,8 +467,19 @@ var LoginModal = function (_Component) {
     key: 'handleSubmit',
     value: function handleSubmit(e) {
       e.preventDefault();
-      alert("now I'll make the password form!");
-      this.props.close();
+      // alert("now I'll make the password form!");
+      // this.props.close();
+      if (this.state.loginStep < 2) {
+        this.setState({
+          loginStep: 2
+        });
+      } else {
+        // trigger login action
+        alert("and NOW i'll connect the form to the login/create user actions");
+        alert('the username was: ' + this.state.username + ' and the password was ' + this.state.password);
+        this.goBack();
+        this.close();
+      }
     }
   }, {
     key: 'stopPropagation',
@@ -474,23 +487,49 @@ var LoginModal = function (_Component) {
       e.stopPropagation();
     }
   }, {
+    key: 'goBack',
+    value: function goBack() {
+      this.setState({
+        loginStep: 1
+      });
+    }
+  }, {
     key: 'render',
     value: function render() {
-      return _react2.default.createElement(
-        'div',
-        { className: 'login-modal', onClick: this.props.close },
-        _react2.default.createElement(
-          'p',
-          { className: 'x' },
-          '\xD7'
-        ),
-        _react2.default.createElement(
-          'form',
-          {
-            className: 'login-form',
-            onSubmit: this.handleSubmit,
-            onClick: this.stopPropagation
-          },
+      var _this3 = this;
+
+      var buttonText = 'Sign in';
+      var inputField = 'password';
+      var placeHolder = 'enter your password';
+      var inpValue = this.state.password;
+      if (this.state.loginStep < 2) {
+        buttonText = 'Continue';
+        inputField = 'username';
+        placeHolder = 'Enter your username';
+        inpValue = this.state.username;
+      }
+
+      var PasswordForm = function PasswordForm() {
+        return _react2.default.createElement(
+          'section',
+          null,
+          _react2.default.createElement(
+            'button',
+            { className: 'go-back', onClick: _this3.goBack },
+            _react2.default.createElement(
+              'span',
+              null,
+              '<'
+            ),
+            _this3.state.username
+          )
+        );
+      };
+
+      var UsernameForm = function UsernameForm() {
+        return _react2.default.createElement(
+          'section',
+          null,
           _react2.default.createElement(
             'div',
             { className: 'non-working-buttons' },
@@ -519,17 +558,36 @@ var LoginModal = function (_Component) {
             'h2',
             { className: 'divider' },
             'or'
-          ),
+          )
+        );
+      };
+
+      return _react2.default.createElement(
+        'div',
+        { className: 'login-modal', onClick: this.props.close },
+        _react2.default.createElement(
+          'p',
+          { className: 'x' },
+          '\xD7'
+        ),
+        _react2.default.createElement(
+          'form',
+          {
+            className: 'login-form',
+            onSubmit: this.handleSubmit,
+            onClick: this.stopPropagation
+          },
+          this.state.loginStep < 2 ? _react2.default.createElement(UsernameForm, null) : _react2.default.createElement(PasswordForm, null),
           _react2.default.createElement('input', {
-            onChange: this.update('username'),
+            onChange: this.update(inputField),
             type: 'text',
-            placeholder: 'Your username',
-            value: this.state.username
+            placeholder: placeHolder,
+            value: inpValue
           }),
           _react2.default.createElement(
             'button',
             null,
-            'Continue'
+            buttonText
           )
         )
       );
