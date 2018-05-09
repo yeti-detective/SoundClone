@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import SoundCloud from 'react-icons/lib/fa/soundcloud';
-import LoginModal from '../small_components/login_modal';
+import LoginModal from '../containers/login_form_container';
 
 export default class LandingPage extends Component{
   constructor(props) {
@@ -22,7 +22,8 @@ export default class LandingPage extends Component{
   render() {
     return (
       <div id="lanpg" className="app landing-page">
-        { this.state.showModal ? <LoginModal close={this.toggleModal} /> : null }
+        { this.state.showModal ?
+          <LoginModal close={this.toggleModal} /> : null }
         <header className="session-header"></header>
         <main>
           <section className="front-hero">

@@ -213,6 +213,55 @@ exports.default = App;
 
 /***/ }),
 
+/***/ "./frontend/components/containers/login_form_container.js":
+/*!****************************************************************!*\
+  !*** ./frontend/components/containers/login_form_container.js ***!
+  \****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _reactRedux = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/react.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _session_actions = __webpack_require__(/*! ../../actions/session_actions */ "./frontend/actions/session_actions.js");
+
+var _login_modal = __webpack_require__(/*! ../small_components/login_modal */ "./frontend/components/small_components/login_modal.jsx");
+
+var _login_modal2 = _interopRequireDefault(_login_modal);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var mapStateToProps = function mapStateToProps(_ref) {
+  var errors = _ref.errors;
+
+  return {
+    errors: errors.session,
+    formType: 'login'
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    processForm: function processForm(user) {
+      return dispatch((0, _session_actions.login)(user));
+    }
+  };
+};
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_login_modal2.default);
+
+/***/ }),
+
 /***/ "./frontend/components/pages/landing_page.jsx":
 /*!****************************************************!*\
   !*** ./frontend/components/pages/landing_page.jsx ***!
@@ -237,9 +286,9 @@ var _soundcloud = __webpack_require__(/*! react-icons/lib/fa/soundcloud */ "./no
 
 var _soundcloud2 = _interopRequireDefault(_soundcloud);
 
-var _login_modal = __webpack_require__(/*! ../small_components/login_modal */ "./frontend/components/small_components/login_modal.jsx");
+var _login_form_container = __webpack_require__(/*! ../containers/login_form_container */ "./frontend/components/containers/login_form_container.js");
 
-var _login_modal2 = _interopRequireDefault(_login_modal);
+var _login_form_container2 = _interopRequireDefault(_login_form_container);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -279,7 +328,7 @@ var LandingPage = function (_Component) {
       return _react2.default.createElement(
         'div',
         { id: 'lanpg', className: 'app landing-page' },
-        this.state.showModal ? _react2.default.createElement(_login_modal2.default, { close: this.toggleModal }) : null,
+        this.state.showModal ? _react2.default.createElement(_login_form_container2.default, { close: this.toggleModal }) : null,
         _react2.default.createElement('header', { className: 'session-header' }),
         _react2.default.createElement(
           'main',
@@ -475,10 +524,13 @@ var LoginModal = function (_Component) {
         });
       } else {
         // trigger login action
-        alert("and NOW i'll connect the form to the login/create user actions");
-        alert('the username was: ' + this.state.username + ' and the password was ' + this.state.password);
-        this.goBack();
-        this.close();
+        // alert("and NOW i'll connect the form to the login/create user actions");
+        // alert(`the username was: ${this.state.username} and the password was ${this.state.password}`);
+        // this.goBack();
+        this.props.processForm({
+          username: this.state.username,
+          password: this.state.password
+        });
       }
     }
   }, {
@@ -500,11 +552,13 @@ var LoginModal = function (_Component) {
 
       var buttonText = 'Sign in';
       var inputField = 'password';
+      var inputType = 'password';
       var placeHolder = 'enter your password';
       var inpValue = this.state.password;
       if (this.state.loginStep < 2) {
         buttonText = 'Continue';
         inputField = 'username';
+        inputType = 'text';
         placeHolder = 'Enter your username';
         inpValue = this.state.username;
       }
@@ -580,7 +634,7 @@ var LoginModal = function (_Component) {
           this.state.loginStep < 2 ? _react2.default.createElement(UsernameForm, null) : _react2.default.createElement(PasswordForm, null),
           _react2.default.createElement('input', {
             onChange: this.update(inputField),
-            type: 'text',
+            type: inputType,
             placeholder: placeHolder,
             value: inpValue
           }),

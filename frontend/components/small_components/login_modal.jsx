@@ -32,10 +32,14 @@ export default class LoginModal extends Component {
       });
     } else {
       // trigger login action
-      alert("and NOW i'll connect the form to the login/create user actions");
-      alert(`the username was: ${this.state.username} and the password was ${this.state.password}`);
-      this.goBack();
-      this.close();
+      // alert("and NOW i'll connect the form to the login/create user actions");
+      // alert(`the username was: ${this.state.username} and the password was ${this.state.password}`);
+      // this.goBack();
+      this.props.processForm({
+        username: this.state.username,
+        password: this.state.password
+      });
+
     }
   }
 
@@ -52,11 +56,13 @@ export default class LoginModal extends Component {
   render() {
     let buttonText = 'Sign in';
     let inputField = 'password';
+    let inputType = 'password';
     let placeHolder = 'enter your password';
     let inpValue = this.state.password;
     if (this.state.loginStep < 2) {
       buttonText = 'Continue';
       inputField = 'username';
+      inputType = 'text';
       placeHolder = 'Enter your username';
       inpValue = this.state.username;
     }
@@ -90,7 +96,7 @@ export default class LoginModal extends Component {
           {this.state.loginStep < 2 ? <UsernameForm /> : <PasswordForm />}
           <input
             onChange={this.update(inputField)}
-            type="text"
+            type={inputType}
             placeholder={placeHolder}
             value={inpValue}
             />
