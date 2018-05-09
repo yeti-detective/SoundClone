@@ -10945,11 +10945,20 @@ var _fifthson = __webpack_require__(307);
 
 var _fifthson2 = _interopRequireDefault(_fifthson);
 
+var _session_api_util = __webpack_require__(308);
+
+var SessionAPI = _interopRequireWildcard(_session_api_util);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 document.addEventListener('DOMContentLoaded', function () {
   // const store = configureStore();
   // window.store = store;
+  // window.signup = SessionAPI.signup;
+  // window.login = SessionAPI.login;
+  // window.logout = SessionAPI.logout;
   _reactDom2.default.render(_react2.default.createElement(_fifthson2.default, null), document.getElementById('root'));
 });
 
@@ -26330,6 +26339,40 @@ var FifthSon = function FifthSon() {
 };
 
 exports.default = FifthSon;
+
+/***/ }),
+/* 308 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var signup = exports.signup = function signup(user) {
+  $.ajax({
+    url: '/api/users',
+    method: 'post',
+    data: { user: user }
+  });
+};
+
+var login = exports.login = function login(user) {
+  // debugger
+  $.ajax({
+    url: 'api/sessions',
+    method: 'post',
+    data: { user: user }
+  });
+};
+
+var logout = exports.logout = function logout() {
+  $.ajax({
+    url: 'api/sessions',
+    method: 'delete'
+  });
+};
 
 /***/ })
 /******/ ]);
