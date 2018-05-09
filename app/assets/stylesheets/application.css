@@ -13,3 +13,28 @@
  *= require_tree .
  *= require_self
  */
+
+html, body {
+  margin: 0;
+  height: 100%;
+}
+
+body {
+  background: #f2f2f2;
+  /* font-family: "Interstate","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Garuda,Verdana,Tahoma,sans-serif; */
+  font-family: 'Gothic A1', sans-serif;
+  /* font-family: 'Montserrat', sans-serif; */
+}
+
+button {
+  border-radius: 3px;
+  border: none;
+  font-weight: 100;
+  color: inherit;
+  background-color: #f50;
+  cursor: pointer;
+}
+
+button:focus {
+  outline: 0;
+}

@@ -32211,6 +32211,14 @@ var _reactRouterDom = __webpack_require__(351);
 
 var _route_util = __webpack_require__(378);
 
+var _landing_page = __webpack_require__(380);
+
+var _landing_page2 = _interopRequireDefault(_landing_page);
+
+var _stream = __webpack_require__(381);
+
+var _stream2 = _interopRequireDefault(_stream);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 // temp //
@@ -32228,6 +32236,7 @@ var Signup = function Signup() {
     'signup'
   );
 };
+// <NotLoggedInRoute exact path="/" component={LandingPage} />
 // temp //
 
 var App = function App() {
@@ -32237,6 +32246,8 @@ var App = function App() {
     _react2.default.createElement(
       _reactRouterDom.Switch,
       null,
+      _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: _landing_page2.default }),
+      _react2.default.createElement(_reactRouterDom.Route, { path: '/stream', component: _stream2.default }),
       _react2.default.createElement(_route_util.AuthRoute, { exact: true, path: '/login', component: Login }),
       _react2.default.createElement(_route_util.AuthRoute, { exact: true, path: '/signup', component: Signup })
     )
@@ -32255,7 +32266,7 @@ exports.default = App;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.AuthRoute = undefined;
+exports.NotLoggedInRoute = exports.AuthRoute = undefined;
 
 var _react = __webpack_require__(64);
 
@@ -32267,13 +32278,25 @@ var _reactRedux = __webpack_require__(340);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+// import Stream from '../components/stream';
+
 var Auth = function Auth(_ref) {
   var Component = _ref.component,
       path = _ref.path,
       loggedIn = _ref.loggedIn,
       exact = _ref.exact;
   return _react2.default.createElement(_reactRouter.Route, { path: path, exact: exact, render: function render(props) {
-      return !loggedIn ? _react2.default.createElement(Component, props) : _react2.default.createElement(_reactRouter.Redirect, { to: '/' });
+      return !loggedIn ? _react2.default.createElement(Component, props) : _react2.default.createElement(_reactRouter.Redirect, { to: '/stream' });
+    } });
+};
+
+var NotLoggedIn = function NotLoggedIn(_ref2) {
+  var Component = _ref2.component,
+      path = _ref2.path,
+      loggedIn = _ref2.loggedIn,
+      exact = _ref2.exact;
+  return _react2.default.createElement(_reactRouter.Route, { path: path, exact: exact, render: function render(props) {
+      return loggedIn ? _react2.default.createElement(_reactRouter.Redirect, { to: '/stream' }) : _react2.default.createElement(Component, props);
     } });
 };
 
@@ -32284,6 +32307,7 @@ var mapStateToProps = function mapStateToProps(state) {
 };
 
 var AuthRoute = exports.AuthRoute = (0, _reactRouter.withRouter)((0, _reactRedux.connect)(mapStateToProps, null)(Auth));
+var NotLoggedInRoute = exports.NotLoggedInRoute = (0, _reactRouter.withRouter)((0, _reactRedux.connect)(mapStateToProps, null)(NotLoggedIn));
 
 /***/ }),
 /* 379 */
@@ -32327,6 +32351,231 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 
+
+/***/ }),
+/* 380 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(64);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _soundcloud = __webpack_require__(382);
+
+var _soundcloud2 = _interopRequireDefault(_soundcloud);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var LandingPage = function LandingPage() {
+  return _react2.default.createElement(
+    'div',
+    { className: 'app landing-page' },
+    _react2.default.createElement('header', { className: 'session-header' }),
+    _react2.default.createElement(
+      'main',
+      null,
+      _react2.default.createElement(
+        'section',
+        { className: 'front-hero' },
+        _react2.default.createElement(
+          'header',
+          { className: 'hero-header' },
+          _react2.default.createElement(
+            'nav',
+            { className: 'left-nav' },
+            _react2.default.createElement(
+              'h1',
+              null,
+              _react2.default.createElement(_soundcloud2.default, { size: 46, className: 'sc-logo' }),
+              'SOUNDCLOUD'
+            )
+          ),
+          _react2.default.createElement(
+            'nav',
+            { className: 'right-nav' },
+            _react2.default.createElement(
+              'button',
+              { className: 'sign-in' },
+              'Sign in'
+            ),
+            _react2.default.createElement(
+              'button',
+              null,
+              'Create Account'
+            )
+          )
+        ),
+        _react2.default.createElement(
+          'main',
+          { className: 'hero-content' },
+          _react2.default.createElement(
+            'h1',
+            null,
+            'Welcome to SoundClone'
+          ),
+          _react2.default.createElement(
+            'p',
+            null,
+            'Here is where some ads would be'
+          ),
+          _react2.default.createElement(
+            'p',
+            null,
+            'if I had anything to sell you.'
+          ),
+          _react2.default.createElement(
+            'button',
+            null,
+            'Start Cloning'
+          )
+        )
+      ),
+      _react2.default.createElement('section', { className: 'front-content' })
+    )
+  );
+};
+
+exports.default = LandingPage;
+
+/***/ }),
+/* 381 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(64);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Stream = function Stream() {
+  return _react2.default.createElement(
+    'main',
+    null,
+    'Stream'
+  );
+};
+
+exports.default = Stream;
+
+/***/ }),
+/* 382 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _react = __webpack_require__(64);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactIconBase = __webpack_require__(383);
+
+var _reactIconBase2 = _interopRequireDefault(_reactIconBase);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var FaSoundcloud = function FaSoundcloud(props) {
+    return _react2.default.createElement(
+        _reactIconBase2.default,
+        _extends({ viewBox: '0 0 40 40' }, props),
+        _react2.default.createElement(
+            'g',
+            null,
+            _react2.default.createElement('path', { d: 'm13.7 28.3l0.3-4.2-0.3-9.1q0-0.2-0.1-0.3t-0.3-0.2q-0.2 0-0.3 0.2t-0.1 0.3l-0.2 9.1 0.2 4.2q0 0.2 0.1 0.3t0.3 0.1q0.4 0 0.4-0.4z m5.2-0.5l0.2-3.7-0.2-10.2q0-0.3-0.2-0.4-0.2-0.1-0.3-0.1t-0.3 0.1q-0.2 0.1-0.2 0.4l0 0.1-0.2 10.1q0 0 0.2 4.1v0.1q0 0.1 0.1 0.3 0.1 0.2 0.4 0.2 0.2 0 0.3-0.2 0.2-0.1 0.2-0.4z m-18.3-5.9l0.4 2.2-0.4 2.2q0 0.2-0.1 0.2t-0.2-0.2l-0.3-2.2 0.3-2.2q0-0.2 0.2-0.2t0.1 0.2z m1.5-1.4l0.5 3.6-0.5 3.6q0 0.1-0.2 0.1-0.1 0-0.1-0.1l-0.4-3.6 0.4-3.6q0-0.2 0.1-0.2 0.2 0 0.2 0.2z m1.6-0.7l0.5 4.3-0.5 4.2q0 0.2-0.2 0.2-0.1 0-0.2-0.2l-0.3-4.2 0.3-4.3q0.1-0.2 0.2-0.2 0.2 0 0.2 0.2z m1.7-0.1l0.4 4.4-0.4 4.3q-0.1 0.2-0.3 0.2-0.2 0-0.2-0.2l-0.4-4.3 0.4-4.4q0-0.2 0.2-0.2 0.2 0 0.3 0.2z m1.6 0.3l0.4 4.1-0.4 4.3q0 0.3-0.3 0.3-0.1 0-0.1-0.1t-0.1-0.2l-0.4-4.3 0.4-4.1q0-0.1 0.1-0.2t0.1 0q0.3 0 0.3 0.2z m1.7-2.5l0.3 6.6-0.3 4.3q0 0.1-0.1 0.2t-0.2 0.1q-0.3 0-0.3-0.3l-0.4-4.3 0.4-6.6q0-0.4 0.3-0.4 0.1 0 0.2 0.1t0.1 0.3z m1.6-1.5l0.3 8.1-0.3 4.3q0 0.2-0.1 0.3t-0.2 0.1q-0.3 0-0.4-0.4l-0.2-4.3 0.2-8.1q0.1-0.4 0.4-0.4 0.1 0 0.2 0.1t0.1 0.3z m1.7-0.7l0.3 8.8-0.3 4.3q0 0.3-0.4 0.3-0.3 0-0.3-0.3l-0.3-4.3 0.3-8.8q0-0.2 0.1-0.3t0.2-0.1q0.2 0 0.3 0.1t0.1 0.3z m6.9 12.9z m-3.5-13l0.3 8.9-0.3 4.2q0 0.2-0.1 0.3t-0.3 0.1-0.3-0.1-0.2-0.3l-0.2-4.2 0.2-8.9q0-0.2 0.2-0.3t0.3-0.2 0.3 0.2 0.1 0.3z m1.8 0.3l0.2 8.6-0.2 4.2q0 0.2-0.2 0.3t-0.3 0.1-0.3-0.1-0.2-0.3l-0.2-4.2 0.2-8.6q0-0.2 0.2-0.3t0.3-0.2 0.3 0.2 0.2 0.3z m3.7 8.6l-0.3 4.1q0 0.2-0.1 0.4t-0.4 0.1-0.4-0.1-0.2-0.4l-0.1-2-0.1-2.1 0.2-11.1v-0.1q0.1-0.2 0.2-0.4 0.2-0.1 0.4-0.1 0.1 0 0.2 0.1 0.3 0.1 0.3 0.4z m19.4-0.3q0 2-1.4 3.5t-3.5 1.4h-13.8q-0.2 0-0.4-0.2t-0.1-0.3v-15.8q0-0.4 0.5-0.6 1.5-0.6 3.1-0.6 3.5 0 6 2.3t2.8 5.7q0.9-0.4 1.9-0.4 2 0 3.5 1.5t1.4 3.5z' })
+        )
+    );
+};
+
+exports.default = FaSoundcloud;
+module.exports = exports['default'];
+
+/***/ }),
+/* 383 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _react = __webpack_require__(64);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(315);
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
+var IconBase = function IconBase(_ref, _ref2) {
+  var children = _ref.children;
+  var color = _ref.color;
+  var size = _ref.size;
+  var style = _ref.style;
+  var width = _ref.width;
+  var height = _ref.height;
+
+  var props = _objectWithoutProperties(_ref, ['children', 'color', 'size', 'style', 'width', 'height']);
+
+  var _ref2$reactIconBase = _ref2.reactIconBase;
+  var reactIconBase = _ref2$reactIconBase === undefined ? {} : _ref2$reactIconBase;
+
+  var computedSize = size || reactIconBase.size || '1em';
+  return _react2.default.createElement('svg', _extends({
+    children: children,
+    fill: 'currentColor',
+    preserveAspectRatio: 'xMidYMid meet',
+    height: height || computedSize,
+    width: width || computedSize
+  }, reactIconBase, props, {
+    style: _extends({
+      verticalAlign: 'middle',
+      color: color || reactIconBase.color
+    }, reactIconBase.style || {}, style)
+  }));
+};
+
+IconBase.propTypes = {
+  color: _propTypes2.default.string,
+  size: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.number]),
+  width: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.number]),
+  height: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.number]),
+  style: _propTypes2.default.object
+};
+
+IconBase.contextTypes = {
+  reactIconBase: _propTypes2.default.shape(IconBase.propTypes)
+};
+
+exports.default = IconBase;
+module.exports = exports['default'];
 
 /***/ })
 /******/ ]);

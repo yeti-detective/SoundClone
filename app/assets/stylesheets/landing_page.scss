@@ -1,0 +1,85 @@
+// Place all the styles related to the Sessions controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.landing-page {
+  border-top: solid #f50 4px;
+  width: 1240px;
+  margin: auto;
+  color: #fff;
+
+
+  .front-hero {
+    height: 450px;
+    width: 1240px;
+    // min-width: 1240px;
+    background-image: image-url('new_session/hero_splash');
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+  }
+
+  .hero-header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .left-nav {
+    position: absolute;
+    top: 13px;
+    left: 19px;
+
+    .sc-logo {
+      margin-right: 10px;
+    }
+  }
+
+  .left-nav > h1 {
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 2px;
+    text-transform: capitalize;
+  }
+
+  .right-nav {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    width: 214px;
+    height: 30px;
+    display: flex;
+    justify-content: space-between;
+
+    button {
+      height: 100%;
+      padding: 0 15px;
+      font-size: 14px;
+    }
+
+    .sign-in {
+      border: solid #fff 1px;
+      background-color: rgba(0, 0, 0, 0.0);
+    }
+
+  }
+
+  .hero-content {
+    height: 100%;
+    padding-top: 145px;
+    width: 100%;
+    text-align: center;
+
+    h1 {
+      font-weight: 200;
+      font-size: 36px;
+    }
+
+    button {
+      width: 210px;
+      height: 46px;
+      font-size: 26px;
+    }
+  }
+
+}
