@@ -10954,8 +10954,8 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 document.addEventListener('DOMContentLoaded', function () {
-  // const store = configureStore();
-  // window.store = store;
+  var store = (0, _store2.default)();
+  window.store = store;
   // window.signup = SessionAPI.signup;
   // window.login = SessionAPI.login;
   // window.logout = SessionAPI.logout;
@@ -23510,7 +23510,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var configureStore = function configureStore() {
   var preloadedState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-  return (0, _redux.createStore)(preloadedState, _root_reducer2.default, (0, _redux.applyMiddleware)(_reduxThunk2.default, _reduxLogger2.default));
+  return (0, _redux.createStore)(_root_reducer2.default, preloadedState, (0, _redux.applyMiddleware)(_reduxThunk2.default, _reduxLogger2.default));
 };
 
 exports.default = configureStore;
@@ -24121,13 +24121,25 @@ Object.defineProperty(exports, "__esModule", {
 
 var _redux = __webpack_require__(97);
 
-var _users_reducer = __webpack_require__(239);
+var _entities_reducer = __webpack_require__(310);
 
-var _users_reducer2 = _interopRequireDefault(_users_reducer);
+var _entities_reducer2 = _interopRequireDefault(_entities_reducer);
+
+var _session_reducer = __webpack_require__(311);
+
+var _session_reducer2 = _interopRequireDefault(_session_reducer);
+
+var _errors_reducer = __webpack_require__(312);
+
+var _errors_reducer2 = _interopRequireDefault(_errors_reducer);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var rootReducer = (0, _redux.combineReducers)({});
+var rootReducer = (0, _redux.combineReducers)({
+  entities: _entities_reducer2.default,
+  session: _session_reducer2.default,
+  errors: _errors_reducer2.default
+});
 
 exports.default = rootReducer;
 
@@ -24138,11 +24150,34 @@ exports.default = rootReducer;
 "use strict";
 
 
-var _merge = __webpack_require__(240);
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 
-var _merge2 = _interopRequireDefault(_merge);
+var _merge2 = __webpack_require__(240);
+
+var _merge3 = _interopRequireDefault(_merge2);
+
+var _session_api_util = __webpack_require__(308);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var usersReducer = function usersReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var action = arguments[1];
+
+  Object.freeze(state);
+  switch (action.type) {
+    case _session_api_util.RECEIVE_CURRENT_USER:
+      return (0, _merge3.default)({}, state, _defineProperty({}, action.currentUser.id, action.currentUser));
+    default:
+      return state;
+  }
+};
+
+exports.default = usersReducer;
 
 /***/ }),
 /* 240 */
@@ -26351,7 +26386,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var signup = exports.signup = function signup(user) {
-  $.ajax({
+  return $.ajax({
     url: '/api/users',
     method: 'post',
     data: { user: user }
@@ -26359,20 +26394,200 @@ var signup = exports.signup = function signup(user) {
 };
 
 var login = exports.login = function login(user) {
-  // debugger
-  $.ajax({
-    url: 'api/sessions',
-    method: 'post',
-    data: { user: user }
-  });
+  return (
+    // debugger
+    $.ajax({
+      url: 'api/sessions',
+      method: 'post',
+      data: { user: user }
+    })
+  );
 };
 
 var logout = exports.logout = function logout() {
-  $.ajax({
+  return $.ajax({
     url: 'api/sessions',
     method: 'delete'
   });
 };
+
+/***/ }),
+/* 309 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.logout = exports.login = exports.signup = exports.receiveErrors = exports.logoutCurrentUser = exports.receiveCurrentUser = exports.RECEIVE_SESSION_ERRORS = exports.LOGOUT_CURRENT_USER = exports.RECEIVE_CURRENT_USER = undefined;
+
+var _session_api_util = __webpack_require__(308);
+
+var SessionAPI = _interopRequireWildcard(_session_api_util);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+var RECEIVE_CURRENT_USER = exports.RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER';
+var LOGOUT_CURRENT_USER = exports.LOGOUT_CURRENT_USER = 'LOGOUT_CURRENT_USER';
+var RECEIVE_SESSION_ERRORS = exports.RECEIVE_SESSION_ERRORS = 'RECEIVE_SESSION_ERRORS';
+
+var receiveCurrentUser = exports.receiveCurrentUser = function receiveCurrentUser(currentUser) {
+  return {
+    type: RECEIVE_CURRENT_USER,
+    currentUser: currentUser
+  };
+};
+
+var logoutCurrentUser = exports.logoutCurrentUser = function logoutCurrentUser() {
+  return {
+    type: LOGOUT_CURRENT_USER
+  };
+};
+
+var receiveErrors = exports.receiveErrors = function receiveErrors(errors) {
+  return {
+    type: RECEIVE_SESSION_ERRORS,
+    errors: errors
+  };
+};
+
+var signup = exports.signup = function signup(user) {
+  return function (dispatch) {
+    return SessionAPI.signup(user).then(function (user) {
+      return dispatch(receiveCurrentUser(user));
+    });
+  };
+};
+
+var login = exports.login = function login(user) {
+  return function (dispatch) {
+    return SessionAPI.login(user).then(function (user) {
+      return dispatch(receiveCurrentUser(user));
+    });
+  };
+};
+
+var logout = exports.logout = function logout() {
+  return function (dispatch) {
+    return SessionAPI.logout().then(function () {
+      return dispatch(logoutCurrentUser());
+    });
+  };
+};
+
+/***/ }),
+/* 310 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _redux = __webpack_require__(97);
+
+var _users_reducer = __webpack_require__(239);
+
+var _users_reducer2 = _interopRequireDefault(_users_reducer);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// import songsReducer from './songs_reducer';
+// import commentsReducer from './comments_reducer';
+
+var entitiesReducer = (0, _redux.combineReducers)({
+  users: _users_reducer2.default
+});
+
+exports.default = entitiesReducer;
+
+/***/ }),
+/* 311 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _session_actions = __webpack_require__(309);
+
+var sessionReducer = function sessionReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var action = arguments[1];
+
+  Object.freeze(state);
+  switch (action.type) {
+    case _session_actions.RECEIVE_CURRENT_USER:
+      return { id: action.currentUser.id };
+    case _session_actions.LOGOUT_CURRENT_USER:
+      return _nullUser;
+    default:
+      return state;
+  }
+};
+
+exports.default = sessionReducer;
+
+/***/ }),
+/* 312 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _redux = __webpack_require__(97);
+
+var _session_errors_reducer = __webpack_require__(313);
+
+var _session_errors_reducer2 = _interopRequireDefault(_session_errors_reducer);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var errorsReducer = (0, _redux.combineReducers)({
+  session: _session_errors_reducer2.default
+});
+
+exports.default = errorsReducer;
+
+/***/ }),
+/* 313 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _session_actions = __webpack_require__(309);
+
+var sessionErrorsReducer = function sessionErrorsReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var action = arguments[1];
+
+  switch (action.type) {
+    case _session_actions.RECEIVE_SESSION_ERRORS:
+      return { errors: action.errors };
+    case _session_actions.RECEIVE_CURRENT_USER:
+      return { errors: [] };
+    default:
+      return state;
+  }
+};
+
+exports.default = sessionErrorsReducer;
 
 /***/ })
 /******/ ]);

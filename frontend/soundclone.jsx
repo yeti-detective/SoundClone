@@ -6,8 +6,8 @@ import FifthSon from './components/fifthson';
 import * as SessionAPI from './util/session_api_util';
 
 document.addEventListener('DOMContentLoaded', () => {
-  // const store = configureStore();
-  // window.store = store;
+  const store = configureStore();
+  window.store = store;
   // window.signup = SessionAPI.signup;
   // window.login = SessionAPI.login;
   // window.logout = SessionAPI.logout;
