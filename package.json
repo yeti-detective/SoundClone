@@ -15,7 +15,7 @@
     "react-router-dom": "^4.1.2",
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0",
-    "webpack": "^3.4.1"
+    "webpack": "^4.8.1"
   },
   "description": "SoundCloud.com clone for App Academy student project",
   "version": "1.0.0",
@@ -26,8 +26,8 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "postinstall": "webpack",
-    "watch": "webpack --watch"
+    "postinstall": "webpack --mode=production",
+    "watch": "webpack --mode=development --watch"
   },
   "repository": {
     "type": "git",
@@ -43,6 +43,7 @@
   },
   "homepage": "https://github.com/yeti-detective/SoundClone#readme",
   "devDependencies": {
-    "redux-logger": "^3.0.6"
+    "redux-logger": "^3.0.6",
+    "webpack-cli": "^2.1.3"
   }
 }

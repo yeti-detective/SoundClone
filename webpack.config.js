@@ -8,7 +8,7 @@ module.exports = {
     filename: "bundle.js"
   },
   module: {
-    loaders: [
+    rules: [
       {
         test: [/\.jsx?$/, /\.js?$/],
         exclude: /node_modules/,
@@ -17,17 +17,6 @@ module.exports = {
           presets: ['env', 'react']
         }
       },
-      {
-        test: /\.(jpg|jpeg|png)(\?.*)?$/,
-        use: {
-          loader: 'file-loader',
-          options: {
-            name: "[name][md5:hash].[ext]",
-            outputPath: "webpack-assets/",
-            publicPath: "/assets/webpack-assets/"
-          }
-        }
-      }
     ]
   },
   devtool: 'source-map',

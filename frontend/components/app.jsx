@@ -8,7 +8,7 @@ import {
 
 import { AuthRoute, NotLoggedInRoute } from '../util/route_util';
 
-import LandingPage from './landing_page';
+import LandingPage from './pages/landing_page';
 import Stream from './stream';
 
 // temp //
