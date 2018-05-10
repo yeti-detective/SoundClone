@@ -38,3 +38,7 @@ button {
 button:focus, input:focus {
   outline: 0;
 }
+
+::placeholder {
+  color: #999;
+}

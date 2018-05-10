@@ -835,6 +835,14 @@ var _userSecret = __webpack_require__(/*! react-icons/lib/fa/user-secret */ "./n
 
 var _userSecret2 = _interopRequireDefault(_userSecret);
 
+var _angleDown = __webpack_require__(/*! react-icons/lib/fa/angle-down */ "./node_modules/react-icons/lib/fa/angle-down.js");
+
+var _angleDown2 = _interopRequireDefault(_angleDown);
+
+var _androidMoreHorizontal = __webpack_require__(/*! react-icons/lib/io/android-more-horizontal */ "./node_modules/react-icons/lib/io/android-more-horizontal.js");
+
+var _androidMoreHorizontal2 = _interopRequireDefault(_androidMoreHorizontal);
+
 var _reactRouterDom = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -854,43 +862,98 @@ var UserHeaderBar = function UserHeaderBar(props) {
     'header',
     { className: 'user-header-bar' },
     _react2.default.createElement(
-      'ul',
-      { className: 'header-wrapper-daddy' },
+      'div',
+      { className: 'big-hugs' },
       _react2.default.createElement(
-        'li',
-        { className: 'logo-hugger header-wrapper' },
-        _react2.default.createElement(_soundcloud2.default, { size: 45, className: 'sc-logo' })
-      ),
-      _react2.default.createElement(
-        'li',
-        { className: 'header-wrapper' },
+        'ul',
+        { className: 'header-wrapper-daddy' },
         _react2.default.createElement(
-          _reactRouterDom.Link,
-          { to: '/stream' },
-          'Home'
+          'li',
+          { className: 'logo-hugger header-wrapper' },
+          _react2.default.createElement(_soundcloud2.default, { size: 45, className: 'sc-logo' })
+        ),
+        _react2.default.createElement(
+          'li',
+          { className: 'header-wrapper' },
+          _react2.default.createElement(
+            _reactRouterDom.Link,
+            { to: '/stream' },
+            'Home'
+          )
+        ),
+        _react2.default.createElement(
+          'li',
+          { className: 'header-wrapper' },
+          _react2.default.createElement(
+            _reactRouterDom.Link,
+            { to: '/collection' },
+            'Collection'
+          )
         )
       ),
       _react2.default.createElement(
-        'li',
-        { className: 'header-wrapper' },
+        'section',
+        { className: 'header-wrapper-daddy header-middle' },
         _react2.default.createElement(
-          _reactRouterDom.Link,
-          { to: '/collection' },
-          'Collection'
+          'div',
+          { className: 'header-wrapper search-wrapper' },
+          _react2.default.createElement('input', { className: 'header-search', type: 'search', placeholder: 'Search' }),
+          _react2.default.createElement(
+            'button',
+            { className: 'header-search search-button' },
+            _react2.default.createElement(_search2.default, { className: 'magnifying-glass', size: 15 })
+          )
         )
-      )
-    ),
-    _react2.default.createElement(
-      'section',
-      { className: 'header-middle' },
+      ),
       _react2.default.createElement(
-        'div',
-        { className: 'header-wrapper search-wrapper' },
-        _react2.default.createElement('input', { className: 'header-search', type: 'search', placeholder: 'Search' }),
+        'nav',
+        { className: 'header-wrapper-right' },
         _react2.default.createElement(
-          'button',
-          { className: 'header-search' },
-          _react2.default.createElement(_search2.default, null)
+          'ul',
+          null,
+          _react2.default.createElement(
+            'li',
+            { className: 'header-wrapper' },
+            _react2.default.createElement(
+              _reactRouterDom.Link,
+              { to: '/upsell' },
+              'Try Pro'
+            )
+          ),
+          _react2.default.createElement(
+            'li',
+            { className: 'header-wrapper' },
+            _react2.default.createElement(
+              _reactRouterDom.Link,
+              { to: '/upload' },
+              'Upload'
+            )
+          ),
+          _react2.default.createElement(
+            'li',
+            { className: 'header-wrapper logo-wrapper' },
+            _react2.default.createElement(
+              'div',
+              null,
+              _react2.default.createElement('img', { className: 'user-logo-sm', src: window.staticAssets.fifthSon }),
+              _react2.default.createElement(_angleDown2.default, { className: 'down-angle', size: 15 })
+            )
+          ),
+          _react2.default.createElement(
+            'li',
+            { className: 'header-wrapper' },
+            _react2.default.createElement(_bell2.default, { size: 17 })
+          ),
+          _react2.default.createElement(
+            'li',
+            { className: 'header-wrapper' },
+            _react2.default.createElement(_envelope2.default, { size: 17 })
+          ),
+          _react2.default.createElement(
+            'li',
+            { className: 'header-wrapper three-dots' },
+            _react2.default.createElement(_androidMoreHorizontal2.default, { size: 37 })
+          )
         )
       )
     )
@@ -898,59 +961,6 @@ var UserHeaderBar = function UserHeaderBar(props) {
 };
 
 exports.default = UserHeaderBar;
-// <nav className="header-left">
-//   <SoundCloud className="sc-logo" />
-//   <Link to='/stream'>Home</Link>
-//   <Link to='/collection'>Collection</Link>
-// </nav>
-// <section className="header-middle">
-//   <input
-//     type="search"
-//     placeholder="Search"
-//   />
-// <button className="search search-button"><Search /></button>
-// </section>
-// <nav className="header-right">
-//   <Link to="/link_dumpster">Try Pro</Link>
-//   <Link to="/upload">Upload</Link>
-//   <div className="user-button">
-//     <img className="user-header-logo" src="{window.staticAssets.fifthSon}" />
-//     Fake Username!
-//     <ul>
-//       /* Icons needed:
-//         Head guy
-//         heart
-//         box on box
-//         radio signal dot thing
-//         follower (it follows...)
-//         who to follow (just a shade-reversed of follower?)
-//         star
-//         vertical bar graph
-//         dot line, dot line, dot line (morse code for a a a)
-//       */
-//       <li>Profile</li>
-//       <li>Likes</li>
-//       <li>Playlists</li>
-//       <li>Stations</li>
-//       <li>Following</li>
-//       <li>Who to follow</li>
-//       <li>Try Pro</li>
-//       <li>Stats</li>
-//       <li>Tracks</li>
-//     </ul>
-//   </div>
-//   <div className="notifications">
-//     Bell Icon
-//     <ul>
-//
-//       <li><Link to="/notifications">All Notifications</Link></li>
-//     </ul>
-//   </div>
-//   <div>
-//     Message Icon
-//
-//   </div>
-// </nav>
 
 /***/ }),
 
@@ -28357,6 +28367,49 @@ module.exports = exports['default'];
 
 /***/ }),
 
+/***/ "./node_modules/react-icons/lib/fa/angle-down.js":
+/*!*******************************************************!*\
+  !*** ./node_modules/react-icons/lib/fa/angle-down.js ***!
+  \*******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/react.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactIconBase = __webpack_require__(/*! react-icon-base */ "./node_modules/react-icon-base/lib/index.js");
+
+var _reactIconBase2 = _interopRequireDefault(_reactIconBase);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var FaAngleDown = function FaAngleDown(props) {
+    return _react2.default.createElement(
+        _reactIconBase2.default,
+        _extends({ viewBox: '0 0 40 40' }, props),
+        _react2.default.createElement(
+            'g',
+            null,
+            _react2.default.createElement('path', { d: 'm31 16.4q0 0.3-0.2 0.5l-10.4 10.4q-0.3 0.3-0.5 0.3t-0.6-0.3l-10.4-10.4q-0.2-0.2-0.2-0.5t0.2-0.5l1.2-1.1q0.2-0.2 0.5-0.2t0.5 0.2l8.8 8.8 8.7-8.8q0.3-0.2 0.5-0.2t0.6 0.2l1.1 1.1q0.2 0.2 0.2 0.5z' })
+        )
+    );
+};
+
+exports.default = FaAngleDown;
+module.exports = exports['default'];
+
+/***/ }),
+
 /***/ "./node_modules/react-icons/lib/fa/bell.js":
 /*!*************************************************!*\
   !*** ./node_modules/react-icons/lib/fa/bell.js ***!
@@ -28740,6 +28793,49 @@ var FaUser = function FaUser(props) {
 };
 
 exports.default = FaUser;
+module.exports = exports['default'];
+
+/***/ }),
+
+/***/ "./node_modules/react-icons/lib/io/android-more-horizontal.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/react-icons/lib/io/android-more-horizontal.js ***!
+  \********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/react.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactIconBase = __webpack_require__(/*! react-icon-base */ "./node_modules/react-icon-base/lib/index.js");
+
+var _reactIconBase2 = _interopRequireDefault(_reactIconBase);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var IoAndroidMoreHorizontal = function IoAndroidMoreHorizontal(props) {
+    return _react2.default.createElement(
+        _reactIconBase2.default,
+        _extends({ viewBox: '0 0 40 40' }, props),
+        _react2.default.createElement(
+            'g',
+            null,
+            _react2.default.createElement('path', { d: 'm10.6 16.9c1.7 0 3.2 1.4 3.2 3.1s-1.5 3.1-3.2 3.1-3.1-1.4-3.1-3.1 1.4-3.1 3.1-3.1z m18.8 0c1.7 0 3.1 1.4 3.1 3.1s-1.4 3.1-3.1 3.1-3.1-1.4-3.1-3.1 1.4-3.1 3.1-3.1z m-9.4 0c1.7 0 3.1 1.4 3.1 3.1s-1.4 3.1-3.1 3.1-3.1-1.4-3.1-3.1 1.4-3.1 3.1-3.1z' })
+        )
+    );
+};
+
+exports.default = IoAndroidMoreHorizontal;
 module.exports = exports['default'];
 
 /***/ }),

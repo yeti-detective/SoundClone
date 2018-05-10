@@ -1,32 +1,48 @@
 .user-header-bar {
-  background-color: #111;
-  height: 46px;
-  display: flex;
+  background-color: #333;
+  width: 100%;
+
+  .big-hugs {
+    max-width: 1240px;
+    text-align: center;
+    display: flex;
+    height: 46px;
+    margin: auto;
+    justify-content: space-between;
+  }
 
   ul {
     padding-left: 0;
+    list-style: none;
+    display: flex;
+  }
+
+  a {
+    color: #ccc;
+    text-decoration: none;
+    margin: auto;
+  }
+
+  a:hover {
+    color: #eee;
+    // text-shadow: 2px 2px grey;
   }
 
   .header-wrapper-daddy {
     display: flex;
-    width: 1240px;
     margin-left: 0;
-    margin: auto;
+    margin: 0;
   }
 
   .header-wrapper {
+    font-size: 14px;
     height: 100%;
-    list-style: none;
     display: flex;
-    padding: 12px 0;
+    padding: 12px 7px;
     box-sizing: border-box;
     width: 100%;
-  }
-
-  .header-wrapper a {
-    color: #ccc;
-    text-decoration: none;
-    margin: auto;
+    min-width: 70px;
+    border-right: 1px solid black;
   }
 
   .logo-hugger {
@@ -46,14 +62,77 @@
     padding: 0;
   }
 
+  .header-middle {
+    margin: auto;
+    width: 100%;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+
   input.header-search {
     line-height: 26px;
     padding: 5px 7px;
+    font-size: 14px;
+    float: left;
+    width: 100%;
+    min-width: 200px;
+    border: none;
+    margin-right: -2px;
+    border-radius: 5px 0 0 5px;
   }
 
   .header-search {
+    margin: auto;
     height: 28px;
+    background: #eee;
   }
 
+  .search-button {
+    border-radius: 0 5px 5px 0;
+    margin-left: -2px;
+  }
+
+  .magnifying-glass {
+    color: #666666;
+  }
+
+  .header-wrapper-right {
+    display: flex;
+    width: 33%;
+  }
+
+  .header-wrapper-right ul {
+    margin: 0;
+  }
+
+  .header-wrapper-right svg {
+    margin: auto;
+    color: #ccc;
+  }
+
+  .header-wrapper:hover svg {
+    color: #eee;
+  }
+
+  .logo-wrapper {
+    padding: auto;
+  }
+
+  .user-logo-sm {
+    border-radius: 50%;
+    height: 26px;
+    width: 26px;
+    margin: auto;
+    box-sizing: border-box;
+  }
+
+  .down-angle {
+    padding-bottom: 15px;
+    padding-left: 7px;
+  }
+
+  .three-dots {
+    padding-top: 5px;
+  }
 
 }
