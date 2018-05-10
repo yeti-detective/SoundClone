@@ -201,10 +201,8 @@ var App = function App() {
     _react2.default.createElement(
       _reactRouterDom.Switch,
       null,
-      _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: _landing_page2.default }),
-      _react2.default.createElement(_reactRouterDom.Route, { path: '/stream', component: _stream2.default }),
-      _react2.default.createElement(_route_util.AuthRoute, { exact: true, path: '/login', component: Login }),
-      _react2.default.createElement(_route_util.AuthRoute, { exact: true, path: '/signup', component: Signup })
+      _react2.default.createElement(_route_util.AuthRoute, { exact: true, path: '/', component: _landing_page2.default }),
+      _react2.default.createElement(_reactRouterDom.Route, { path: '/stream', component: _stream2.default })
     )
   );
 };
@@ -561,11 +559,14 @@ var LoginModal = function (_Component) {
     _this.state = {
       username: '',
       password: '',
-      loginStep: 1
+      loginStep: 1,
+      google: { username: 'Google', password: 'elgoog' },
+      facebook: { username: 'Facebook', password: 'koobecaf' }
     };
     _this.handleSubmit = _this.handleSubmit.bind(_this);
     _this.goBack = _this.goBack.bind(_this);
     _this.close = _this.close.bind(_this);
+    _this.dummyLogin = _this.dummyLogin.bind(_this);
     return _this;
   }
 
@@ -603,6 +604,23 @@ var LoginModal = function (_Component) {
       }
     }
   }, {
+    key: 'dummyLogin',
+    value: function dummyLogin(soshMeed) {
+      var _this3 = this;
+
+      return function () {
+        var e = {};
+        e.preventDefault = function () {
+          console.log('logging in as ' + soshMeed.username);
+        };
+        _this3.setState({
+          username: soshMeed.username,
+          password: soshMeed.password
+        });
+        _this3.handleSubmit(e);
+      };
+    }
+  }, {
     key: 'stopPropagation',
     value: function stopPropagation(e) {
       e.stopPropagation();
@@ -610,16 +628,16 @@ var LoginModal = function (_Component) {
   }, {
     key: 'update',
     value: function update(field) {
-      var _this3 = this;
+      var _this4 = this;
 
       return function (e) {
-        _this3.setState(_defineProperty({}, field, e.target.value));
+        _this4.setState(_defineProperty({}, field, e.target.value));
       };
     }
   }, {
     key: 'render',
     value: function render() {
-      var _this4 = this;
+      var _this5 = this;
 
       var buttonText = 'Sign in';
       var inputField = 'password';
@@ -640,13 +658,13 @@ var LoginModal = function (_Component) {
           null,
           _react2.default.createElement(
             'button',
-            { className: 'go-back', onClick: _this4.goBack },
+            { className: 'go-back', onClick: _this5.goBack },
             _react2.default.createElement(
               'span',
               null,
               '<'
             ),
-            _this4.state.username
+            _this5.state.username
           )
         );
       };
@@ -660,7 +678,13 @@ var LoginModal = function (_Component) {
             { className: 'non-working-buttons' },
             _react2.default.createElement(
               'div',
-              { title: 'just kidding, this doesn\'t work', className: 'facebook' },
+              { onClick: _this5.dummyLogin(_this5.state.facebook), className: 'facebook dummy-login' },
+              _react2.default.createElement(
+                'div',
+                { className: 'tooltip' },
+                'Login with dummy account: Facebook',
+                _react2.default.createElement('div', { className: 'pointy-bit' })
+              ),
               _react2.default.createElement(_facebookOfficial2.default, { size: 40 }),
               _react2.default.createElement(
                 'p',
@@ -670,7 +694,13 @@ var LoginModal = function (_Component) {
             ),
             _react2.default.createElement(
               'div',
-              { title: 'come on... ', className: 'google' },
+              { onClick: _this5.dummyLogin(_this5.state.google), className: 'google dummy-login' },
+              _react2.default.createElement(
+                'div',
+                { className: 'tooltip' },
+                'Login with dummy account: Google',
+                _react2.default.createElement('div', { className: 'pointy-bit' })
+              ),
               _react2.default.createElement(_google2.default, { size: 40 }),
               _react2.default.createElement(
                 'p',

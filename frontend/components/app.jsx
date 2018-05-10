@@ -20,10 +20,8 @@ const Signup = () => <div>signup</div>;
 const App = () => (
   <div>
     <Switch>
-      <Route exact path="/" component={LandingPage} />
+      <AuthRoute exact path="/" component={LandingPage} />
       <Route path="/stream" component={Stream} />
-      <AuthRoute exact path="/login" component={Login} />
-      <AuthRoute exact path="/signup" component={Signup} />
     </Switch>
   </div>
 );

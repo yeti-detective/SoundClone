@@ -7,3 +7,5 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 User.destroy_all
 User.create({username: 'firstboy', password: 'starwars'})
+User.create({username: 'Facebook', password: 'koobecaf'})
+User.create({username: 'Google', password: 'elgoog'})

@@ -157,6 +157,15 @@
     }
   }
 
+  .dummy-login {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .dummy-login:hover {
+    overflow: visible;
+  }
+
   .facebook {
     background: linear-gradient(#3857A1, #264285);
     height: 42px;
@@ -165,6 +174,31 @@
   .google {
     background-color: #4285f4;
     height: 42px;
+  }
+
+  .tooltip {
+    width: 350px;
+    height: 30px;
+    background: grey;
+    font-family: sans-serif;
+    text-align: center;
+    padding-top: 5px;
+    color: #fff;
+    border-radius: 5px;
+    position: absolute;
+    top: -45px;
+    right: 70px;
+  }
+
+  .pointy-bit {
+    height: 0;
+    width: 0;
+    border-top: 15px grey solid;
+    border-right: 10px transparent solid;
+    border-left: 10px transparent solid;
+    position: absolute;
+    bottom: -10px;
+    left: 13px;
   }
 
   .divider {

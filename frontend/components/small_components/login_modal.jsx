@@ -9,11 +9,14 @@ class LoginModal extends Component {
     this.state = {
       username: '',
       password: '',
-      loginStep: 1
+      loginStep: 1,
+      google: {username: 'Google', password: 'elgoog'},
+      facebook: {username: 'Facebook', password: 'koobecaf'}
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.goBack = this.goBack.bind(this);
     this.close = this.close.bind(this);
+    this.dummyLogin = this.dummyLogin.bind(this);
   }
 
   close() {
@@ -44,6 +47,21 @@ class LoginModal extends Component {
       <Redirect to='/stream' />;
     }
   }
+
+  dummyLogin(soshMeed) {
+    return () => {
+      const e = {};
+      e.preventDefault = () => {
+        console.log(`logging in as ${soshMeed.username}`);
+      };
+      this.setState({
+        username: soshMeed.username,
+        password: soshMeed.password
+      });
+      this.handleSubmit(e);
+    };
+  }
+
   stopPropagation(e) {
     e.stopPropagation();
   }
@@ -79,9 +97,17 @@ class LoginModal extends Component {
     const UsernameForm = () => (
       <section>
         <div className="non-working-buttons">
-          <div title="just kidding, this doesn't work" className="facebook">
+          <div onClick={this.dummyLogin(this.state.facebook)} className="facebook dummy-login">
+            <div className="tooltip">
+              Login with dummy account: Facebook
+              <div className="pointy-bit" />
+            </div>
             <FaceBook size={40} /><p>Continue with Facebook</p></div>
-          <div title="come on... " className="google">
+          <div onClick={this.dummyLogin(this.state.google)} className="google dummy-login">
+            <div className="tooltip">
+              Login with dummy account: Google
+              <div className="pointy-bit" />
+            </div>
             <Google size={40} /><p>Continue with Google</p></div>
         </div>
         <h2 className="divider">or</h2>
