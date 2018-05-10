@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
+import { Redirect, withRouter } from 'react-router';
 import FaceBook from 'react-icons/lib/fa/facebook-official';
 import Google from 'react-icons/lib/fa/google';
 
-export default class LoginModal extends Component {
+class LoginModal extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -12,6 +13,39 @@ export default class LoginModal extends Component {
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.goBack = this.goBack.bind(this);
+    this.close = this.close.bind(this);
+  }
+
+  close() {
+    return () => {
+      // TODO: fix this
+      this.props.close(null);
+    };
+  }
+
+  goBack() {
+    this.setState({
+      loginStep: 1
+    });
+  }
+
+
+  handleSubmit(e) {
+    e.preventDefault();
+    if (this.state.loginStep < 2) {
+      this.setState({
+        loginStep: 2
+      });
+    } else {
+      this.props.processForm({
+        username: this.state.username,
+        password: this.state.password
+      });
+      <Redirect to='/stream' />;
+    }
+  }
+  stopPropagation(e) {
+    e.stopPropagation();
   }
 
   update(field) {
@@ -20,37 +54,6 @@ export default class LoginModal extends Component {
         [field]: e.target.value
       });
     };
-  }
-
-  handleSubmit(e) {
-    e.preventDefault();
-    // alert("now I'll make the password form!");
-    // this.props.close();
-    if (this.state.loginStep < 2) {
-      this.setState({
-        loginStep: 2
-      });
-    } else {
-      // trigger login action
-      // alert("and NOW i'll connect the form to the login/create user actions");
-      // alert(`the username was: ${this.state.username} and the password was ${this.state.password}`);
-      // this.goBack();
-      this.props.processForm({
-        username: this.state.username,
-        password: this.state.password
-      });
-
-    }
-  }
-
-  stopPropagation(e) {
-    e.stopPropagation();
-  }
-
-  goBack() {
-    this.setState({
-      loginStep: 1
-    });
   }
 
   render() {
@@ -86,7 +89,7 @@ export default class LoginModal extends Component {
     );
 
     return (
-      <div className="login-modal" onClick={this.props.close}>
+      <div className="login-modal" onClick={this.close().bind(this)}>
         <p className='x' >&times;</p>
         <form
           className="login-form"
@@ -106,3 +109,5 @@ export default class LoginModal extends Component {
     );
   }
 }
+
+export default withRouter(LoginModal);

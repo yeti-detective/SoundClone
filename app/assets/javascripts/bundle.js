@@ -262,6 +262,55 @@ exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(
 
 /***/ }),
 
+/***/ "./frontend/components/containers/signup_form_container.js":
+/*!*****************************************************************!*\
+  !*** ./frontend/components/containers/signup_form_container.js ***!
+  \*****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _reactRedux = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/react.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _session_actions = __webpack_require__(/*! ../../actions/session_actions */ "./frontend/actions/session_actions.js");
+
+var _login_modal = __webpack_require__(/*! ../small_components/login_modal */ "./frontend/components/small_components/login_modal.jsx");
+
+var _login_modal2 = _interopRequireDefault(_login_modal);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var mapStateToProps = function mapStateToProps(_ref) {
+  var errors = _ref.errors;
+
+  return {
+    errors: errors.session,
+    formType: 'signup'
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    processForm: function processForm(user) {
+      return dispatch((0, _session_actions.signup)(user));
+    }
+  };
+};
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_login_modal2.default);
+
+/***/ }),
+
 /***/ "./frontend/components/pages/landing_page.jsx":
 /*!****************************************************!*\
   !*** ./frontend/components/pages/landing_page.jsx ***!
@@ -290,6 +339,10 @@ var _login_form_container = __webpack_require__(/*! ../containers/login_form_con
 
 var _login_form_container2 = _interopRequireDefault(_login_form_container);
 
+var _signup_form_container = __webpack_require__(/*! ../containers/signup_form_container */ "./frontend/components/containers/signup_form_container.js");
+
+var _signup_form_container2 = _interopRequireDefault(_signup_form_container);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -307,7 +360,7 @@ var LandingPage = function (_Component) {
     var _this = _possibleConstructorReturn(this, (LandingPage.__proto__ || Object.getPrototypeOf(LandingPage)).call(this, props));
 
     _this.state = {
-      showModal: false
+      showModal: null
     };
     _this.toggleModal = _this.toggleModal.bind(_this);
     return _this;
@@ -315,20 +368,26 @@ var LandingPage = function (_Component) {
 
   _createClass(LandingPage, [{
     key: 'toggleModal',
-    value: function toggleModal() {
-      this.setState({
-        showModal: !this.state.showModal
-      });
+    value: function toggleModal(choose) {
+      var _this2 = this;
+
+      return function () {
+        console.log(choose);
+        _this2.setState({
+          showModal: choose
+        });
+      };
       // trying to get body to stay fixed while form scrolls when modal open
       // document.getElementById('lanpg').classList.add('modal-open');
     }
   }, {
     key: 'render',
     value: function render() {
+
       return _react2.default.createElement(
         'div',
         { id: 'lanpg', className: 'app landing-page' },
-        this.state.showModal ? _react2.default.createElement(_login_form_container2.default, { close: this.toggleModal }) : null,
+        this.state.showModal,
         _react2.default.createElement('header', { className: 'session-header' }),
         _react2.default.createElement(
           'main',
@@ -354,12 +413,15 @@ var LandingPage = function (_Component) {
                 { className: 'right-nav' },
                 _react2.default.createElement(
                   'button',
-                  { onClick: this.toggleModal, className: 'sign-in' },
+                  {
+                    onClick: this.toggleModal(_react2.default.createElement(_login_form_container2.default, { close: this.toggleModal() })),
+                    className: 'sign-in' },
                   'Sign in'
                 ),
                 _react2.default.createElement(
                   'button',
-                  { onClick: this.toggleModal },
+                  {
+                    onClick: this.toggleModal(_react2.default.createElement(_signup_form_container2.default, { close: this.toggleModal() })) },
                   'Create Account'
                 )
               )
@@ -384,7 +446,8 @@ var LandingPage = function (_Component) {
               ),
               _react2.default.createElement(
                 'button',
-                { onClick: this.toggleModal },
+                {
+                  onClick: this.toggleModal(_react2.default.createElement(_signup_form_container2.default, { close: this.toggleModal() })) },
                 'Start Cloning'
               )
             )
@@ -467,6 +530,8 @@ var _react = __webpack_require__(/*! react */ "./node_modules/react/react.js");
 
 var _react2 = _interopRequireDefault(_react);
 
+var _reactRouter = __webpack_require__(/*! react-router */ "./node_modules/react-router/es/index.js");
+
 var _facebookOfficial = __webpack_require__(/*! react-icons/lib/fa/facebook-official */ "./node_modules/react-icons/lib/fa/facebook-official.js");
 
 var _facebookOfficial2 = _interopRequireDefault(_facebookOfficial);
@@ -500,43 +565,19 @@ var LoginModal = function (_Component) {
     };
     _this.handleSubmit = _this.handleSubmit.bind(_this);
     _this.goBack = _this.goBack.bind(_this);
+    _this.close = _this.close.bind(_this);
     return _this;
   }
 
   _createClass(LoginModal, [{
-    key: 'update',
-    value: function update(field) {
+    key: 'close',
+    value: function close() {
       var _this2 = this;
 
-      return function (e) {
-        _this2.setState(_defineProperty({}, field, e.target.value));
+      return function () {
+        // TODO: fix this
+        _this2.props.close(null);
       };
-    }
-  }, {
-    key: 'handleSubmit',
-    value: function handleSubmit(e) {
-      e.preventDefault();
-      // alert("now I'll make the password form!");
-      // this.props.close();
-      if (this.state.loginStep < 2) {
-        this.setState({
-          loginStep: 2
-        });
-      } else {
-        // trigger login action
-        // alert("and NOW i'll connect the form to the login/create user actions");
-        // alert(`the username was: ${this.state.username} and the password was ${this.state.password}`);
-        // this.goBack();
-        this.props.processForm({
-          username: this.state.username,
-          password: this.state.password
-        });
-      }
-    }
-  }, {
-    key: 'stopPropagation',
-    value: function stopPropagation(e) {
-      e.stopPropagation();
     }
   }, {
     key: 'goBack',
@@ -546,9 +587,39 @@ var LoginModal = function (_Component) {
       });
     }
   }, {
+    key: 'handleSubmit',
+    value: function handleSubmit(e) {
+      e.preventDefault();
+      if (this.state.loginStep < 2) {
+        this.setState({
+          loginStep: 2
+        });
+      } else {
+        this.props.processForm({
+          username: this.state.username,
+          password: this.state.password
+        });
+        _react2.default.createElement(_reactRouter.Redirect, { to: '/stream' });
+      }
+    }
+  }, {
+    key: 'stopPropagation',
+    value: function stopPropagation(e) {
+      e.stopPropagation();
+    }
+  }, {
+    key: 'update',
+    value: function update(field) {
+      var _this3 = this;
+
+      return function (e) {
+        _this3.setState(_defineProperty({}, field, e.target.value));
+      };
+    }
+  }, {
     key: 'render',
     value: function render() {
-      var _this3 = this;
+      var _this4 = this;
 
       var buttonText = 'Sign in';
       var inputField = 'password';
@@ -569,13 +640,13 @@ var LoginModal = function (_Component) {
           null,
           _react2.default.createElement(
             'button',
-            { className: 'go-back', onClick: _this3.goBack },
+            { className: 'go-back', onClick: _this4.goBack },
             _react2.default.createElement(
               'span',
               null,
               '<'
             ),
-            _this3.state.username
+            _this4.state.username
           )
         );
       };
@@ -618,7 +689,7 @@ var LoginModal = function (_Component) {
 
       return _react2.default.createElement(
         'div',
-        { className: 'login-modal', onClick: this.props.close },
+        { className: 'login-modal', onClick: this.close().bind(this) },
         _react2.default.createElement(
           'p',
           { className: 'x' },
@@ -651,7 +722,7 @@ var LoginModal = function (_Component) {
   return LoginModal;
 }(_react.Component);
 
-exports.default = LoginModal;
+exports.default = (0, _reactRouter.withRouter)(LoginModal);
 
 /***/ }),
 
