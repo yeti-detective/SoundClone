@@ -42,7 +42,6 @@
     display: flex;
     padding: 12px 7px;
     box-sizing: border-box;
-    width: 100%;
     min-width: 70px;
     border-right: 1px solid black;
   }
@@ -66,7 +65,7 @@
 
   .header-middle {
     margin: auto;
-    width: 100%;
+    // width: 100%;
     padding-left: 5px;
     padding-right: 5px;
   }
@@ -75,9 +74,9 @@
     line-height: 26px;
     padding: 5px 7px;
     font-size: 14px;
-    float: left;
+    // float: left;
     width: 100%;
-    min-width: 200px;
+    // min-width: 200px;
     border: none;
     margin-right: -2px;
     border-radius: 5px 0 0 5px;
@@ -104,7 +103,17 @@
 
   .header-wrapper-right {
     display: flex;
-    width: 33%;
+
+
+    .logo-wrapper > div {
+      display: flex;
+    }
+
+    p {
+      color: #ccc;
+      margin: 7px 0 0 0;
+      display: block;
+    }
   }
 
   .header-wrapper-right ul {
@@ -121,7 +130,7 @@
   }
 
   .logo-wrapper {
-    padding: auto;
+    // padding: auto;
   }
 
   .user-logo-sm {
@@ -133,8 +142,8 @@
   }
 
   .down-angle {
-    padding-bottom: 15px;
-    padding-left: 7px;
+    padding-bottom: 5px;
+    padding-left: 4px;
   }
 
   .three-dots {

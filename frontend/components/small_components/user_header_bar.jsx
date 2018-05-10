@@ -14,59 +14,68 @@ import { Link } from 'react-router-dom';
 
 const fakeNotifications = [1, 2, 3, 4];
 
-const TestDude = (props) => (
-  <div>Test, dude</div>
-);
 
-const UserHeaderBar = (props) => (
-  <header className="user-header-bar">
-    <div className="big-hugs">
-      <ul className="header-wrapper-daddy">
-        <li className="logo-hugger header-wrapper">
-            <SoundCloud size={45} className="sc-logo"/>
-        </li>
-        <li className="header-wrapper">
-          <Link to='/stream'>Home</Link>
-        </li>
-        <li className="header-wrapper">
-          <Link to='/collection'>Collection</Link>
-        </li>
-      </ul>
-      <section className="header-wrapper-daddy header-middle">
-        <div className="header-wrapper search-wrapper">
-          <input className="header-search" type="search" placeholder="Search" />
-          <button className="header-search search-button">
-            <Search id="magnifyingGlass" size={15} />
-          </button>
-        </div>
-      </section>
-      <nav className="header-wrapper-right">
-        <ul>
-          <li className="header-wrapper">
-            <Link to="/upsell">Try Pro</Link>
+const UserHeaderBar = (props) => {
+  const logout = () => {
+    props.logout().then(()=> {
+      props.history.push('/');
+    });
+  };
+
+  return (
+    <header className="user-header-bar">
+      <div className="big-hugs">
+        <ul className="header-wrapper-daddy">
+          <li className="logo-hugger header-wrapper">
+              <SoundCloud size={45} className="sc-logo"/>
           </li>
           <li className="header-wrapper">
-            <Link to="/upload">Upload</Link>
+            <Link to='/'>Home</Link>
           </li>
-          <li className="header-wrapper logo-wrapper">
-            <div>
-              <img className="user-logo-sm" src={window.staticAssets.fifthSon} />
-              <DownAngle className="down-angle" size={15} />
+          <li className="header-wrapper">
+            <Link to='/collection'>Collection</Link>
+          </li>
+          <section className="header-wrapper-daddy header-middle">
+            <div className="header-wrapper search-wrapper">
+              <input className="header-search" type="search" placeholder="Search" />
+              <button className="header-search search-button">
+                <Search id="magnifyingGlass" size={15} />
+              </button>
             </div>
-          </li>
-          <li className="header-wrapper">
-            <Bell size={17} />
-          </li>
-          <li className="header-wrapper">
-            <Envelope size={17} />
-          </li>
-          <li className="header-wrapper three-dots">
-            <ThreeDots size={37} />
-          </li>
+          </section>
         </ul>
-      </nav>
-    </div>
-  </header>
-);
+        <nav className="header-wrapper-right">
+          <ul>
+            <li className="header-wrapper">
+              <Link to="/upsell">Try Pro</Link>
+            </li>
+            <li className="header-wrapper">
+              <Link to="/upload">Upload</Link>
+            </li>
+            <li className="header-wrapper logo-wrapper">
+              <div>
+                <img className="user-logo-sm" src={window.staticAssets.fifthSon} />
+                <p><span>{props.currentUser.username}</span></p>
+                <DownAngle className="down-angle" size={15} />
+              </div>
+            </li>
+            <li className="header-wrapper">
+              <Bell size={17} />
+            </li>
+            <li className="header-wrapper">
+              <Envelope size={17} />
+            </li>
+            <li
+              className="header-wrapper three-dots"
+              onClick={logout}
+              >
+              <ThreeDots size={37} />
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+  );
+};
 
 export default UserHeaderBar;

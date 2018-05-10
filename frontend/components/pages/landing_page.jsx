@@ -14,7 +14,6 @@ export default class LandingPage extends Component{
 
   toggleModal(choose) {
     return () => {
-      console.log(choose)
       this.setState({
         showModal: choose
       });

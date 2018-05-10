@@ -14,12 +14,13 @@ const Auth = ({ component: Component, path, loggedIn, exact }) => (
 
 const NotLoggedIn = ({ component: Component, path, loggedIn, exact }) => (
   <Route path={path} exact={exact} render={(props) => (
-      loggedIn? (
-        <Redirect to="/stream" />
-      ) : (
-        <Component {...props} />
-      )
-    )} />
+        !loggedIn? (
+        <Redirect to="/" />
+       ) : (
+          <Component {...props} />
+        )
+      )}
+  />
 )
 
 const mapStateToProps = state => ({

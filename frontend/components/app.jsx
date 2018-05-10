@@ -14,14 +14,14 @@ import Stream from './pages/stream';
 // temp //
 import UserHeaderBar from './small_components/user_header_bar';
 // <NotLoggedInRoute exact path="/" component={LandingPage} />
+// <Route path="/headerbar" component={UserHeaderBar} />
 // temp //
-console.log(UserHeaderBar)
+
 const App = () => (
   <div>
     <Switch>
-      <Route path="/headerbar" component={UserHeaderBar} />
       <AuthRoute exact path="/" component={LandingPage} />
-      <Route path="/stream" component={Stream} />
+      <NotLoggedInRoute path="/stream" component={Stream} />
     </Switch>
   </div>
 );
