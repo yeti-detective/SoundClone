@@ -474,13 +474,17 @@ var _react = __webpack_require__(/*! react */ "./node_modules/react/react.js");
 
 var _react2 = _interopRequireDefault(_react);
 
+var _user_header_bar = __webpack_require__(/*! ../small_components/user_header_bar */ "./frontend/components/small_components/user_header_bar.jsx");
+
+var _user_header_bar2 = _interopRequireDefault(_user_header_bar);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Stream = function Stream() {
   return _react2.default.createElement(
     'main',
     null,
-    'Stream'
+    _react2.default.createElement(_user_header_bar2.default, null)
   );
 };
 
@@ -901,7 +905,7 @@ var UserHeaderBar = function UserHeaderBar(props) {
           _react2.default.createElement(
             'button',
             { className: 'header-search search-button' },
-            _react2.default.createElement(_search2.default, { className: 'magnifying-glass', size: 15 })
+            _react2.default.createElement(_search2.default, { id: 'magnifyingGlass', size: 15 })
           )
         )
       ),

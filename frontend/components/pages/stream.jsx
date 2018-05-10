@@ -1,9 +1,11 @@
 import React from 'react';
+import UserHeaderBar from '../small_components/user_header_bar';
 
 const Stream = () => (
   <main>
-    Stream
+    <UserHeaderBar />
+    
   </main>
 );
 
-export default Stream
+export default Stream;

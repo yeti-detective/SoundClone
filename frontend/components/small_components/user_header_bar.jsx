@@ -36,7 +36,7 @@ const UserHeaderBar = (props) => (
         <div className="header-wrapper search-wrapper">
           <input className="header-search" type="search" placeholder="Search" />
           <button className="header-search search-button">
-            <Search className="magnifying-glass" size={15} />
+            <Search id="magnifyingGlass" size={15} />
           </button>
         </div>
       </section>
