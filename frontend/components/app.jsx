@@ -9,17 +9,17 @@ import {
 import { AuthRoute, NotLoggedInRoute } from '../util/route_util';
 
 import LandingPage from './pages/landing_page';
-import Stream from './stream';
+import Stream from './pages/stream';
 
 // temp //
-const Login = () => <div>login</div>;
-const Signup = () => <div>signup</div>;
+import UserHeaderBar from './small_components/user_header_bar';
 // <NotLoggedInRoute exact path="/" component={LandingPage} />
 // temp //
-
+console.log(UserHeaderBar)
 const App = () => (
   <div>
     <Switch>
+      <Route path="/headerbar" component={UserHeaderBar} />
       <AuthRoute exact path="/" component={LandingPage} />
       <Route path="/stream" component={Stream} />
     </Switch>

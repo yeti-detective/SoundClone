@@ -170,28 +170,20 @@ var _landing_page = __webpack_require__(/*! ./pages/landing_page */ "./frontend/
 
 var _landing_page2 = _interopRequireDefault(_landing_page);
 
-var _stream = __webpack_require__(/*! ./stream */ "./frontend/components/stream.jsx");
+var _stream = __webpack_require__(/*! ./pages/stream */ "./frontend/components/pages/stream.jsx");
 
 var _stream2 = _interopRequireDefault(_stream);
 
+var _user_header_bar = __webpack_require__(/*! ./small_components/user_header_bar */ "./frontend/components/small_components/user_header_bar.jsx");
+
+var _user_header_bar2 = _interopRequireDefault(_user_header_bar);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-// temp //
-var Login = function Login() {
-  return _react2.default.createElement(
-    'div',
-    null,
-    'login'
-  );
-};
-var Signup = function Signup() {
-  return _react2.default.createElement(
-    'div',
-    null,
-    'signup'
-  );
-};
 // <NotLoggedInRoute exact path="/" component={LandingPage} />
+// temp //
+console.log(_user_header_bar2.default);
+
 // temp //
 
 var App = function App() {
@@ -201,6 +193,7 @@ var App = function App() {
     _react2.default.createElement(
       _reactRouterDom.Switch,
       null,
+      _react2.default.createElement(_reactRouterDom.Route, { path: '/headerbar', component: _user_header_bar2.default }),
       _react2.default.createElement(_route_util.AuthRoute, { exact: true, path: '/', component: _landing_page2.default }),
       _react2.default.createElement(_reactRouterDom.Route, { path: '/stream', component: _stream2.default })
     )
@@ -460,6 +453,38 @@ var LandingPage = function (_Component) {
 }(_react.Component);
 
 exports.default = LandingPage;
+
+/***/ }),
+
+/***/ "./frontend/components/pages/stream.jsx":
+/*!**********************************************!*\
+  !*** ./frontend/components/pages/stream.jsx ***!
+  \**********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/react.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Stream = function Stream() {
+  return _react2.default.createElement(
+    'main',
+    null,
+    'Stream'
+  );
+};
+
+exports.default = Stream;
 
 /***/ }),
 
@@ -756,10 +781,10 @@ exports.default = (0, _reactRouter.withRouter)(LoginModal);
 
 /***/ }),
 
-/***/ "./frontend/components/stream.jsx":
-/*!****************************************!*\
-  !*** ./frontend/components/stream.jsx ***!
-  \****************************************/
+/***/ "./frontend/components/small_components/user_header_bar.jsx":
+/*!******************************************************************!*\
+  !*** ./frontend/components/small_components/user_header_bar.jsx ***!
+  \******************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -774,17 +799,158 @@ var _react = __webpack_require__(/*! react */ "./node_modules/react/react.js");
 
 var _react2 = _interopRequireDefault(_react);
 
+var _soundcloud = __webpack_require__(/*! react-icons/lib/fa/soundcloud */ "./node_modules/react-icons/lib/fa/soundcloud.js");
+
+var _soundcloud2 = _interopRequireDefault(_soundcloud);
+
+var _search = __webpack_require__(/*! react-icons/lib/fa/search */ "./node_modules/react-icons/lib/fa/search.js");
+
+var _search2 = _interopRequireDefault(_search);
+
+var _bell = __webpack_require__(/*! react-icons/lib/fa/bell */ "./node_modules/react-icons/lib/fa/bell.js");
+
+var _bell2 = _interopRequireDefault(_bell);
+
+var _envelope = __webpack_require__(/*! react-icons/lib/fa/envelope */ "./node_modules/react-icons/lib/fa/envelope.js");
+
+var _envelope2 = _interopRequireDefault(_envelope);
+
+var _list = __webpack_require__(/*! react-icons/lib/fa/list */ "./node_modules/react-icons/lib/fa/list.js");
+
+var _list2 = _interopRequireDefault(_list);
+
+var _statsBars = __webpack_require__(/*! react-icons/lib/io/stats-bars */ "./node_modules/react-icons/lib/io/stats-bars.js");
+
+var _statsBars2 = _interopRequireDefault(_statsBars);
+
+var _star = __webpack_require__(/*! react-icons/lib/md/star */ "./node_modules/react-icons/lib/md/star.js");
+
+var _star2 = _interopRequireDefault(_star);
+
+var _user = __webpack_require__(/*! react-icons/lib/fa/user */ "./node_modules/react-icons/lib/fa/user.js");
+
+var _user2 = _interopRequireDefault(_user);
+
+var _userSecret = __webpack_require__(/*! react-icons/lib/fa/user-secret */ "./node_modules/react-icons/lib/fa/user-secret.js");
+
+var _userSecret2 = _interopRequireDefault(_userSecret);
+
+var _reactRouterDom = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var Stream = function Stream() {
+var fakeNotifications = [1, 2, 3, 4];
+
+var TestDude = function TestDude(props) {
   return _react2.default.createElement(
-    'main',
+    'div',
     null,
-    'Stream'
+    'Test, dude'
   );
 };
 
-exports.default = Stream;
+var UserHeaderBar = function UserHeaderBar(props) {
+  return _react2.default.createElement(
+    'header',
+    { className: 'user-header-bar' },
+    _react2.default.createElement(
+      'ul',
+      { className: 'header-wrapper-daddy' },
+      _react2.default.createElement(
+        'li',
+        { className: 'logo-hugger header-wrapper' },
+        _react2.default.createElement(_soundcloud2.default, { size: 45, className: 'sc-logo' })
+      ),
+      _react2.default.createElement(
+        'li',
+        { className: 'header-wrapper' },
+        _react2.default.createElement(
+          _reactRouterDom.Link,
+          { to: '/stream' },
+          'Home'
+        )
+      ),
+      _react2.default.createElement(
+        'li',
+        { className: 'header-wrapper' },
+        _react2.default.createElement(
+          _reactRouterDom.Link,
+          { to: '/collection' },
+          'Collection'
+        )
+      )
+    ),
+    _react2.default.createElement(
+      'section',
+      { className: 'header-middle' },
+      _react2.default.createElement(
+        'div',
+        { className: 'header-wrapper search-wrapper' },
+        _react2.default.createElement('input', { className: 'header-search', type: 'search', placeholder: 'Search' }),
+        _react2.default.createElement(
+          'button',
+          { className: 'header-search' },
+          _react2.default.createElement(_search2.default, null)
+        )
+      )
+    )
+  );
+};
+
+exports.default = UserHeaderBar;
+// <nav className="header-left">
+//   <SoundCloud className="sc-logo" />
+//   <Link to='/stream'>Home</Link>
+//   <Link to='/collection'>Collection</Link>
+// </nav>
+// <section className="header-middle">
+//   <input
+//     type="search"
+//     placeholder="Search"
+//   />
+// <button className="search search-button"><Search /></button>
+// </section>
+// <nav className="header-right">
+//   <Link to="/link_dumpster">Try Pro</Link>
+//   <Link to="/upload">Upload</Link>
+//   <div className="user-button">
+//     <img className="user-header-logo" src="{window.staticAssets.fifthSon}" />
+//     Fake Username!
+//     <ul>
+//       /* Icons needed:
+//         Head guy
+//         heart
+//         box on box
+//         radio signal dot thing
+//         follower (it follows...)
+//         who to follow (just a shade-reversed of follower?)
+//         star
+//         vertical bar graph
+//         dot line, dot line, dot line (morse code for a a a)
+//       */
+//       <li>Profile</li>
+//       <li>Likes</li>
+//       <li>Playlists</li>
+//       <li>Stations</li>
+//       <li>Following</li>
+//       <li>Who to follow</li>
+//       <li>Try Pro</li>
+//       <li>Stats</li>
+//       <li>Tracks</li>
+//     </ul>
+//   </div>
+//   <div className="notifications">
+//     Bell Icon
+//     <ul>
+//
+//       <li><Link to="/notifications">All Notifications</Link></li>
+//     </ul>
+//   </div>
+//   <div>
+//     Message Icon
+//
+//   </div>
+// </nav>
 
 /***/ }),
 
@@ -1126,8 +1292,6 @@ var _reactRouter = __webpack_require__(/*! react-router */ "./node_modules/react
 var _reactRedux = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-// import Stream from '../components/stream';
 
 var Auth = function Auth(_ref) {
   var Component = _ref.component,
@@ -28193,6 +28357,92 @@ module.exports = exports['default'];
 
 /***/ }),
 
+/***/ "./node_modules/react-icons/lib/fa/bell.js":
+/*!*************************************************!*\
+  !*** ./node_modules/react-icons/lib/fa/bell.js ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/react.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactIconBase = __webpack_require__(/*! react-icon-base */ "./node_modules/react-icon-base/lib/index.js");
+
+var _reactIconBase2 = _interopRequireDefault(_reactIconBase);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var FaBell = function FaBell(props) {
+    return _react2.default.createElement(
+        _reactIconBase2.default,
+        _extends({ viewBox: '0 0 40 40' }, props),
+        _react2.default.createElement(
+            'g',
+            null,
+            _react2.default.createElement('path', { d: 'm20.4 37.9q0-0.4-0.4-0.4-1.3 0-2.3-1t-0.9-2.2q0-0.4-0.4-0.4t-0.3 0.4q0 1.6 1.1 2.8t2.8 1.1q0.4 0 0.4-0.3z m18.2-6.5q0 1.2-0.9 2t-2 0.9h-10q0 2.4-1.7 4t-4 1.7-4-1.7-1.7-4h-10q-1.2 0-2-0.9t-0.9-2q1.1-0.9 2.1-1.9t1.9-2.7 1.6-3.5 1.1-4.6 0.5-5.8q0-3.4 2.6-6.3t6.8-3.6q-0.1-0.4-0.1-0.9 0-0.8 0.6-1.5t1.5-0.6 1.5 0.6 0.6 1.5q0 0.5-0.1 0.9 4.2 0.6 6.8 3.6t2.6 6.3q0 3.1 0.5 5.8t1.1 4.6 1.6 3.5 1.9 2.7 2.1 1.9z' })
+        )
+    );
+};
+
+exports.default = FaBell;
+module.exports = exports['default'];
+
+/***/ }),
+
+/***/ "./node_modules/react-icons/lib/fa/envelope.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/react-icons/lib/fa/envelope.js ***!
+  \*****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/react.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactIconBase = __webpack_require__(/*! react-icon-base */ "./node_modules/react-icon-base/lib/index.js");
+
+var _reactIconBase2 = _interopRequireDefault(_reactIconBase);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var FaEnvelope = function FaEnvelope(props) {
+    return _react2.default.createElement(
+        _reactIconBase2.default,
+        _extends({ viewBox: '0 0 40 40' }, props),
+        _react2.default.createElement(
+            'g',
+            null,
+            _react2.default.createElement('path', { d: 'm40 15.8v17.8q0 1.4-1 2.5t-2.6 1h-32.8q-1.5 0-2.6-1t-1-2.5v-17.8q1 1.1 2.3 2 8 5.5 11 7.7 1.3 0.9 2.1 1.5t2.1 1 2.5 0.6h0q1.2 0 2.5-0.6t2.1-1 2.1-1.5q3.7-2.8 11.1-7.7 1.2-0.9 2.2-1.9z m0-6.5q0 1.7-1.1 3.4t-2.7 2.7q-8.4 5.8-10.5 7.3-0.2 0.1-0.9 0.6t-1.2 0.9-1.2 0.7-1.3 0.6-1.1 0.2h0q-0.5 0-1.1-0.2t-1.3-0.6-1.2-0.7-1.2-0.9-0.9-0.6q-2.1-1.5-5.9-4.1t-4.6-3.2q-1.3-0.9-2.6-2.6t-1.2-3q0-1.8 0.9-2.9t2.7-1.2h32.8q1.5 0 2.5 1.1t1.1 2.5z' })
+        )
+    );
+};
+
+exports.default = FaEnvelope;
+module.exports = exports['default'];
+
+/***/ }),
+
 /***/ "./node_modules/react-icons/lib/fa/facebook-official.js":
 /*!**************************************************************!*\
   !*** ./node_modules/react-icons/lib/fa/facebook-official.js ***!
@@ -28279,6 +28529,92 @@ module.exports = exports['default'];
 
 /***/ }),
 
+/***/ "./node_modules/react-icons/lib/fa/list.js":
+/*!*************************************************!*\
+  !*** ./node_modules/react-icons/lib/fa/list.js ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/react.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactIconBase = __webpack_require__(/*! react-icon-base */ "./node_modules/react-icon-base/lib/index.js");
+
+var _reactIconBase2 = _interopRequireDefault(_reactIconBase);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var FaList = function FaList(props) {
+    return _react2.default.createElement(
+        _reactIconBase2.default,
+        _extends({ viewBox: '0 0 40 40' }, props),
+        _react2.default.createElement(
+            'g',
+            null,
+            _react2.default.createElement('path', { d: 'm5.7 29.3v4.3q0 0.3-0.2 0.5t-0.5 0.2h-4.3q-0.3 0-0.5-0.2t-0.2-0.5v-4.3q0-0.3 0.2-0.5t0.5-0.2h4.3q0.3 0 0.5 0.2t0.2 0.5z m0-8.6v4.3q0 0.3-0.2 0.5t-0.5 0.2h-4.3q-0.3 0-0.5-0.2t-0.2-0.5v-4.3q0-0.3 0.2-0.5t0.5-0.2h4.3q0.3 0 0.5 0.2t0.2 0.5z m0-8.6v4.3q0 0.3-0.2 0.5t-0.5 0.2h-4.3q-0.3 0-0.5-0.2t-0.2-0.5v-4.3q0-0.2 0.2-0.5t0.5-0.2h4.3q0.3 0 0.5 0.2t0.2 0.5z m34.3 17.2v4.3q0 0.3-0.2 0.5t-0.5 0.2h-30q-0.3 0-0.5-0.2t-0.2-0.5v-4.3q0-0.3 0.2-0.5t0.5-0.2h30q0.3 0 0.5 0.2t0.2 0.5z m-34.3-25.7v4.3q0 0.2-0.2 0.5t-0.5 0.2h-4.3q-0.3 0-0.5-0.2t-0.2-0.5v-4.3q0-0.3 0.2-0.5t0.5-0.2h4.3q0.3 0 0.5 0.2t0.2 0.5z m34.3 17.1v4.3q0 0.3-0.2 0.5t-0.5 0.2h-30q-0.3 0-0.5-0.2t-0.2-0.5v-4.3q0-0.3 0.2-0.5t0.5-0.2h30q0.3 0 0.5 0.2t0.2 0.5z m0-8.6v4.3q0 0.3-0.2 0.5t-0.5 0.2h-30q-0.3 0-0.5-0.2t-0.2-0.5v-4.3q0-0.2 0.2-0.5t0.5-0.2h30q0.3 0 0.5 0.2t0.2 0.5z m0-8.5v4.3q0 0.2-0.2 0.5t-0.5 0.2h-30q-0.3 0-0.5-0.2t-0.2-0.5v-4.3q0-0.3 0.2-0.5t0.5-0.2h30q0.3 0 0.5 0.2t0.2 0.5z' })
+        )
+    );
+};
+
+exports.default = FaList;
+module.exports = exports['default'];
+
+/***/ }),
+
+/***/ "./node_modules/react-icons/lib/fa/search.js":
+/*!***************************************************!*\
+  !*** ./node_modules/react-icons/lib/fa/search.js ***!
+  \***************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/react.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactIconBase = __webpack_require__(/*! react-icon-base */ "./node_modules/react-icon-base/lib/index.js");
+
+var _reactIconBase2 = _interopRequireDefault(_reactIconBase);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var FaSearch = function FaSearch(props) {
+    return _react2.default.createElement(
+        _reactIconBase2.default,
+        _extends({ viewBox: '0 0 40 40' }, props),
+        _react2.default.createElement(
+            'g',
+            null,
+            _react2.default.createElement('path', { d: 'm27.2 18.6q0-4.2-2.9-7.1t-7.1-2.9-7 2.9-3 7.1 2.9 7 7.1 3 7.1-3 2.9-7z m11.4 18.5q0 1.2-0.8 2.1t-2 0.8q-1.2 0-2-0.8l-7.7-7.7q-4 2.8-8.9 2.8-3.2 0-6.1-1.3t-5-3.3-3.4-5-1.2-6.1 1.2-6.1 3.4-5.1 5-3.3 6.1-1.2 6.1 1.2 5 3.3 3.4 5.1 1.2 6.1q0 4.9-2.7 8.9l7.6 7.6q0.8 0.9 0.8 2z' })
+        )
+    );
+};
+
+exports.default = FaSearch;
+module.exports = exports['default'];
+
+/***/ }),
+
 /***/ "./node_modules/react-icons/lib/fa/soundcloud.js":
 /*!*******************************************************!*\
   !*** ./node_modules/react-icons/lib/fa/soundcloud.js ***!
@@ -28318,6 +28654,178 @@ var FaSoundcloud = function FaSoundcloud(props) {
 };
 
 exports.default = FaSoundcloud;
+module.exports = exports['default'];
+
+/***/ }),
+
+/***/ "./node_modules/react-icons/lib/fa/user-secret.js":
+/*!********************************************************!*\
+  !*** ./node_modules/react-icons/lib/fa/user-secret.js ***!
+  \********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/react.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactIconBase = __webpack_require__(/*! react-icon-base */ "./node_modules/react-icon-base/lib/index.js");
+
+var _reactIconBase2 = _interopRequireDefault(_reactIconBase);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var FaUserSecret = function FaUserSecret(props) {
+    return _react2.default.createElement(
+        _reactIconBase2.default,
+        _extends({ viewBox: '0 0 40 40' }, props),
+        _react2.default.createElement(
+            'g',
+            null,
+            _react2.default.createElement('path', { d: 'm17.4 34.3l2.1-10-2.1-2.9-2.9-1.4z m5.7 0l2.8-14.3-2.8 1.4-2.2 2.9z m3.5-22.6q0 0 0-0.1-0.3-0.2-2.2-0.2-1.6 0-3.7 0.5-0.2 0-0.5 0t-0.5 0q-2.1-0.5-3.7-0.5-1.9 0-2.1 0.2-0.1 0.1-0.1 0.1 0 0.4 0.1 0.6 0 0.1 0.1 0.2t0.2 0.2q0.1 0.1 0.2 0.5t0.1 0.4 0.2 0.4 0.2 0.4 0.2 0.3 0.3 0.3 0.3 0.2 0.4 0.2 0.4 0.1 0.6 0q0.8 0 1.3-0.2t0.7-0.7 0.3-0.8 0.3-0.6 0.4-0.3h0.3q0.2 0 0.3 0.3t0.3 0.6 0.3 0.8 0.7 0.7 1.4 0.2q0.3 0 0.5 0t0.5-0.1 0.4-0.2 0.3-0.2 0.2-0.3 0.2-0.3 0.2-0.4 0.2-0.4 0.2-0.4 0.1-0.5q0.1-0.1 0.2-0.2t0.2-0.2q0-0.2 0-0.6z m9.3 19.7q0 2.7-1.6 4.2t-4.3 1.5h-19.5q-2.7 0-4.4-1.5t-1.6-4.2q0-1.4 0.1-2.7t0.4-2.8 0.9-2.7 1.4-2.3 2.1-1.7l-2-4.9h4.7q-0.5-1.4-0.5-2.9 0-0.2 0.1-0.7-4.3-0.9-4.3-2.1 0-1.3 4.6-2.2 0.4-1.4 1.2-3t1.6-2.6q0.7-0.8 1.7-0.8 0.6 0 1.8 0.7t1.9 0.7 1.9-0.7 1.9-0.7q0.9 0 1.7 0.8 0.8 1 1.5 2.6t1.2 3q4.7 0.9 4.7 2.2 0 1.2-4.4 2.1 0.2 1.8-0.4 3.6h4.8l-1.9 5q1.5 0.7 2.4 2.2t1.5 3.2 0.7 3.3 0.1 3.4z' })
+        )
+    );
+};
+
+exports.default = FaUserSecret;
+module.exports = exports['default'];
+
+/***/ }),
+
+/***/ "./node_modules/react-icons/lib/fa/user.js":
+/*!*************************************************!*\
+  !*** ./node_modules/react-icons/lib/fa/user.js ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/react.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactIconBase = __webpack_require__(/*! react-icon-base */ "./node_modules/react-icon-base/lib/index.js");
+
+var _reactIconBase2 = _interopRequireDefault(_reactIconBase);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var FaUser = function FaUser(props) {
+    return _react2.default.createElement(
+        _reactIconBase2.default,
+        _extends({ viewBox: '0 0 40 40' }, props),
+        _react2.default.createElement(
+            'g',
+            null,
+            _react2.default.createElement('path', { d: 'm35.9 31.4q0 2.6-1.6 4.2t-4.3 1.5h-19.5q-2.7 0-4.4-1.5t-1.6-4.2q0-1.2 0.1-2.3t0.3-2.5 0.6-2.4 0.9-2.2 1.4-1.8 1.9-1.2 2.5-0.4q0.2 0 1 0.5t1.6 1 2.4 1.1 3 0.5 3-0.5 2.4-1.1 1.7-1 0.9-0.5q1.4 0 2.5 0.4t1.9 1.2 1.4 1.8 0.9 2.2 0.6 2.4 0.4 2.5 0 2.3z m-7.1-20q0 3.6-2.5 6.1t-6.1 2.5-6-2.5-2.6-6.1 2.6-6 6-2.5 6.1 2.5 2.5 6z' })
+        )
+    );
+};
+
+exports.default = FaUser;
+module.exports = exports['default'];
+
+/***/ }),
+
+/***/ "./node_modules/react-icons/lib/io/stats-bars.js":
+/*!*******************************************************!*\
+  !*** ./node_modules/react-icons/lib/io/stats-bars.js ***!
+  \*******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/react.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactIconBase = __webpack_require__(/*! react-icon-base */ "./node_modules/react-icon-base/lib/index.js");
+
+var _reactIconBase2 = _interopRequireDefault(_reactIconBase);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var IoStatsBars = function IoStatsBars(props) {
+    return _react2.default.createElement(
+        _reactIconBase2.default,
+        _extends({ viewBox: '0 0 40 40' }, props),
+        _react2.default.createElement(
+            'g',
+            null,
+            _react2.default.createElement('path', { d: 'm13.5 32.5v-25h5v25h-5z m-7.5 0v-7.5h5v7.5h-5z m15 0v-12.5h5v12.5h-5z m7.5 0v-17.5h5v17.5h-5z' })
+        )
+    );
+};
+
+exports.default = IoStatsBars;
+module.exports = exports['default'];
+
+/***/ }),
+
+/***/ "./node_modules/react-icons/lib/md/star.js":
+/*!*************************************************!*\
+  !*** ./node_modules/react-icons/lib/md/star.js ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/react.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactIconBase = __webpack_require__(/*! react-icon-base */ "./node_modules/react-icon-base/lib/index.js");
+
+var _reactIconBase2 = _interopRequireDefault(_reactIconBase);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var MdStar = function MdStar(props) {
+    return _react2.default.createElement(
+        _reactIconBase2.default,
+        _extends({ viewBox: '0 0 40 40' }, props),
+        _react2.default.createElement(
+            'g',
+            null,
+            _react2.default.createElement('path', { d: 'm20 28.8l-10.3 6.2 2.7-11.7-9-7.9 11.9-1 4.7-11 4.7 11 11.9 1-9 7.9 2.7 11.7z' })
+        )
+    );
+};
+
+exports.default = MdStar;
 module.exports = exports['default'];
 
 /***/ }),

@@ -1,0 +1,59 @@
+.user-header-bar {
+  background-color: #111;
+  height: 46px;
+  display: flex;
+
+  ul {
+    padding-left: 0;
+  }
+
+  .header-wrapper-daddy {
+    display: flex;
+    width: 1240px;
+    margin-left: 0;
+    margin: auto;
+  }
+
+  .header-wrapper {
+    height: 100%;
+    list-style: none;
+    display: flex;
+    padding: 12px 0;
+    box-sizing: border-box;
+    width: 100%;
+  }
+
+  .header-wrapper a {
+    color: #ccc;
+    text-decoration: none;
+    margin: auto;
+  }
+
+  .logo-hugger {
+    width: 69px;
+    height: 46px;
+    display: inline-block;
+    text-align: center;
+    background-color: #f50;
+    padding: 0;
+  }
+
+  .sc-logo {
+    color: #fff;
+  }
+
+  .search-wrapper {
+    padding: 0;
+  }
+
+  input.header-search {
+    line-height: 26px;
+    padding: 5px 7px;
+  }
+
+  .header-search {
+    height: 28px;
+  }
+
+
+}
