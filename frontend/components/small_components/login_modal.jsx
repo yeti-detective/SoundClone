@@ -9,9 +9,7 @@ class LoginModal extends Component {
     this.state = {
       username: '',
       password: '',
-      loginStep: 1,
-      google: {username: 'Google', password: 'elgoog'},
-      facebook: {username: 'Facebook', password: 'koobecaf'}
+      loginStep: 1
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.goBack = this.goBack.bind(this);
@@ -44,22 +42,13 @@ class LoginModal extends Component {
         username: this.state.username,
         password: this.state.password
       });
-      <Redirect to='/stream' />;
     }
   }
 
-  dummyLogin(soshMeed) {
-    return () => {
-      const e = {};
-      e.preventDefault = () => {
-        console.log(`logging in as ${soshMeed.username}`);
-      };
-      this.setState({
-        username: soshMeed.username,
-        password: soshMeed.password
-      });
-      this.handleSubmit(e);
-    };
+  dummyLogin() {
+    this.props.processForm({
+      username: 'GuestUser', password: 'starwars'
+    });
   }
 
   stopPropagation(e) {
@@ -97,18 +86,9 @@ class LoginModal extends Component {
     const UsernameForm = () => (
       <section>
         <div className="non-working-buttons">
-          <div onClick={this.dummyLogin(this.state.facebook)} className="facebook dummy-login">
-            <div className="tooltip">
-              Login with dummy account: Facebook
-              <div className="pointy-bit" />
-            </div>
-            <FaceBook size={40} /><p>Continue with Facebook</p></div>
-          <div onClick={this.dummyLogin(this.state.google)} className="google dummy-login">
-            <div className="tooltip">
-              Login with dummy account: Google
-              <div className="pointy-bit" />
-            </div>
-            <Google size={40} /><p>Continue with Google</p></div>
+          <button onClick={this.dummyLogin} className="google dummy-login">
+            <Google size={40} /><p>Continue as Guest User</p>
+          </button>
         </div>
         <h2 className="divider">or</h2>
       </section>
