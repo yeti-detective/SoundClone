@@ -1,21 +1,27 @@
 import { connect } from 'react-redux';
 import React from 'react';
 // import { withRouter } from 'react-router-dom';
-import { getSong, getSongs } from '../../actions/songs_actions';
-import { getUsersSongs } from '../../actions/users_actions';
+import { getSong, getUsersSongs } from '../../actions/songs_actions';
+import { getUser } from '../../actions/users_actions';
 import SongShow from '../pages/song_show';
 
+import listifySliceOfState from '../../util/listify_slice_of_state';
+
 const mapStateToProps = (state, ownProps) => {
+  // const songs = listifySliceOfState(state.entities.songs);
   return {
-    thisSong: state.entities.songs[ownProps.match.params.songId],
-    thisUser: state.entities.users[songs[ownProps.match.params.songId].user_id]
+    thisSongId: ownProps.match.params.songId,
+    songs: state.entities.songs || {},
+    users: state.entities.users
   };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch, ownProps) => {
+  // debugger
   return {
-    getSong: (id) => dispatch(getSong(id)),
-    getUsersSongs: (userId) => dispatch(getUsersSongs(userId))
+    getSong: () => dispatch(getSong(ownProps.match.params.songId)),
+    getUser: () => dispatch(getUser(ownProps.match.params.userId)),
+    getUsersSongs: () => dispatch(getUsersSongs(ownProps.match.params.userId))
   };
 };
 

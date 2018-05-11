@@ -12,7 +12,7 @@ export default class SongBadgeIndex extends Component {
         <section className="song-badge-index">
           {this.props.songs.map((song) => {
             return (
-              <div>
+              <div key={song.id}>
                 <ul>
                   <li>{song.title}</li>
                   <li><img src={song.image_url} /></li>

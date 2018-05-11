@@ -8,15 +8,16 @@ const receiveSongs = songs => ({
   songs
 });
 
-const receiveSong = song => ({
+const receiveSong = payload => ({
   type: RECEIVE_SONG,
-  song
+  payload
 });
 
 export const getSong = id => dispatch => {
+  
   return (
     SongsAPI.getSong(id)
-      .then((song) => dispatch(receiveSong(song)))
+      .then((id) => dispatch(receiveSong(id)))
   );
 };
 

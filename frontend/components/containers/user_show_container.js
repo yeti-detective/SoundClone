@@ -4,10 +4,10 @@ import { getUser } from '../../actions/users_actions';
 import { getUsersSongs } from '../../actions/songs_actions';
 import UserShow from '../pages/user_show';
 
+import listifySliceOfState from '../../util/listify_slice_of_state';
+
 const mapStateToProps = (state, ownProps) => {
-  const songs = Object.keys(state.entities.songs).map((songId) => {
-    return state.entities.songs[songId];
-  });
+  const songs = listifySliceOfState(state.entities.songs);
   return {
     user: state.entities.users[ownProps.match.params.userId] || {},
     songs: songs
