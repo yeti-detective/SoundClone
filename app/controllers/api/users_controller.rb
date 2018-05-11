@@ -17,6 +17,10 @@ class Api::UsersController < ApplicationController
     end
   end
 
+  def songs
+    @songs = User.find(params[:user_id]).songs
+  end
+
   private
   def user_params
     params.require(:user).permit(:username, :password)

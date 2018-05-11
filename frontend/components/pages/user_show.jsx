@@ -2,13 +2,10 @@ import React, { Component } from 'react';
 import UserHeaderBar from '../containers/user_header_bar_container';
 
 export default class UserShow extends Component {
-  constructor(props) {
-    super(props);
-
-  }
 
   componentDidMount() {
-    this.props.getUser();
+    this.props.getUser()
+      .then(this.props.getUsersSongs());
   }
 
   render () {
@@ -16,12 +13,13 @@ export default class UserShow extends Component {
       <main>
         <UserHeaderBar />
         <section
-          style={{backgroundImage: this.props.users[this.props.session.id]}}>
+          style={{backgroundImage: `url(${this.props.user.background_image})`}}>
           <div className="big_user">
             <img
               className="big_icon"
-              src={this.props.users[this.props.session.id].icon_url}
+              src={this.props.user.icon_url}
             />
+          <h3>{this.props.user.username}</h3>
           </div>
         </section>
       </main>

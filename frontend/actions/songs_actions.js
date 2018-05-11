@@ -26,3 +26,10 @@ export const getSongs = () => dispatch => {
       .then((songs) => dispatch(receiveSongs(songs)))
   );
 };
+
+export const getUsersSongs = (userId) => dispatch => {
+  return (
+    SongsAPI.getUsersSongs(userId)
+      .then((songs) => dispatch(receiveSongs(songs)))
+  );
+};
