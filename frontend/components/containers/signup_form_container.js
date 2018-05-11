@@ -3,7 +3,7 @@ import React from 'react';
 import { signup } from '../../actions/session_actions';
 import LoginModal from '../small_components/login_modal';
 
-const mapStateToProps = ({ errors }) => {
+const mapStateToProps = ({ errors }, ownProps) => {
   return {
     errors: errors.session,
     formType: 'signup',

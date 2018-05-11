@@ -8,6 +8,7 @@ import Root from './components/root';
 
 // import * as SessionAPI from './util/session_api_util';
 import { login, signup, logout } from './actions/session_actions';
+import { getUser, getUsers, removeUserFromState } from './actions/users_action';
 
 document.addEventListener('DOMContentLoaded', () => {
   let store;
@@ -27,6 +28,9 @@ document.addEventListener('DOMContentLoaded', () => {
   window.signup = signup;
   window.login = login;
   window.logout = logout;
+  window.getUsers = getUsers;
+  window.getUser = getUser;
+  window.removeUserFromState = removeUserFromState;
   // END TEST CODE //
 
   ReactDOM.render(<Root store={store} />, document.getElementById('root'));
