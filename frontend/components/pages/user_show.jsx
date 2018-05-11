@@ -27,7 +27,7 @@ export default class UserShow extends Component {
         <section className="user-body">
           <ul>
             {this.props.songs.map((song) => {
-              return <SongCard song={song} />;
+              return <SongCard key={song.id} song={song} />;
             })}
           </ul>
         </section>
