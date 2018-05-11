@@ -1,8 +1,11 @@
 class User < ApplicationRecord
   validate :username, :session_token, :password_digest
 
-  has_attached_file :avatar, default_url: 'fifthson.jpg'
+  has_attached_file :avatar, default_url: 'default_icon.png'
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
+
+  has_attached_file :background_image, default_url: 'background_images/default_background.png'
+  validates_attachment_content_type :background_image, content_type: /\Aimage\/.*\z/
 
   before_validation :ensure_session_token
   attr_reader :password

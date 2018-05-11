@@ -8,3 +8,7 @@
 User.destroy_all
 User.create({username: 'firstboy', password: 'starwars'})
 User.create({username: 'GuestUser', password: 'starwars'})
+
+20.times do
+  User.create({username: Faker::Zelda.character, password: 'ocarina'})
+end
