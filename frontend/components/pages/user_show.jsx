@@ -8,6 +8,23 @@ export default class UserShow extends Component {
   }
 
   componentDidMount() {
-    // this.props.
+    this.props.getUser();
+  }
+
+  render () {
+    return (
+      <main>
+        <UserHeaderBar />
+        <section
+          style={{backgroundImage: this.props.users[this.props.session.id]}}>
+          <div className="big_user">
+            <img
+              className="big_icon"
+              src={this.props.users[this.props.session.id].icon_url}
+            />
+          </div>
+        </section>
+      </main>
+    );
   }
 }
