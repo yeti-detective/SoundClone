@@ -5,10 +5,12 @@ import { getUsersSongs } from '../../actions/songs_actions';
 import UserShow from '../pages/user_show';
 
 const mapStateToProps = (state, ownProps) => {
-  // debugger
+  const songs = Object.keys(state.entities.songs).map((songId) => {
+    return state.entities.songs[songId];
+  });
   return {
     user: state.entities.users[ownProps.match.params.userId] || {},
-    songs: state.entities.songs
+    songs: songs
   };
 };
 
