@@ -127,6 +127,7 @@
 
   .header-wrapper:hover svg {
     color: #eee;
+    cursor: pointer;
   }
 
   .logo-wrapper {
@@ -146,8 +147,12 @@
     padding-left: 4px;
   }
 
-  .three-dots {
+  .three-dots, .temp-logout-icon {
     padding-top: 5px;
+    /* can be removed when element is turned back to svg */
+    color: #ccc;
+    padding-top: 8px;
+    cursor: pointer;
   }
 
 }

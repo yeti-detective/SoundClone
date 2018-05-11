@@ -69,7 +69,8 @@ const UserHeaderBar = (props) => {
               className="header-wrapper three-dots"
               onClick={logout}
               >
-              <ThreeDots size={37} />
+              {/* <ThreeDots size={37} />*/}
+              <span className="temp-logout-icon">Logout</span>
             </li>
           </ul>
         </nav>
