@@ -9,7 +9,8 @@ class LoginModal extends Component {
     this.state = {
       username: '',
       password: '',
-      loginStep: 1
+      loginStep: 1,
+      loginErrors: []
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.goBack = this.goBack.bind(this);
@@ -24,7 +25,8 @@ class LoginModal extends Component {
     };
   }
 
-  goBack() {
+  goBack(e) {
+    e.preventDefault();
     this.setState({
       loginStep: 1
     });
@@ -41,6 +43,10 @@ class LoginModal extends Component {
       this.props.processForm({
         username: this.state.username,
         password: this.state.password
+      }).then(null, (err)=> {
+        this.setState({
+          loginErrors: err.responseJSON
+        });
       });
     }
   }
@@ -97,9 +103,8 @@ class LoginModal extends Component {
     return (
       <div className="login-modal" onClick={this.close().bind(this)}>
         <p className='x' >&times;</p>
-        <form
+        <section
           className="login-form"
-          onSubmit={this.handleSubmit}
           onClick={this.stopPropagation}
           >
           {this.state.loginStep < 2 ? <UsernameForm /> : <PasswordForm />}
@@ -109,8 +114,11 @@ class LoginModal extends Component {
             placeholder={placeHolder}
             value={inpValue}
             />
-          <button>{buttonText}</button>
-        </form>
+            {this.state.loginErrors.map((error) => {
+              return <h4 style={{color: 'red', marginLeft: '35%'}}>{error}</h4>;
+            })}
+          <button onClick={this.handleSubmit}>{buttonText}</button>
+        </section>
       </div>
     );
   }
