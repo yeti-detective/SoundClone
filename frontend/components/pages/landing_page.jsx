@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import SoundCloud from 'react-icons/lib/fa/soundcloud';
 import LoginModal from '../containers/login_form_container';
 import SignupModal from '../containers/signup_form_container';
+import SongBadgeIndex from '../containers/song_badge_index_container';
 
 export default class LandingPage extends Component{
   constructor(props) {
@@ -55,7 +56,9 @@ export default class LandingPage extends Component{
               </button>
             </main>
           </section>
-          <section className="front-content"></section>
+          <section className="front-content">
+            <SongBadgeIndex />
+          </section>
         </main>
       </div>
     );
