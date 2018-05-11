@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import React from 'react';
-import { getUsers } from '../../actions/users_action';
+import { getUsers } from '../../actions/users_actions';
 import Stream from '../pages/stream';
 
 const mapStateToProps = (state) => {

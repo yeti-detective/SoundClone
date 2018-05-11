@@ -8,7 +8,7 @@ import Root from './components/root';
 
 // import * as SessionAPI from './util/session_api_util';
 import { login, signup, logout } from './actions/session_actions';
-import { getUser, getUsers, removeUserFromState } from './actions/users_action';
+import { getUser, getUsers, removeUserFromState } from './actions/users_actions';
 import { getSong, getSongs } from './actions/songs_actions';
 
 document.addEventListener('DOMContentLoaded', () => {
