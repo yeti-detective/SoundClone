@@ -3,9 +3,10 @@ import React from 'react';
 import { getUser } from '../../actions/users_action';
 import UserShow from '../pages/user_show';
 
-const mapStateToProps = ({ users }, ownProps) => {
+const mapStateToProps = (state, ownProps) => {
+  debugger
   return {
-    user: users[users[ownProps.match.params.userId]]
+    user: state.entities.users[ownProps.match.params.userId]
   };
 };
 
