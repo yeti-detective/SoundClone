@@ -9,6 +9,8 @@ class User < ApplicationRecord
   has_attached_file :image, default_url: 'background_images/default_background.png'
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
 
+  has_many :songs
+
   before_validation :ensure_session_token
   attr_reader :password
 
