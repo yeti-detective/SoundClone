@@ -4,18 +4,19 @@
 
 .landing-page {
   border-top: solid #f50 4px;
-  width: 1240px;
+  width: 80%;
   margin: auto;
   color: #fff;
 
 
   .front-hero {
-    height: 450px;
-    width: 1240px;
+    // height: 450px;
+    // width: 1240px;
     // min-width: 1240px;
     background-image: image-url('new_session/hero_splash');
     background-repeat: no-repeat;
     background-position: center;
+    background-size: cover;
     position: relative;
   }
 
