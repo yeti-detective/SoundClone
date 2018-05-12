@@ -18,12 +18,17 @@ export default class SongShow extends Component {
             className="song-banner"
             style={{background: 'linear-gradient(45deg, #959595, #555555)'}}
             >
-            <img src={this.props.songs[this.props.thisSongId].image_url} />
-            <h1 className="main-song-title">{this.props.songs[this.props.thisSongId].title}</h1>
-            {Object.keys(this.props.users).length ? (
-              <h3 className="artist-name">{this.props.users[this.props.songs[this.props.thisSongId].user_id].username}</h3>
-            ) : null }
-          </section>
+            <div className="song-info-box">
+              <img
+                className="song-logo-large"
+                src={this.props.songs[this.props.thisSongId].image_url}
+                />
+              <h1 className="main-song-title">{this.props.songs[this.props.thisSongId].title}</h1>
+              {Object.keys(this.props.users).length ? (
+                <h3 className="artist-name">{this.props.users[this.props.songs[this.props.thisSongId].user_id].username}</h3>
+              ) : null }
+            </div>
+            </section>
           <section className="song-cousins">
             {listifySliceOfState(this.props.songs).map((song) => {
               return song.id != this.props.thisSongId ? (

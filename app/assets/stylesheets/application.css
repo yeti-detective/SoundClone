@@ -19,6 +19,10 @@ html, body {
   height: 100%;
 }
 
+#root, div[data-reactroot] {
+  height: calc(100% - 50px);
+}
+
 body {
   background: #f3f3f2;
   font-family: 'Gothic A1', sans-serif;
@@ -27,6 +31,7 @@ body {
 .app {
   background: #fff;
   width: 90%;
+  height: 100%;
 
   margin: auto;
 }
