@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import SongBadge from './song_badge';
 
 export default class SongBadgeIndex extends Component {
   componentDidMount() {
@@ -12,15 +13,13 @@ export default class SongBadgeIndex extends Component {
         <section className="song-badge-index">
           {this.props.songs.map((song) => {
             return (
-              <div key={song.id}>
-                <ul>
-                  <li>{song.title}</li>
-                  <li><img src={song.image_url} /></li>
-                  <li>by: {this.props.users[song.user_id].username}</li>
-                </ul>
-              </div>
+              <SongBadge
+                key={song.id}
+                song={song}
+                user={this.props.users[song.user_id].username}
+              />
             );
-          })}
+            })}
         </section>
       );
     } else {

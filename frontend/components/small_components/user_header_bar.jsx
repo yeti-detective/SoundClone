@@ -1,5 +1,5 @@
 import React from 'react';
-import SoundCloud from 'react-icons/lib/fa/soundcloud';
+import SoundCloud from 'react-icons/lib/fa/cloud';
 import Search from 'react-icons/lib/fa/search';
 import Bell from 'react-icons/lib/fa/bell';
 import Envelope from 'react-icons/lib/fa/envelope';

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import SoundCloud from 'react-icons/lib/fa/soundcloud';
+import SoundCloud from 'react-icons/lib/fa/cloud';
+import SoundClone from 'react-icons/lib/fa/cloud';
 import LoginModal from '../containers/login_form_container';
 import SignupModal from '../containers/signup_form_container';
 import SongBadgeIndex from '../containers/song_badge_index_container';
@@ -33,7 +34,7 @@ export default class LandingPage extends Component{
           <section className="front-hero">
             <header className="hero-header">
               <nav className="left-nav">
-                <h1><SoundCloud size={46} className="sc-logo" />SOUNDCLOUD</h1>
+                <h1><SoundCloud size={46} className="sc-logo" />SOUNDCLONE</h1>
               </nav>
               <nav className="right-nav">
                 <button
