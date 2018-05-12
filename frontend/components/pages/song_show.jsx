@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import UserHeaderBar from '../containers/user_header_bar_container';
 import listifySliceOfState from '../../util/listify_slice_of_state';
+import SongCard from '../small_components/song_card';
+import SongPlayer from '../small_components/song_player';
 
 export default class SongShow extends Component {
   componentDidMount() {
@@ -25,14 +28,17 @@ export default class SongShow extends Component {
                 />
               <h1 className="main-song-title">{this.props.songs[this.props.thisSongId].title}</h1>
               {Object.keys(this.props.users).length ? (
-                <h3 className="artist-name">{this.props.users[this.props.songs[this.props.thisSongId].user_id].username}</h3>
+                <Link to={"/users/" + this.props.songs[this.props.thisSongId].user_id}>
+                  <h3 className="artist-name">{this.props.users[this.props.songs[this.props.thisSongId].user_id].username}</h3>
+                </Link>
               ) : null }
             </div>
+            <SongPlayer song={this.props.songs[this.props.thisSongId]} />
             </section>
           <section className="song-cousins">
             {listifySliceOfState(this.props.songs).map((song) => {
               return song.id != this.props.thisSongId ? (
-                <p>{song.title}</p>
+                <SongCard song={song} />
               ) : ( null );
             })}
           </section>
