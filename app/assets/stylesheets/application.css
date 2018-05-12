@@ -53,10 +53,10 @@ button:focus, input:focus {
   color: #999;
 }
 
-/* .user-header-bar::after {
-  content: '';
-  margin-bottom: 50px;
-} */
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
 
 .header-bar-spacer {
   width: 100%;
