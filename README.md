@@ -6,3 +6,5 @@ useful link, courtesy of [Josh](https://github.com/joshmleslie): [paperclip gem]
 useful link, courtesy of Maya: [React Icons](https://gorangajic.github.io/react-icons/fa.html)
 
 Heroku repo url: https://git.heroku.com/chris-b-soundclone.git
+
+bugtracking -> [here](https://github.com/yeti-detective/SoundClone/blob/master/bugtracking.md)
