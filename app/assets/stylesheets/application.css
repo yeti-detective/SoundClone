@@ -20,10 +20,12 @@ html, body {
 }
 
 body {
-  background: #f2f2f2;
-  /* font-family: "Interstate","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Garuda,Verdana,Tahoma,sans-serif; */
+  background: #f3f3f2;
   font-family: 'Gothic A1', sans-serif;
-  /* font-family: 'Montserrat', sans-serif; */
+}
+
+.app {
+  background: #fff;
 }
 
 button {

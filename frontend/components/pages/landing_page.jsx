@@ -52,6 +52,7 @@ export default class LandingPage extends Component{
               <p>Here is where some ads would be</p>
               <p>if I had anything to sell you.</p>
               <button
+                className="ad-button"
                 onClick={this.toggleModal(<SignupModal close={this.toggleModal()} />)}>
                 Start Cloning
               </button>
