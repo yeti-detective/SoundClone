@@ -3,11 +3,18 @@
   .song-banner {
     padding: 10px;
     box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .song-info-box {
+    width: 25%;
   }
 
   .song-logo-large {
-    width: 340px;
-    width: 340px;
+    width: 100%;
+    // width: 300px;
+    // // width: 340px;
   }
 
   .song-cousins {

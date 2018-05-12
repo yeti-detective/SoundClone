@@ -21,6 +21,7 @@ export default class SongShow extends Component {
             className="song-banner"
             style={{background: 'linear-gradient(45deg, #959595, #555555)'}}
             >
+            <SongPlayer song={this.props.songs[this.props.thisSongId]} />
             <div className="song-info-box">
               <img
                 className="song-logo-large"
@@ -33,12 +34,11 @@ export default class SongShow extends Component {
                 </Link>
               ) : null }
             </div>
-            <SongPlayer song={this.props.songs[this.props.thisSongId]} />
             </section>
           <section className="song-cousins">
             {listifySliceOfState(this.props.songs).map((song) => {
               return song.id != this.props.thisSongId ? (
-                <SongCard song={song} />
+                <SongCard key={song.id} song={song} />
               ) : ( null );
             })}
           </section>
