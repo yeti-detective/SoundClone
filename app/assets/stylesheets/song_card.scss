@@ -1,0 +1,14 @@
+.song-card {
+  height: 75px;
+  display: flex;
+
+  a {
+    display: inherit;
+  }
+
+  .song-icon {
+    width: 60px;
+    height: 60px;
+  }
+
+}
