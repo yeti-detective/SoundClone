@@ -15,7 +15,7 @@ export default class Stream extends Component {
       });
     }
     return (
-      <div>
+      <div className="app">
         <UserHeaderBar />
         <ul>
           {users}
