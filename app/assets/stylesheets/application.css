@@ -26,6 +26,9 @@ body {
 
 .app {
   background: #fff;
+  width: 90%;
+
+  margin: auto;
 }
 
 button {
@@ -43,4 +46,14 @@ button:focus, input:focus {
 
 ::placeholder {
   color: #999;
+}
+
+/* .user-header-bar::after {
+  content: '';
+  margin-bottom: 50px;
+} */
+
+.header-bar-spacer {
+  width: 100%;
+  margin-bottom: 50px;
 }
