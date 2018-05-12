@@ -12,6 +12,8 @@ import DownAngle from 'react-icons/lib/fa/angle-down';
 import ThreeDots from 'react-icons/lib/io/android-more-horizontal';
 import { Link } from 'react-router-dom';
 
+import LogInModal from '../containers/login_form_container';
+
 const fakeNotifications = [1, 2, 3, 4];
 
 
@@ -23,12 +25,15 @@ const UserHeaderBar = (props) => {
   };
 
   return (
+    <div className="header-bar-spacer-parent">
     <header className="user-header-bar">
       <div className="big-hugs">
         <ul className="header-wrapper-daddy">
-          <li className="logo-hugger header-wrapper">
-              <SoundCloud size={45} className="sc-logo"/>
-          </li>
+          <Link to='/'>
+            <li className="logo-hugger header-wrapper">
+                <SoundCloud size={45} className="sc-logo"/>
+            </li>
+          </Link>
           <li className="header-wrapper">
             <Link to='/'>Home</Link>
           </li>
@@ -65,17 +70,30 @@ const UserHeaderBar = (props) => {
             <li className="header-wrapper">
               <Envelope size={17} />
             </li>
-            <li
-              className="header-wrapper three-dots"
-              onClick={logout}
-              >
-              {/* <ThreeDots size={37} />*/}
-              <span className="temp-logout-icon">Logout</span>
-            </li>
+            { props.currentUser.id ? (
+                <li
+                  className="header-wrapper three-dots"
+                  onClick={logout}
+                  >
+                  {/* <ThreeDots size={37} />*/}
+                  <span className="temp-logout-icon">Logout</span>
+                </li>
+              ) : (
+                <li
+                  className="header-wrapper three-dots"
+                  onClick={logout}
+                  >
+                  {/* <ThreeDots size={37} />*/}
+                  <span className="temp-logout-icon">Login</span>
+                </li>
+              )
+            }
           </ul>
         </nav>
       </div>
     </header>
+    <div className="header-bar-spacer"></div>
+  </div>
   );
 };
 
