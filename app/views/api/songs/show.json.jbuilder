@@ -4,9 +4,9 @@ json.song do
     json.file_path asset_path(@song.song_file.url)
   end
 end
-
-json.user do
-    json.set! @user.id do
-      json.partial! 'api/users/user', user: @user
-    end
-end
+#
+# json.user do
+#     json.set! @user.id do
+#       json.partial! 'api/users/user', user: @user
+#     end
+# end

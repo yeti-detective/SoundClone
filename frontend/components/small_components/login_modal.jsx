@@ -10,7 +10,8 @@ class LoginModal extends Component {
       username: '',
       password: '',
       loginStep: 1,
-      loginErrors: []
+      loginErrors: [],
+      formType: this.props.formType
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.goBack = this.goBack.bind(this);

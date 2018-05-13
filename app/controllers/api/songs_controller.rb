@@ -8,6 +8,6 @@ class Api::SongsController < ApplicationController
 
   def show
     @song = Song.find(params[:id])
-    @user = User.find(@song[:user_id])
+    # @user = User.find(@song[:user_id])
   end
 end
