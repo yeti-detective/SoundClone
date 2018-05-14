@@ -6,6 +6,7 @@ export default class PlayerFooterBar extends Component {
     super(props);
     this.state = {
       currentTime: 0.0,
+      duration: 0.0,
       isPlaying: false
     };
 
@@ -15,9 +16,10 @@ export default class PlayerFooterBar extends Component {
   }
 
   componentDidMount() {
-    // if ( this.props.users[this.props.currentSong.user_id] === undefined ) {
-    //   this.props.getUser(this.props.currentSong.user_id);
-    // }
+    if ( this.props.users[this.props.currentSong.user_id] === undefined ) {
+      this.props.getUser(this.props.currentSong.user_id);
+    }
+    
   }
 
   getSong(song) {

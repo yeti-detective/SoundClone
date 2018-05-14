@@ -3,11 +3,19 @@ import UserHeaderBar from '../containers/user_header_bar_container';
 import SongCard from '../small_components/song_card';
 
 export default class UserShow extends Component {
+  constructor(props) {
+    super(props);
+    this.newSong = this.newSong.bind(this);
+  }
 
   componentDidMount() {
     this.props.getUser()
       .then(this.props.getUsersSongs());
     window.scrollTo(0, 0);
+  }
+
+  newSong (song) {
+    this.props.getSong(song.id);
   }
 
   render () {
@@ -29,7 +37,7 @@ export default class UserShow extends Component {
           <ul>
             {this.props.songs.map((song) => {
               if (song.user_id == this.props.match.params.userId) {
-                return <SongCard key={song.id} song={song} />;
+                return <SongCard getSong={this.newSong} key={song.id} song={song} />;
               }
             })}
           </ul>

@@ -19,7 +19,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
   // debugger
   return {
-    getSong: () => dispatch(getSong(ownProps.match.params.songId)),
+    getSong: (id) => dispatch(getSong(id)),
     getUser: () => dispatch(getUser(ownProps.match.params.userId)),
     getUsersSongs: () => dispatch(getUsersSongs(ownProps.match.params.userId))
   };

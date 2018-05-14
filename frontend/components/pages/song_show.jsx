@@ -6,11 +6,20 @@ import SongCard from '../small_components/song_card';
 import SongPlayer from '../small_components/song_player';
 
 export default class SongShow extends Component {
+  constructor(props) {
+    super(props);
+    this.newSong = this.newSong.bind(this);
+  }
+
   componentDidMount() {
     this.props.getUser();
-    this.props.getSong();
+    this.props.getSong(this.props.match.params.songId);
     this.props.getUsersSongs();
     window.scrollTo(0, 0);
+  }
+
+  newSong (song) {
+    this.props.getSong(song.id);
   }
 
   render () {
@@ -39,7 +48,7 @@ export default class SongShow extends Component {
           <section className="song-cousins">
             {listifySliceOfState(this.props.songs).map((song) => {
               return song.id != this.props.thisSongId ? (
-                <SongCard key={song.id} song={song} />
+                <SongCard getSong={this.newSong} key={song.id} song={song} />
               ) : ( null );
             })}
           </section>
