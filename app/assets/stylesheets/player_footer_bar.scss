@@ -5,6 +5,14 @@
   left: 0;
   width: 100%;
   height: 50px;
+  z-index: 5;
+  display: flex;
+  justify-content: space-between;
+  padding: 4px;
+
+  ul {
+    padding: 0;
+  }
 
   button {
     border: none;
@@ -16,23 +24,71 @@
 
   #controls {
     display: flex;
-    // justify-content: space-between;
+    justify-content: space-between;
+    width: 100%;
+
+    #play-button {
+      height: 0;
+      width: 0;
+      border-left: 15px solid #333;
+      border-right: 0;
+      border-top: 10px solid transparent;
+      border-bottom: 10px solid transparent;
+    }
+
+    #pause {
+      width: 12px;
+      height: 15px;
+      border: none;
+      border-right: 4px #333 solid;
+      border-left: 4px #333 solid;
+    }
+
+    .up-bar {
+      height: 15px;
+      width: 0;
+      border: none;
+      border-left: 4px #333 solid;
+      display: inline-block;
+    }
+
+    .left-triangle {
+      display: inline-block;
+      height: 0;
+      width: 0;
+      border-right: 7px #333 solid;
+      border-top: 7.5px transparent solid;
+      border-bottom: 7.5px transparent solid;
+    }
+
+    .right-triangle {
+      display: inline-block;
+      height: 0;
+      width: 0;
+      border-left: 7px #333 solid;
+      border-top: 7.5px transparent solid;
+      border-bottom: 7.5px transparent solid;
+    }
   }
 
-  #play-button {
-    height: 0;
-    width: 0;
-    border-left: 15px solid #333;
-    border-right: 0;
-    border-top: 10px solid transparent;
-    border-bottom: 10px solid transparent;
+  .song-info {
+    display: flex;
+    justify-content: space-around;
+
+    img {
+      height: 45px;
+      width: 45px;
+    }
+
+    .title {
+      margin-right: 10px;
+    }
+
+    .artist {
+      margin-right: 10px;
+      font-weight: 100;
+    }
   }
 
-  #pause {
-    width: 12px;
-    height: 15px;
-    border: none;
-    border-right: 4px #333 solid;
-    border-left: 4px #333 solid;
-  }
+
 }

@@ -12,6 +12,7 @@ import LandingPage from './pages/landing_page';
 import Stream from './containers/stream_container';
 import UserShow from './containers/user_show_container';
 import SongShow from './containers/song_show_container';
+import PlayerFooterBar from './containers/player_footer_bar_container';
 
 // temp //
 import UserHeaderBar from './small_components/user_header_bar';
@@ -27,6 +28,7 @@ const App = () => (
       <Route exact path="/users/:userId" component={UserShow} />
       <Route exact path="/users/:userId/:songId" component={SongShow} />
     </Switch>
+    <Route path="/" component={PlayerFooterBar} />
   </div>
 );
 
