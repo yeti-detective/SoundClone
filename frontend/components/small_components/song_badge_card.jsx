@@ -6,9 +6,10 @@ const SongBadgeCard = (props) => {
   return (
     <figure className="song-card-mid" >
       <SongBadge song={props.song} user={props.user.username} />
-      <SongPlayer song={props.song} />
     </figure>
   );
 };
 
 export default SongBadgeCard;
+
+// <SongPlayer song={props.song} />
