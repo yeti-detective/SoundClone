@@ -9,6 +9,7 @@
   display: flex;
   justify-content: space-between;
   padding: 4px;
+  border-top: 0.5px #ccc solid;
 
   ul {
     padding: 0;
@@ -74,6 +75,7 @@
   .song-info {
     display: flex;
     justify-content: space-around;
+    margin: 0;
 
     img {
       height: 45px;
