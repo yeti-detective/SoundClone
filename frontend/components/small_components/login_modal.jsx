@@ -110,16 +110,18 @@ class LoginModal extends Component {
           onClick={this.stopPropagation}
           >
           {this.state.loginStep < 2 ? <UsernameForm /> : <PasswordForm />}
-          <input
-            onChange={this.update(inputField)}
-            type={inputType}
-            placeholder={placeHolder}
-            value={inpValue}
-            />
+          <form onSubmit={this.handleSubmit}>
+            <input
+              onChange={this.update(inputField)}
+              type={inputType}
+              placeholder={placeHolder}
+              value={inpValue}
+              />
             {this.state.loginErrors.map((error) => {
               return <h4 style={{color: 'red', marginLeft: '35%'}}>{error}</h4>;
-            })}
-          <button onClick={this.handleSubmit}>{buttonText}</button>
+              })}
+              <button onClick={this.handleSubmit}>{buttonText}</button>
+          </form>
         </section>
       </div>
     );
