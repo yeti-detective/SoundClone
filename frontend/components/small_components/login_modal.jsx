@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Redirect, withRouter } from 'react-router';
-import FaceBook from 'react-icons/lib/fa/facebook-official';
 import Google from 'react-icons/lib/fa/google';
 
 class LoginModal extends Component {
