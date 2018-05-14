@@ -54,7 +54,6 @@ class LoginModal extends Component {
   }
 
   dummyLogin() {
-    debugger
     this.props.processForm({
       username: 'GuestUser', password: 'starwars'
     });
