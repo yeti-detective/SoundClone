@@ -24,7 +24,7 @@ const App = () => (
     <Switch>
       <AuthRoute exact path="/" component={LandingPage} />
       <NotLoggedInRoute path="/stream" component={Stream} />
-      <Route exact path="/:userId" component={UserShow} />
+      <Route exact path="/users/:userId" component={UserShow} />
       <Route exact path="/:userId/:songId" component={SongShow} />
     </Switch>
   </div>
