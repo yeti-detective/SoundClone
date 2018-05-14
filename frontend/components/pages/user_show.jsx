@@ -28,7 +28,9 @@ export default class UserShow extends Component {
         <section className="user-body">
           <ul>
             {this.props.songs.map((song) => {
-              return <SongCard key={song.id} song={song} />;
+              if (song.user_id == this.props.match.params.userId) {
+                return <SongCard key={song.id} song={song} />;
+              }
             })}
           </ul>
         </section>
