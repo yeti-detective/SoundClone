@@ -20,8 +20,7 @@ export default class LandingPage extends Component{
         showModal: choose
       });
     };
-    // trying to get body to stay fixed while form scrolls when modal open
-    // document.getElementById('lanpg').classList.add('modal-open');
+
   }
 
   render() {
