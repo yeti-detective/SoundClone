@@ -21,8 +21,22 @@ class Api::UsersController < ApplicationController
     @songs = User.find(params[:user_id]).songs
   end
 
+  def avatar
+    @user = current_user
+    @user.avatar = avatar_params[:file]
+    if @user.save
+      render json: ['success'], status: 200
+    else
+      render json: @user.errors.full_messages, status: 422
+    end
+  end
+
   private
   def user_params
     params.require(:user).permit(:username, :password)
+  end
+
+  def avatar_params
+    params.require(:avatar).permit(:file, :title)
   end
 end
