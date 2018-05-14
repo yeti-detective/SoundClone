@@ -13,7 +13,7 @@ import ThreeDots from 'react-icons/lib/io/android-more-horizontal';
 import { Link } from 'react-router-dom';
 
 import LogInModal from '../containers/login_form_container';
-import SignupModal from '../containers/signup_form_container';
+import SignUpModal from '../containers/signup_form_container';
 
 // class fakeNotifications = [1, 2, 3, 4];
 
@@ -22,9 +22,9 @@ class UserHeaderBar extends Component {
   constructor (props) {
     super(props);
     this.state = {
-      loginModal: false
+      modal: false
     };
-
+    this.whichForm = this.whichForm.bind(this);
     this.logout = this.logout.bind(this);
     this.toggleModal = this.toggleModal.bind(this);
   }
@@ -35,18 +35,31 @@ class UserHeaderBar extends Component {
     });
   }
 
+  whichForm(choose) {
+    switch (choose) {
+      case 'login':
+        return <LogInModal close={this.toggleModal()} />;
+      case 'signup':
+        return <SignUpModal close={this.toggleModal()} />;
+      default:
+        return null;
+    }
+  }
+
   toggleModal(choose) {
     return () => {
       this.setState({
-        loginModal: choose
+        modal: choose
       });
     };
   }
 
   render () {
+
     return (
-      
+
       <div className="header-bar-spacer-parent">
+        { this.whichForm(this.state.modal) }
         <header className="user-header-bar">
           <div className="big-hugs">
             <ul className="header-wrapper-daddy">
@@ -102,7 +115,7 @@ class UserHeaderBar extends Component {
                 ) : (
                   <li
                     className="header-wrapper three-dots"
-                    onClick={this.toggleModal(<SignupModal close={this.toggleModal()} />)}
+                    onClick={this.toggleModal('login')}
                     >
                     {/* <ThreeDots size={37} />*/}
                     <span className="temp-logout-icon">Login</span>

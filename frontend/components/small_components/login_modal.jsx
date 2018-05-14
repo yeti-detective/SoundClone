@@ -49,13 +49,16 @@ class LoginModal extends Component {
           loginErrors: err.responseJSON
         });
       });
+      this.close()();
     }
   }
 
   dummyLogin() {
+    debugger
     this.props.processForm({
       username: 'GuestUser', password: 'starwars'
     });
+    this.close()();
   }
 
   stopPropagation(e) {
