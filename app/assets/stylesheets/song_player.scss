@@ -1,0 +1,29 @@
+.song-player {
+  display: flex;
+
+  .big-ol-play {
+    height: 0;
+    width: 0;
+    border-bottom: 40px solid #f50;
+    border-top: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+  }
+
+  .big-ol-pause {
+    box-sizing: border-box;
+    background: none;
+    height: 25px;
+    width: 50px;
+    border-top: 10px #f50 solid;
+    border-bottom: 10px #f50 solid;
+  }
+
+  div {
+    margin: auto;
+  }
+
+  h1 {
+    color: #f50;
+  }
+}

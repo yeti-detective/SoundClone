@@ -46,6 +46,7 @@ export default class SongShow extends Component {
             </div>
             </section>
           <section className="song-cousins">
+            <h2>More by this user:</h2>
             {listifySliceOfState(this.props.songs).map((song) => {
               return song.id != this.props.thisSongId ? (
                 <SongCard getSong={this.newSong} key={song.id} song={song} />
