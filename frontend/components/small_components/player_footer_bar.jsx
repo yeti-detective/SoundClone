@@ -5,10 +5,11 @@ export default class PlayerFooterBar extends Component {
     super(props);
     this.state = {
       currentTime: 0.0,
-      player: document.getElementById('footerPlayer'),
       currentSong: {},
       isPlaying: false
     };
+    this.audio = React.createRef();
+
     this.play = this.play.bind(this);
     this.pause = this.pause.bind(this);
     this.getSong = this.getSong.bind(this);
@@ -21,7 +22,7 @@ export default class PlayerFooterBar extends Component {
   }
 
   isPlaying() {
-    if (this.state.player.duration > 0 && !this.state.player.paused) {
+    if (this.audio.duration > 0 && !this.audio.paused) {
       this.setState({
         isPlaying: true
       });
@@ -33,11 +34,11 @@ export default class PlayerFooterBar extends Component {
   }
 
   pause () {
-    this.state.player.pause();
+    this.audio.pause();
   }
 
   play() {
-    this.state.player.play();
+    this.audio.play();
   }
 
   render () {
@@ -47,7 +48,7 @@ export default class PlayerFooterBar extends Component {
           <button id="pause" onClick={this.pause} />
           <button id="play-button" onClick={this.play} />
         </ul>
-        <audio id="footerPlayer">
+        <audio id="footerPlayer" ref={this.audio}>
           <source
             src={this.state.currentSong.file_path}
             type="audio/mpeg" />
