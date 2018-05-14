@@ -13,8 +13,8 @@ export default class Stream extends Component {
   componentDidMount() {
     this.props.getUsers();
     this.props.getSongs();
-    document.getElementsByClassName('song-card-mid')
-      .addEventListener('hover', (e) => { this.onHover(e) })
+    
+    window.scrollTo(0, 0);
   }
 
   onHover(e) {

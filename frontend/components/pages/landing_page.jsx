@@ -14,6 +14,10 @@ export default class LandingPage extends Component{
     this.toggleModal = this.toggleModal.bind(this);
   }
 
+  componentDidMount() {
+    window.scrollTo(0, 0);
+  }
+
   toggleModal(choose) {
     return () => {
       this.setState({

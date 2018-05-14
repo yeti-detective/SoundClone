@@ -10,6 +10,7 @@ export default class SongShow extends Component {
     this.props.getUser();
     this.props.getSong();
     this.props.getUsersSongs();
+    window.scrollTo(0, 0);
   }
 
   render () {
