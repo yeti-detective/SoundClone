@@ -93,7 +93,7 @@ class UserHeaderBar extends Component {
                 </li>
                 <li className="header-wrapper logo-wrapper">
                   <div>
-                    <img className="user-logo-sm" src={window.staticAssets.fifthSon} />
+                    <img className="user-logo-sm" src={this.props.currentUser.icon_url} />
                     <p><span>{this.props.currentUser.username}</span></p>
                     <DownAngle className="down-angle" size={15} />
                   </div>

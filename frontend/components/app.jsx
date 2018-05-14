@@ -28,7 +28,7 @@ const App = () => (
       <NotLoggedInRoute path="/stream" component={Stream} />
       <Route exact path="/users/:userId" component={UserShow} />
       <Route exact path="/users/:userId/:songId" component={SongShow} />
-      <AuthRoute path="/upload" component={Upload} />
+      <NotLoggedInRoute path="/upload" component={Upload} />
     </Switch>
     <Route path="/" component={PlayerFooterBar} />
   </div>
