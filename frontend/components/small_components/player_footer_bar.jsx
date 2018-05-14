@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ReactAudioPlayer from 'react-audio-player';
 
 export default class PlayerFooterBar extends Component {
   constructor(props) {
@@ -7,7 +8,6 @@ export default class PlayerFooterBar extends Component {
       currentTime: 0.0,
       isPlaying: false
     };
-    // this.audio = React.createRef();
 
     this.play = this.play.bind(this);
     this.pause = this.pause.bind(this);
@@ -15,7 +15,6 @@ export default class PlayerFooterBar extends Component {
   }
 
   componentDidMount() {
-    console.log(this.props)
     // if ( this.props.users[this.props.currentSong.user_id] === undefined ) {
     //   this.props.getUser(this.props.currentSong.user_id);
     // }
@@ -40,16 +39,20 @@ export default class PlayerFooterBar extends Component {
   }
 
   pause () {
-    this.audio.pause();
+    this.rap.audioEl.pause();
   }
 
   play() {
-    this.audio.play();
+    this.rap.audioEl.play();
   }
 
   render () {
     return (
       <footer className="player-footer-bar">
+        <ReactAudioPlayer
+          src={this.props.currentSong.file_path}
+          ref={(el) => { this.rap = el; }}
+          />
         <ul id="controls">
           <button id="back-button" onClick={this.back}>
             <div className="up-bar" /><div className="left-triangle" />
@@ -63,14 +66,6 @@ export default class PlayerFooterBar extends Component {
             <progress value={50} max={100} />
           </nav>
         </ul>
-        <audio id="footerPlayer" ref={this.audio}>
-          <source
-            src={this.props.currentSong.file_path}
-            type="audio/mpeg" />
-          <source
-            src={this.props.currentSong.file_path}
-            type="audio/ogg" />
-        </audio>
         <ul className="song-info">
           <img src={this.props.currentSong.image_url} />
           <p className="title">{this.props.currentSong.title}</p>
@@ -84,3 +79,26 @@ export default class PlayerFooterBar extends Component {
     );
   }
 }
+
+
+
+
+
+// <source
+//   src={this.props.currentSong.file_path}
+//   type="audio/mpeg" />
+// <source
+//   src={this.props.currentSong.file_path}
+//   type="audio/ogg" />
+
+// <audio id="footerPlayer" ref={(aud) => { this.audio = aud; }}>
+//   <source
+//     src={this.props.currentSong.file_path}
+//     type="audio/mpeg"
+//     />
+//   <source
+//     src={this.props.currentSong.file_path}
+//     type="audio/mpeg"
+//     />
+//   Your browser does not support HTML5 audio. This website is going to be pretty useless to you.
+// </audio>
