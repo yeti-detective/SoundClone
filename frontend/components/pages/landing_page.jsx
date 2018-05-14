@@ -4,6 +4,7 @@ import SoundClone from 'react-icons/lib/fa/cloud';
 import LoginModal from '../containers/login_form_container';
 import SignupModal from '../containers/signup_form_container';
 import SongBadgeIndex from '../containers/song_badge_index_container';
+import PlayerFooterBar from '../containers/player_footer_bar_container';
 
 export default class LandingPage extends Component{
   constructor(props) {
@@ -65,6 +66,7 @@ export default class LandingPage extends Component{
             <SongBadgeIndex />
           </section>
         </main>
+        <PlayerFooterBar />
       </div>
     );
   }
