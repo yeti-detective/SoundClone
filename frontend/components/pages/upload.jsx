@@ -14,6 +14,8 @@ export default class Upload extends Component {
     this.fileUpload = this.fileUpload.bind(this);
     this.handleAvatarSubmit = this.handleAvatarSubmit.bind(this);
     this.updateTitle = this.updateTitle.bind(this);
+    this.songFileUpoad = this.songFileUpoad.bind(this);
+    this.handleSongSubmit = this.handleSongSubmit.bind(this);
   }
 
   fileUpload(e) {
@@ -34,15 +36,15 @@ export default class Upload extends Component {
   handleAvatarSubmit(e) {
     e.preventDefault();
     let formData = new FormData();
-    formData.append('avatar[file]', this.state.songFile);
+    formData.append('avatar[file]', this.state.songTitle);
     $.ajax({
       method: 'post',
-      url: 'api/upload/song',
+      url: 'api/upload/avatar',
       data: formData,
       processData: false,
       contentType: false
     }).then((success) => {
-
+      console.log(success);
     }, (err) => {
       this.setState({
         error: err.responseText
@@ -51,17 +53,18 @@ export default class Upload extends Component {
   }
 
   handleSongSubmit(e) {
-    let formData = new FormData();
-    formData.append('avatar[file]', this.state.file);
     e.preventDefault();
+    let formData = new FormData();
+    formData.append('song[song_file]', this.state.songFile);
+    formData.append('song[title]', this.state.file);
     $.ajax({
       method: 'post',
-      url: 'api/upload/avatar',
+      url: 'api/songs',
       data: formData,
       processData: false,
       contentType: false
     }).then((success) => {
-
+      console.log(success);
     }, (err) => {
       this.setState({
         error: err.responseText
@@ -77,8 +80,8 @@ export default class Upload extends Component {
         songFile: songFile,
       });
     };
-    if (file) {
-      fileReader.readAsDataURL(file);
+    if (songFile) {
+      fileReader.readAsDataURL(songFile);
     }
   }
 
@@ -93,20 +96,28 @@ export default class Upload extends Component {
       <main className="upload">
         { this.state.error }
         <Link to="/">Home</Link>
-        <form onSubmit={this.handleSongSubmit}>
-          <input
-            type="text"
-            value={this.state.songTitle}
-            placeholder="song title"
-            onChange={this.updateTitle}
-          />
-          <input onChange={this.fileUpload} type="file" />
+        <form onSubmit={this.handleSongSubmit} className="song-form">
+          <label>Song Title Upload
+            <input
+              type="text"
+              value={this.state.songTitle}
+              placeholder="song title"
+              onChange={this.updateTitle}
+              />
+          </label><br />
+        <label>Song File Upload
+            <input onChange={this.songFileUpoad} type="file" />
+          </label><br />
           <input type="submit" value="submit" />
-        </form>
-        <form onSubmit={this.handleAvatarSubmit}>
-          <input onChange={this.fileUpload} type="file" />
+        </form><br />
+        <form onSubmit={this.handleAvatarSubmit} className="avatar-form">
+          <label>User Image Upload<br />
+            <input onChange={this.fileUpload} type="file" />
+          </label><br />
           <input type="submit" value="submit" />
-          <img src={this.state.image_url} />
+          <label>{ this.state.image_url && "Your Image" }
+            <img src={this.state.image_url} />
+          </label><br />
         </form>
       </main>
     );
