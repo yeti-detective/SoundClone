@@ -72,7 +72,7 @@ class UserHeaderBar extends Component {
                 <Link to='/'>Home</Link>
               </li>
               <li className="header-wrapper">
-                <Link to='/collection'>Collection</Link>
+                <Link to={`/users/${this.props.currentUser.id}`}>Collection</Link>
               </li>
               <section className="header-wrapper-daddy header-middle">
                 <div className="header-wrapper search-wrapper">
