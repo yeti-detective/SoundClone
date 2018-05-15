@@ -87,7 +87,7 @@ export default class Upload extends Component {
 
   updateTitle(e) {
     this.setState({
-      songTitle: e.currentTarget.val
+      songTitle: e.target.value
     });
   }
 
