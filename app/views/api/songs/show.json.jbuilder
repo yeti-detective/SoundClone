@@ -8,9 +8,3 @@ json.song do
     json.file_path song_file
   end
 end
-#
-# json.user do
-#     json.set! @user.id do
-#       json.partial! 'api/users/user', user: @user
-#     end
-# end
