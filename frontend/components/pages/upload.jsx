@@ -56,7 +56,7 @@ export default class Upload extends Component {
     e.preventDefault();
     let formData = new FormData();
     formData.append('song[song_file]', this.state.songFile);
-    formData.append('song[title]', this.state.file);
+    formData.append('song[title]', this.state.songTitle);
     $.ajax({
       method: 'post',
       url: 'api/songs',

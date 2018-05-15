@@ -1,12 +1,13 @@
 class Api::SongsController < ApplicationController
   def create
-    @user = current_user
-    song = Song.new(song_params)
-    @user.songs << song
-    if @user.save
-      render json: ['success'], status: 200
+    user = current_user
+    @song = Song.new(song_params)
+    @song.user = user
+
+    if @song.save
+      render :show
     else
-      render json: @user.errors.full_messages, status: 422
+      render json: @song.errors.full_messages, status: 422
     end
   end
 
@@ -21,6 +22,6 @@ class Api::SongsController < ApplicationController
 
   private
   def song_params
-    params.require(:song).permit(:title, :songs_file)
+    params.require(:song).permit(:title, :song_file)
   end
 end
