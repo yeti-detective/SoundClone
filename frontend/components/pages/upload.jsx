@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
+import UploadSong from '../small_components/upload_song_form';
+import UserHeaderBar from '../containers/user_header_bar_container';
 
-export default class Upload extends Component {
+class Upload extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -16,6 +18,10 @@ export default class Upload extends Component {
     this.updateTitle = this.updateTitle.bind(this);
     this.songFileUpoad = this.songFileUpoad.bind(this);
     this.handleSongSubmit = this.handleSongSubmit.bind(this);
+  }
+
+  componentDidMount() {
+    window.scrollTo(0, 0);
   }
 
   fileUpload(e) {
@@ -44,7 +50,7 @@ export default class Upload extends Component {
       processData: false,
       contentType: false
     }).then((success) => {
-      console.log(success);
+      this.props.history.push('/');
     }, (err) => {
       this.setState({
         error: err.responseText
@@ -64,7 +70,7 @@ export default class Upload extends Component {
       processData: false,
       contentType: false
     }).then((success) => {
-      console.log(success);
+      this.props.history.push('/');
     }, (err) => {
       this.setState({
         error: err.responseText
@@ -93,23 +99,15 @@ export default class Upload extends Component {
 
   render () {
     return (
-      <main className="upload">
+      <main className="app upload">
+        <UserHeaderBar />
         { this.state.error }
-        <Link to="/">Home</Link>
-        <form onSubmit={this.handleSongSubmit} className="song-form">
-          <label>Song Title Upload
-            <input
-              type="text"
-              value={this.state.songTitle}
-              placeholder="song title"
-              onChange={this.updateTitle}
-              />
-          </label><br />
-        <label>Song File Upload
-            <input onChange={this.songFileUpoad} type="file" />
-          </label><br />
-          <input type="submit" value="submit" />
-        </form><br />
+        <UploadSong
+          handleSubmit={this.handleSongSubmit}
+          songTitle={this.state.songTitle}
+          updateTitle={this.updateTitle}
+          songFileUpoad={this.songFileUpoad}
+          />
         <form onSubmit={this.handleAvatarSubmit} className="avatar-form">
           <label>User Image Upload<br />
             <input onChange={this.fileUpload} type="file" />
@@ -123,3 +121,23 @@ export default class Upload extends Component {
     );
   }
 }
+
+export default withRouter(Upload);
+
+
+
+// *** Original Song Submit Form *** //
+// <form onSubmit={this.handleSongSubmit} className="song-form">
+//   <label>Song Title Upload
+//     <input
+//       type="text"
+//       value={this.state.songTitle}
+//       placeholder="song title"
+//       onChange={this.updateTitle}
+//       />
+//   </label><br />
+//   <label>Song File Upload
+//     <input onChange={this.songFileUpoad} type="file" />
+//   </label><br />
+//   <input type="submit" value="submit" />
+// </form><br />

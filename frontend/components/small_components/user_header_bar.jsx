@@ -10,7 +10,7 @@ import Silhouette from 'react-icons/lib/fa/user';
 import Follow from 'react-icons/lib/fa/user-secret';
 import DownAngle from 'react-icons/lib/fa/angle-down';
 import ThreeDots from 'react-icons/lib/io/android-more-horizontal';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
 import LogInModal from '../containers/login_form_container';
 import SignUpModal from '../containers/signup_form_container';
@@ -27,6 +27,12 @@ class UserHeaderBar extends Component {
     this.whichForm = this.whichForm.bind(this);
     this.logout = this.logout.bind(this);
     this.toggleModal = this.toggleModal.bind(this);
+  }
+
+  componentDidMount() {
+    if (!Object.keys(this.props.currentUser).length) {
+      props.getUser(props.currentUserId);
+    }
   }
 
   logout() {
@@ -55,7 +61,6 @@ class UserHeaderBar extends Component {
   }
 
   render () {
-
     return (
 
       <div className="header-bar-spacer-parent">
@@ -72,7 +77,7 @@ class UserHeaderBar extends Component {
                 <Link to='/'>Home</Link>
               </li>
               <li className="header-wrapper">
-                <Link to={`/users/${this.props.currentUser.id}`}>Collection</Link>
+                <Link to={`/users/${this.props.currentUserId}`}>Collection</Link>
               </li>
               <section className="header-wrapper-daddy header-middle">
                 <div className="header-wrapper search-wrapper">
@@ -132,4 +137,4 @@ class UserHeaderBar extends Component {
   }
 }
 
-export default UserHeaderBar;
+export default withRouter(UserHeaderBar);
