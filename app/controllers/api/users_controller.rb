@@ -23,7 +23,6 @@ class Api::UsersController < ApplicationController
 
   def avatar
     @user = current_user
-    # debugger
     @user.avatar = avatar_params[:file]
     if @user.save
       render json: ['success'], status: 200

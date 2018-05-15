@@ -36,7 +36,7 @@ export default class Upload extends Component {
   handleAvatarSubmit(e) {
     e.preventDefault();
     let formData = new FormData();
-    formData.append('avatar[file]', this.state.songTitle);
+    formData.append('avatar[file]', this.state.file);
     $.ajax({
       method: 'post',
       url: 'api/upload/avatar',
