@@ -5,3 +5,4 @@
 | 5.14.18 | upload.jsx | file sends to server, server responds with "no method error" no method 'match' for NilClass. I don't have the word 'match' anywhere in my ruby code. Used Rails console to verify whether saving an image file as an avatar was successful & received 'link failed with invalid cross-device link.' |
 | 5.15.18 | upload.jsx | above issue was caused by missing application.yml file in production. Now resolved. |
 | 5.15.18 | player_footer_bar.jsx | audio uploaded to aws s3 will not play due to Cross Origin Scripting. Images from same s3 bucket are visible. |
+| 5.15.18 | player_footer_bar.jsx | above issue caused by npm package 'react-audio-player'. Was not able to determine how to correctly set the crossOrigin prop. Replaced component with HTML5 audio component. |
