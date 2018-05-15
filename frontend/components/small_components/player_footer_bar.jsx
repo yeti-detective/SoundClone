@@ -19,7 +19,7 @@ export default class PlayerFooterBar extends Component {
     if ( this.props.users[this.props.currentSong.user_id] === undefined ) {
       this.props.getUser(this.props.currentSong.user_id);
     }
-    
+
   }
 
   getSong(song) {
@@ -41,20 +41,20 @@ export default class PlayerFooterBar extends Component {
   }
 
   pause () {
-    this.rap.audioEl.pause();
+    this.audio.pause();
   }
 
   play() {
-    this.rap.audioEl.play();
+    this.audio.play();
   }
 
   render () {
     return (
       <footer className="player-footer-bar">
-        <ReactAudioPlayer
+        <audio
           src={this.props.currentSong.file_path}
-          ref={(el) => { this.rap = el; }}
-          />
+          ref={(el) => { this.audio = el; }}
+        />
         <ul id="controls">
           <button id="back-button" onClick={this.back}>
             <div className="up-bar" /><div className="left-triangle" />
@@ -81,26 +81,3 @@ export default class PlayerFooterBar extends Component {
     );
   }
 }
-
-
-
-
-
-// <source
-//   src={this.props.currentSong.file_path}
-//   type="audio/mpeg" />
-// <source
-//   src={this.props.currentSong.file_path}
-//   type="audio/ogg" />
-
-// <audio id="footerPlayer" ref={(aud) => { this.audio = aud; }}>
-//   <source
-//     src={this.props.currentSong.file_path}
-//     type="audio/mpeg"
-//     />
-//   <source
-//     src={this.props.currentSong.file_path}
-//     type="audio/mpeg"
-//     />
-//   Your browser does not support HTML5 audio. This website is going to be pretty useless to you.
-// </audio>
