@@ -94,7 +94,7 @@ class UserHeaderBar extends Component {
                 <li className="header-wrapper logo-wrapper">
                   <div>
                     <img className="user-logo-sm" src={this.props.currentUser.icon_url} />
-                    <p><span>{this.props.currentUser.username}</span></p>
+                    <p><span><Link to={`users/${this.props.currentUser.id}`}>{this.props.currentUser.username}</Link></span></p>
                     <DownAngle className="down-angle" size={15} />
                   </div>
                 </li>
