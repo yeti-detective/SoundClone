@@ -7,19 +7,25 @@ export default class PlayerFooterBar extends Component {
     this.state = {
       currentTime: 0.0,
       duration: 0.0,
-      isPlaying: false
+      isPlaying: false,
+      playQueue: [],
+      playedQueue: []
     };
 
     this.play = this.play.bind(this);
     this.pause = this.pause.bind(this);
     this.getSong = this.getSong.bind(this);
+    this.isPlaying = this.isPlaying.bind(this);
   }
 
   componentDidMount() {
     if ( this.props.users[this.props.currentSong.user_id] === undefined ) {
       this.props.getUser(this.props.currentSong.user_id);
     }
+    setInterval(() => {
+      this.isPlaying();
 
+    }, 16);
   }
 
   getSong(song) {
@@ -42,13 +48,21 @@ export default class PlayerFooterBar extends Component {
 
   pause () {
     this.audio.pause();
+    this.setState({
+      isPlaying: false
+    });
   }
 
   play() {
     this.audio.play();
+    this.setState({
+      isPlaying: true
+    });
   }
 
   render () {
+    const duration = this.audio ? this.audio.duration : 0;
+    const currentTime = this.audio ? this.audio.currentTime : 0;
     return (
       <footer className="player-footer-bar">
         <audio
@@ -59,13 +73,17 @@ export default class PlayerFooterBar extends Component {
           <button id="back-button" onClick={this.back}>
             <div className="up-bar" /><div className="left-triangle" />
           </button>
-          <button id="pause" onClick={this.pause} />
-          <button id="play-button" onClick={this.play} />
+          { this.state.isPlaying ? <button id="pause" onClick={this.pause} />
+              :
+            <button id="play-button" onClick={this.play} />
+          }
           <button id="skip-button" onClick={this.skip}>
             <div className="right-triangle" /><div className="up-bar" />
           </button>
           <nav className="slider">
-            <progress value={50} max={100} />
+            {Math.round(currentTime * 100) / 100}
+            <progress value={Math.round(currentTime / duration * 100)} max={100} />
+            {duration}
           </nav>
         </ul>
         <ul className="song-info">
