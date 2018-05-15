@@ -20,7 +20,7 @@ export default class UserShow extends Component {
 
   render () {
     return (
-      <main>
+      <main className="app user-show">
         <UserHeaderBar />
         <section
           className="user-banner"
