@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
     get '/users/:user_id/songs', to: 'users#songs'
 
-    post '/upload/avatar', to: 'user#avatar'
+    post '/upload/avatar', to: 'users#avatar'
 
 
     resource :sessions, only: [:create, :destroy, :show]

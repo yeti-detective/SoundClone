@@ -23,6 +23,7 @@ class Api::UsersController < ApplicationController
 
   def avatar
     @user = current_user
+    # debugger
     @user.avatar = avatar_params[:file]
     if @user.save
       render json: ['success'], status: 200
@@ -37,6 +38,6 @@ class Api::UsersController < ApplicationController
   end
 
   def avatar_params
-    params.require(:avatar).permit(:file, :title)
+    params.require(:avatar).permit(:file)
   end
 end
