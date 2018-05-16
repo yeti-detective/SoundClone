@@ -17,5 +17,15 @@
     border: 1px solid #f50;
     width: 50%;
 
+    .preview-image {
+      width: 50%;
+      height: auto;
+    }
+
+    .smaller {
+      font-size: 12px;
+      font-weight: 200;
+    }
+
   }
 }

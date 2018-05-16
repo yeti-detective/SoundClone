@@ -16,8 +16,15 @@ const UploadSong = (props) => {
           onChange={props.updateTitle}
           /><br />
         </label>
-        <input className="file-upload" type="file" onChange={props.songFileUpoad} />
+        <label className="smaller">Upload Song<br />
+          <input className="song-upload" type="file" onChange={props.songFileUpoad} />
+        </label>
         <br />
+        <label className="smaller">Upload Song Image<br />
+          <input className="song-icon-upload" type="file"
+            onChange={props.songImageUpload} /><br />
+        </label>
+        <img className="preview-image" src={props.songImageUrl} /><br />
         <input className="song-submit" type="submit" value="Upload Song" />
       </div>
     </form>

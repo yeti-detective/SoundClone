@@ -3,7 +3,6 @@ class Api::SongsController < ApplicationController
     user = current_user
     @song = Song.new(song_params)
     @song.user = user
-
     if @song.save
       render :show
     else
@@ -22,6 +21,6 @@ class Api::SongsController < ApplicationController
 
   private
   def song_params
-    params.require(:song).permit(:title, :song_file)
+    params.require(:song).permit(:title, :song_file, :image)
   end
 end

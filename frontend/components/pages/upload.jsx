@@ -11,6 +11,8 @@ class Upload extends Component {
       file: null,
       songFile: null,
       songTitle: '',
+      songImage: null,
+      songImageUrl: null,
       image_url: null,
       error: ''
     };
@@ -19,6 +21,7 @@ class Upload extends Component {
     this.updateTitle = this.updateTitle.bind(this);
     this.songFileUpoad = this.songFileUpoad.bind(this);
     this.handleSongSubmit = this.handleSongSubmit.bind(this);
+    this.songImageUpload = this.songImageUpload.bind(this);
   }
 
   componentDidMount() {
@@ -64,6 +67,7 @@ class Upload extends Component {
     let formData = new FormData();
     formData.append('song[song_file]', this.state.songFile);
     formData.append('song[title]', this.state.songTitle);
+    formData.append('song[image]', this.state.songImage);
     $.ajax({
       method: 'post',
       url: 'api/songs',
@@ -92,6 +96,20 @@ class Upload extends Component {
     }
   }
 
+  songImageUpload(e) {
+    const songImage = e.currentTarget.files[0];
+    const fileReader = new FileReader();
+    fileReader.onloadend = () => {
+      this.setState({
+        songImage: songImage,
+        songImageUrl: fileReader.result
+      });
+    };
+    if (songImage) {
+      fileReader.readAsDataURL(songImage);
+    }
+  }
+
   updateTitle(e) {
     this.setState({
       songTitle: e.target.value
@@ -109,6 +127,8 @@ class Upload extends Component {
             songTitle={this.state.songTitle}
             updateTitle={this.updateTitle}
             songFileUpoad={this.songFileUpoad}
+            songImageUpload={this.songImageUpload}
+            songImageUrl={this.state.songImageUrl}
             />
           <UploadAvatar
             handleSubmit={this.handleAvatarSubmit}

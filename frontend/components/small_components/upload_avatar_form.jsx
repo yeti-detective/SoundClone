@@ -9,7 +9,8 @@ const UploadAvatar = props => {
         </label><br />
         { props.imageUrl && "Your Image" }
         <br />
-        <img src={props.imageUrl} />
+        <img className="preview-image" src={props.imageUrl} /><br />
+        <input type="submit" value="Set As Avi" />
       </div>
     </form>
   );
