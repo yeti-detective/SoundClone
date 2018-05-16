@@ -62,6 +62,7 @@ export default class LandingPage extends Component{
             </main>
           </section>
           <section className="front-content">
+            <h1 className="song-badge-header">The Latest Hits</h1>
             <SongBadgeIndex />
           </section>
         </main>

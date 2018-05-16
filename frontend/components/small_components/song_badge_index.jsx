@@ -9,6 +9,11 @@ export default class SongBadgeIndex extends Component {
 
   render () {
     if (this.props.songs.length > 0) {
+      const songs = this.props.songs.sort((a, b) => {
+        const aDate = new Date(a.created_at);
+        const bDate = new Date(b.created_at);
+        return bDate > aDate;
+      });
       return (
         <section className="song-badge-index">
           {this.props.songs.map((song) => {

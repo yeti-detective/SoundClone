@@ -85,155 +85,17 @@
       height: 46px;
       font-size: 26px;
     }
+
   }
 
-  // .login-modal {
-  //   position: absolute;
-  //   top: 0;
-  //   left: 0;
-  //   height: 100%;
-  //   width: 100%;
-  //   background-color: rgba(255, 255, 255, 0.8);
-  //   z-index: 3;
-  //
-  //   .x {
-  //     margin: 0;
-  //     color: black;
-  //     position: absolute;
-  //     font-size: 40px;
-  //     top: 5px;
-  //     right: 15px;
-  //     cursor: pointer;
-  //   }
-  //
-  //
-  // }
-  //
-  // .login-form {
-  //   background: #fff;
-  //   width: 450px;
-  //   height: 620px;
-  //   margin: 100px auto;
-  //   padding: 200px 10px;
-  //   box-sizing: border-box;
-  //
-  //   input {
-  //     width: 100%;
-  //     box-sizing: border-box;
-  //     padding: 7px;
-  //     font-size: 14px;
-  //     border-radius: 5px;
-  //     border: 1px solid #ccc;
-  //     font-size: 18px;
-  //     color: #333;
-  //   }
-  //
-  //   .non-working-buttons {
-  //     height: 92px;
-  //     display: flex;
-  //     flex-direction: column;
-  //     justify-content: space-between;
-  //     text-align: center;
-  //
-  //     svg {
-  //       float: left;
-  //     }
-  //   }
-  //
-  //   button {
-  //     width: 100%;
-  //     height: 40px;
-  //     font-size: 14px;
-  //     padding: 4px;
-  //     margin-top: 10px;
-  //   }
-  //
-  //   .go-back {
-  //     border: 2px solid #333;
-  //     color: #333;
-  //     background: #fff;
-  //     margin-top: 0;
-  //     font-size: 18px;
-  //     margin-bottom: 10px;
-  //   }
-  //   .go-back span {
-  //     float: left;
-  //     font-weight: bold;
-  //   }
-  // }
-  //
-  // .dummy-login {
-  //   position: relative;
-  //   overflow: hidden;
-  // }
-  //
-  // .dummy-login:hover {
-  //   overflow: visible;
-  // }
-  //
-  // .facebook {
-  //   background: linear-gradient(#3857A1, #264285);
-  //   height: 42px;
-  // }
-  //
-  // button.google {
-  //   padding-top: 0;
-  //   background-color: #4285f4;
-  //   height: 42px;
-  // }
-  //
-  // .tooltip {
-  //   width: 350px;
-  //   height: 30px;
-  //   background: grey;
-  //   font-family: sans-serif;
-  //   text-align: center;
-  //   padding-top: 5px;
-  //   color: #fff;
-  //   border-radius: 5px;
-  //   position: absolute;
-  //   top: -45px;
-  //   right: 70px;
-  // }
-  //
-  // .pointy-bit {
-  //   height: 0;
-  //   width: 0;
-  //   border-top: 15px grey solid;
-  //   border-right: 10px transparent solid;
-  //   border-left: 10px transparent solid;
-  //   position: absolute;
-  //   bottom: -10px;
-  //   left: 13px;
-  // }
-  //
-  // .divider {
-  //   color: black;
-  //   position: relative;
-  //   text-align: center;
-  //   margin: 1em auto;
-  //   font-size: 16px;
-  // }
-  //
-  // .divider:before, .divider:after {
-  //   display: inline-block;
-  //   width: 43%;
-  //   border-top: 1px solid #333;
-  //   content: " ";
-  //   position: absolute;
-  //   top: .5em;
-  // }
-  //
-  //  .divider:before {
-  //    left: 0;
-  //  }
-  //
-  //  .divider:after {
-  //    right: 0;
-  //  }
-}
+  .front-content {
+    text-align: center;
 
-// .landing-page.modal-open {
-//   position: fixed;
-//   overflow: scroll;
-// }
+    .song-badge-header {
+      color: #333;
+      width: 100%;
+    }
+
+  }
+
+}
