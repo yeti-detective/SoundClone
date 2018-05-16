@@ -1,10 +1,10 @@
-import { RECEIVE_SONG } from '../actions/songs_actions';
+import { RECEIVE_CURRENT_SONG } from '../actions/songs_actions';
 
 const currentSongReducer = (state = {}, action ) => {
   Object.freeze(state);
   switch(action.type) {
-    case RECEIVE_SONG:
-      return action.payload.song[Object.keys(action.payload.song)[0]];
+    case RECEIVE_CURRENT_SONG:
+      return action.song;
     default:
       return state;
   }

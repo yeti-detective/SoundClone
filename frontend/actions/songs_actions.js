@@ -2,6 +2,7 @@ import * as SongsAPI from '../util/songs_api_util';
 
 export const RECEIVE_SONGS = 'RECEIVE_SONGS';
 export const RECEIVE_SONG = 'RECEIVE_SONG';
+export const RECEIVE_CURRENT_SONG = 'RECEIVE_CURRENT_SONG';
 
 const receiveSongs = songs => ({
   type: RECEIVE_SONGS,
@@ -13,11 +14,22 @@ const receiveSong = payload => ({
   payload
 });
 
+const receiveCurrentSong = payload => ({
+  type: RECEIVE_CURRENT_SONG,
+  payload
+});
+
 export const getSong = id => dispatch => {
-  
   return (
     SongsAPI.getSong(id)
-      .then((id) => dispatch(receiveSong(id)))
+      .then((song) => dispatch(receiveSong(song)))
+  );
+};
+
+export const getCurrentSong = id => dispatch => {
+  return (
+    SongsAPI.getSong(id)
+      .then((song) => dispatch(receiveCurrentSong(song)))
   );
 };
 
