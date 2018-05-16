@@ -1,7 +1,21 @@
 .upload {
+  height: 100%;
 
+  .big-hugs {
+    display: flex;
+    height: inherit;
+  }
+
+  .little-hugs {
+    width: 50%;
+    margin: auto;
+    height: inherit;
+  }
 
   form {
-    border: inherit;
+    display: inline-block;
+    border: 1px solid #f50;
+    width: 50%;
+
   }
 }

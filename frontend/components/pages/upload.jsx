@@ -103,17 +103,19 @@ class Upload extends Component {
       <main className="app upload">
         <UserHeaderBar />
         { this.state.error }
-        <UploadSong
-          handleSubmit={this.handleSongSubmit}
-          songTitle={this.state.songTitle}
-          updateTitle={this.updateTitle}
-          songFileUpoad={this.songFileUpoad}
-          />
-        <UploadAvatar
-          handleSubmit={this.handleAvatarSubmit}
-          fileUpload={this.fileUpload}
-          imageUrl={this.state.image_url}
-          />
+        <section className="big-hugs">
+          <UploadSong
+            handleSubmit={this.handleSongSubmit}
+            songTitle={this.state.songTitle}
+            updateTitle={this.updateTitle}
+            songFileUpoad={this.songFileUpoad}
+            />
+          <UploadAvatar
+            handleSubmit={this.handleAvatarSubmit}
+            fileUpload={this.fileUpload}
+            imageUrl={this.state.image_url}
+            />
+        </section>
       </main>
     );
   }
