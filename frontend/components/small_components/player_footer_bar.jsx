@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import ReactAudioPlayer from 'react-audio-player';
 import emptyOb from '../../util/empty_ob';
 import PlayQueue from './footer_player_components/play_queue';
 
