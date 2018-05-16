@@ -10,8 +10,7 @@ export default class PlayerFooterBar extends Component {
       duration: 0.0,
       isPlaying: false,
       playQueue: [this.props.currentSong],
-      playedQueue: [],
-
+      playedQueue: []
     };
 
     this.play = this.play.bind(this);
@@ -20,7 +19,6 @@ export default class PlayerFooterBar extends Component {
     this.isPlaying = this.isPlaying.bind(this);
     this.addCurrentSongToQueue = this.addCurrentSongToQueue.bind(this);
     this.songEnded = this.songEnded.bind(this);
-    // debugger
   }
 
   componentDidMount() {
@@ -84,12 +82,19 @@ export default class PlayerFooterBar extends Component {
   songEnded(e) {
     const newQueue = Object.assign([], this.state.playQueue);
     const newPlayed = Object.assign([], this.state.playedQueue);
+    let play = true;
     newPlayed.push(newQueue.shift());
+    if (newQueue.length < 1) {
+      newQueue.push({});
+      play = false;
+    }
     this.setState({
       playQueue: newQueue,
       playedQueue: newPlayed
     });
-    this.audio.play();
+    if (play) {
+      this.audio.play();
+    }
   }
 
   render () {
