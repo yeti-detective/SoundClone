@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ReactAudioPlayer from 'react-audio-player';
 import emptyOb from '../../util/empty_ob';
+import PlayQueue from './footer_player_components/play_queue';
 
 export default class PlayerFooterBar extends Component {
   constructor(props) {
@@ -89,7 +90,7 @@ export default class PlayerFooterBar extends Component {
       playQueue: newQueue,
       playedQueue: newPlayed
     });
-    this.audio.play()
+    this.audio.play();
   }
 
   render () {
@@ -120,6 +121,7 @@ export default class PlayerFooterBar extends Component {
           {Math.round(duration * 100) / 100}
         </nav>
         <ul className="song-info">
+          <PlayQueue songs={this.state.playQueue} />
           <img src={this.state.playQueue[0].image_url} />
           <p className="title">{this.state.playQueue[0].title}</p>
           <p className="artist">{

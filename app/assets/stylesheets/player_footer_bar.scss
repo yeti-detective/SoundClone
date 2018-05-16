@@ -73,6 +73,7 @@
   }
 
   .song-info {
+    position: relative;
     display: flex;
     justify-content: space-around;
     margin: 0;
@@ -93,5 +94,10 @@
     }
   }
 
+  .play-queue {
+    position: absolute;
+    bottom: 60px;
+    right: 50px;
+  }
 
 }
