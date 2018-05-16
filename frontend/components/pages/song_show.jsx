@@ -41,6 +41,12 @@ export default class SongShow extends Component {
                   <h3 className="artist-name">{this.props.users[this.props.songs[this.props.thisSongId].user_id].username}</h3>
                 </Link>
               ) : null }
+              <button
+                className="play-this-song"
+                onClick={this.props.getCurrentSong}
+                >
+                <div className="play" />
+              </button>
             </div>
             </section>
           <section className="song-cousins">
