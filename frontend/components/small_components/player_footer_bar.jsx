@@ -19,6 +19,7 @@ export default class PlayerFooterBar extends Component {
     this.isPlaying = this.isPlaying.bind(this);
     this.addCurrentSongToQueue = this.addCurrentSongToQueue.bind(this);
     this.songEnded = this.songEnded.bind(this);
+    this.back = this.back.bind(this);
   }
 
   componentDidMount() {
@@ -45,6 +46,22 @@ export default class PlayerFooterBar extends Component {
     this.setState({
       playQueue: newQueue
     });
+  }
+
+  back() {
+    if (this.state.playedQueue.length > 0) {
+      this.audio.pause();
+      const newQueue = Object.assign([], this.state.playQueue);
+      const newPlayed = Object.assign([], this.state.playedQueue);
+      newQueue.unshift(newPlayed.pop());
+      this.setState({
+        playQueue: newQueue,
+        playedQueue: newPlayed
+      }, () => {
+        this.audio.currentTime = 0;
+        this.audio.play();
+      });
+    }
   }
 
   getSong(song) {
