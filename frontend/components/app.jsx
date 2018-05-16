@@ -16,9 +16,6 @@ import PlayerFooterBar from './containers/player_footer_bar_container';
 import Upload from './pages/upload';
 
 // temp //
-import UserHeaderBar from './small_components/user_header_bar';
-// <NotLoggedInRoute exact path="/" component={LandingPage} />
-// <Route path="/headerbar" component={UserHeaderBar} />
 // temp //
 
 const App = () => (
