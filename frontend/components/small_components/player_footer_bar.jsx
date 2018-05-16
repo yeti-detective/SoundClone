@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ReactAudioPlayer from 'react-audio-player';
+import emptyOb from '../../util/empty_ob';
 
 export default class PlayerFooterBar extends Component {
   constructor(props) {
@@ -8,14 +9,18 @@ export default class PlayerFooterBar extends Component {
       currentTime: 0.0,
       duration: 0.0,
       isPlaying: false,
-      playQueue: [],
-      playedQueue: []
+      playQueue: [this.props.currentSong],
+      playedQueue: [],
+
     };
 
     this.play = this.play.bind(this);
     this.pause = this.pause.bind(this);
     this.getSong = this.getSong.bind(this);
     this.isPlaying = this.isPlaying.bind(this);
+    this.addCurrentSongToQueue = this.addCurrentSongToQueue.bind(this);
+    this.songEnded = this.songEnded.bind(this);
+    // debugger
   }
 
   componentDidMount() {
@@ -24,8 +29,24 @@ export default class PlayerFooterBar extends Component {
     }
     setInterval(() => {
       this.isPlaying();
+    }, 32);
+  }
 
-    }, 16);
+  componentDidUpdate() {
+    if (this.state.playQueue.indexOf(this.props.currentSong) < 0 ) {
+      this.addCurrentSongToQueue();
+    }
+  }
+
+  addCurrentSongToQueue() {
+    let newQueue = Object.assign([], this.state.playQueue);
+    if (emptyOb(newQueue[0])) {
+      newQueue.shift();
+    }
+    newQueue.push(this.props.currentSong);
+    this.setState({
+      playQueue: newQueue
+    });
   }
 
   getSong(song) {
@@ -60,14 +81,26 @@ export default class PlayerFooterBar extends Component {
     });
   }
 
+  songEnded(e) {
+    const newQueue = Object.assign([], this.state.playQueue);
+    const newPlayed = Object.assign([], this.state.playedQueue);
+    newPlayed.push(newQueue.shift());
+    this.setState({
+      playQueue: newQueue,
+      playedQueue: newPlayed
+    });
+    this.audio.play()
+  }
+
   render () {
     const duration = this.audio ? this.audio.duration : 0;
     const currentTime = this.audio ? this.audio.currentTime : 0;
     return (
       <footer className="player-footer-bar">
         <audio
-          src={this.props.currentSong.file_path}
+          src={this.state.playQueue[0].file_path}
           ref={(el) => { this.audio = el; }}
+          onEnded={this.songEnded}
         />
         <ul id="controls">
           <button id="back-button" onClick={this.back}>
@@ -80,18 +113,18 @@ export default class PlayerFooterBar extends Component {
           <button id="skip-button" onClick={this.skip}>
             <div className="right-triangle" /><div className="up-bar" />
           </button>
-          <nav className="slider">
-            {Math.round(currentTime * 100) / 100}
-            <progress value={Math.round(currentTime / duration * 100)} max={100} />
-            {duration}
-          </nav>
         </ul>
+        <nav className="slider">
+          {Math.round(currentTime * 100) / 100}
+          <progress value={Math.round(currentTime / duration * 100)} max={100} />
+          {Math.round(duration * 100) / 100}
+        </nav>
         <ul className="song-info">
-          <img src={this.props.currentSong.image_url} />
-          <p className="title">{this.props.currentSong.title}</p>
+          <img src={this.state.playQueue[0].image_url} />
+          <p className="title">{this.state.playQueue[0].title}</p>
           <p className="artist">{
-              this.props.users[this.props.currentSong.user_id] ?
-              this.props.users[this.props.currentSong.user_id].username :
+              this.props.users[this.state.playQueue[0].user_id] ?
+              this.props.users[this.state.playQueue[0].user_id].username :
               ''
             }</p>
         </ul>
