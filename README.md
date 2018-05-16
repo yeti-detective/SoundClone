@@ -8,3 +8,5 @@ useful link, courtesy of Maya: [React Icons](https://gorangajic.github.io/react-
 Heroku repo url: https://git.heroku.com/chris-b-soundclone.git
 
 bugtracking -> [here](https://github.com/yeti-detective/SoundClone/blob/master/bugtracking.md)
+
+[pg_search](https://medium.com/@leighsn/simple-pg-search-example-postgresql-for-your-heroku-rails-app-f218127663bb)
