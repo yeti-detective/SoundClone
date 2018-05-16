@@ -6,9 +6,11 @@ export default class UserShow extends Component {
   constructor(props) {
     super(props);
     this.newSong = this.newSong.bind(this);
+    debugger
   }
 
   componentDidMount() {
+
     this.props.getUser()
       .then(this.props.getUsersSongs());
     window.scrollTo(0, 0);
