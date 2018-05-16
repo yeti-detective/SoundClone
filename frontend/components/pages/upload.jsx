@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import UploadSong from '../small_components/upload_song_form';
+import UploadAvatar from '../small_components/upload_avatar_form';
 import UserHeaderBar from '../containers/user_header_bar_container';
 
 class Upload extends Component {
@@ -108,15 +109,11 @@ class Upload extends Component {
           updateTitle={this.updateTitle}
           songFileUpoad={this.songFileUpoad}
           />
-        <form onSubmit={this.handleAvatarSubmit} className="avatar-form">
-          <label>User Image Upload<br />
-            <input onChange={this.fileUpload} type="file" />
-          </label><br />
-          <input type="submit" value="submit" />
-          <label>{ this.state.image_url && "Your Image" }
-            <img src={this.state.image_url} />
-          </label><br />
-        </form>
+        <UploadAvatar
+          handleSubmit={this.handleAvatarSubmit}
+          fileUpload={this.fileUpload}
+          imageUrl={this.state.image_url}
+          />
       </main>
     );
   }
@@ -141,3 +138,14 @@ export default withRouter(Upload);
 //   </label><br />
 //   <input type="submit" value="submit" />
 // </form><br />
+
+// ** Original Avatar Submit Form RIP In Peace ** //
+// <form onSubmit={this.handleAvatarSubmit} className="avatar-form">
+//   <label>User Image Upload<br />
+//   <input onChange={this.fileUpload} type="file" />
+// </label><br />
+// <input type="submit" value="submit" />
+// <label>{ this.state.image_url && "Your Image" }
+//   <img src={this.state.image_url} />
+// </label><br />
+// </form>
