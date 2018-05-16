@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import UserHeaderBar from '../containers/user_header_bar_container';
-import SongCard from '../small_components/song_card';
+import SongCardIndex from '../containers/song_card_index_container';
 
 export default class UserShow extends Component {
   constructor(props) {
@@ -35,13 +35,7 @@ export default class UserShow extends Component {
           </div>
         </section>
         <section className="user-body">
-          <ul>
-            {this.props.songs.map((song) => {
-              if (song.user_id == this.props.match.params.userId) {
-                return <SongCard getSong={this.newSong} key={song.id} song={song} />;
-              }
-            })}
-          </ul>
+          <SongCardIndex songs={this.props.songs} />
         </section>
       </main>
     );

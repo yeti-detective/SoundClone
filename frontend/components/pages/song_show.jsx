@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import UserHeaderBar from '../containers/user_header_bar_container';
 import listifySliceOfState from '../../util/listify_slice_of_state';
-import SongCard from '../small_components/song_card';
-import SongPlayer from '../small_components/song_player';
+import SongCardIndex from '../containers/song_card_index_container';
 
 export default class SongShow extends Component {
   constructor(props) {
@@ -31,7 +30,6 @@ export default class SongShow extends Component {
             className="song-banner"
             style={{background: 'linear-gradient(45deg, #959595, #555555)'}}
             >
-            <SongPlayer song={this.props.songs[this.props.thisSongId]} />
             <div className="song-info-box">
               <img
                 className="song-logo-large"
@@ -47,11 +45,7 @@ export default class SongShow extends Component {
             </section>
           <section className="song-cousins">
             <h2>More by this user:</h2>
-            {listifySliceOfState(this.props.songs).map((song) => {
-              return song.id != this.props.thisSongId ? (
-                <SongCard getSong={this.newSong} key={song.id} song={song} />
-              ) : ( null );
-            })}
+            <SongCardIndex songs={listifySliceOfState(this.props.songs)} />
           </section>
         </main> );
     } else {
