@@ -7,7 +7,6 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 User.destroy_all
 Song.destroy_all
-User.create({username: 'firstboy', password: 'starwars'})
 User.create({username: 'GuestUser', password: 'starwars'})
 
 10.times do
