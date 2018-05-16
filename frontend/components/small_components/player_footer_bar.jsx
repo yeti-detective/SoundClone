@@ -159,7 +159,7 @@ export default class PlayerFooterBar extends Component {
         <nav className="slider">
           {Math.round(currentTime * 100) / 100}
           <progress value={Math.round(currentTime / duration * 100)} max={100} />
-          {Math.round(duration * 100) / 100}
+          {isNaN(duration) ? 0.0 : Math.round(duration * 100) / 100}
         </nav>
         <ul className="song-info">
           <PlayQueue songs={this.state.playQueue} />
