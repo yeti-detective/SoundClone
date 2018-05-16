@@ -35,6 +35,7 @@ export default class UserShow extends Component {
           </div>
         </section>
         <section className="user-body">
+          <h1>Songs by this user:</h1>
           <SongCardIndex songs={this.props.songs} />
         </section>
       </main>
