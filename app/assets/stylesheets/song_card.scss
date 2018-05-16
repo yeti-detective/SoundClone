@@ -1,6 +1,8 @@
 .song-card {
   height: 75px;
+  width: 50%;
   display: flex;
+  position: relative;
 
   a {
     display: inherit;
@@ -15,4 +17,23 @@
     height: 60px;
   }
 
+  .tooltip {
+    position: absolute;
+    top: -59px;
+    left: 25px;
+    width: 100px;
+    height: 60px;
+    color: #333;
+    background: #eee;
+    display: none;
+  }
+
+  .tooltip:hover {
+    display: table;
+  }
+
+}
+
+.song-card:hover .tooltip {
+  display: table;
 }
