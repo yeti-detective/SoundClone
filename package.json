@@ -8,7 +8,6 @@
     "babel-preset-react": "^6.24.1",
     "lodash": "^4.17.4",
     "react": "^15.6.1",
-    "react-audio-player": "^0.10.0",
     "react-dom": "^15.6.1",
     "react-icons": "^2.2.7",
     "react-redux": "^5.0.5",
