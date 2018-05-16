@@ -31,7 +31,7 @@ class UserHeaderBar extends Component {
 
   componentDidMount() {
     if (!Object.keys(this.props.currentUser).length) {
-      props.getUser(props.currentUserId);
+      this.props.getUser(props.currentUserId);
     }
   }
 
