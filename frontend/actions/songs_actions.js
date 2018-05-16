@@ -9,14 +9,14 @@ const receiveSongs = songs => ({
   songs
 });
 
-const receiveSong = payload => ({
+const receiveSong = song => ({
   type: RECEIVE_SONG,
-  payload
+  song
 });
 
-const receiveCurrentSong = payload => ({
+const receiveCurrentSong = song => ({
   type: RECEIVE_CURRENT_SONG,
-  payload
+  song
 });
 
 export const getSong = id => dispatch => {
