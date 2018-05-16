@@ -6,11 +6,14 @@ const SongCard = (props) => {
 
   return (
     <div className="song-card">
-      <SongCardToolTip
-        getCurrentSong={props.getCurrentSong}
-        song={props.song}
-        />
-      <Link to={`/users/${props.song.user_id}/${props.song.id}`}>
+      <Link
+        className="song-card-link"
+         to={`/users/${props.song.user_id}/${props.song.id}`}
+         >
+        <SongCardToolTip
+          getCurrentSong={props.getCurrentSong}
+          song={props.song}
+          />
         <img className="song-icon" src={props.song.image_url} />
         <p>
           {props.song.title}

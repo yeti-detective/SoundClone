@@ -31,9 +31,8 @@
   .tooltip:hover {
     display: table;
   }
+  .song-card-link:hover .tooltip {
+    display: table;
+  }
 
-}
-
-.song-card:hover .tooltip {
-  display: table;
 }
