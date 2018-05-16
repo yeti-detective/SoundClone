@@ -19,13 +19,17 @@
 
   .tooltip {
     position: absolute;
-    top: -59px;
-    left: 25px;
+    top: -29px;
+    left: 35px;
     width: 100px;
-    height: 60px;
-    color: #333;
+    color: #fff;
     background: #eee;
+    padding: 0;
     display: none;
+  }
+
+  button {
+    padding: 0;
   }
 
   .tooltip:hover {
