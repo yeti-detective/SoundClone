@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import SongCardToolTip from './song_card_tool_tip';
 import FaComment from 'react-icons/lib/fa/comment';
+import GetCurrentSongButton from '../containers/get_current_song_button_container';
 
 const SongCard = (props) => {
   let numComments = null;
@@ -14,8 +14,7 @@ const SongCard = (props) => {
         className="song-card-link"
          to={`/users/${props.song.user_id}/${props.song.id}`}
          >
-        <SongCardToolTip
-          getCurrentSong={props.getCurrentSong}
+        <GetCurrentSongButton
           song={props.song}
           />
         <img className="song-icon" src={props.song.image_url} />
