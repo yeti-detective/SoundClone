@@ -6,3 +6,4 @@
 | 5.15.18 | upload.jsx | above issue was caused by missing application.yml file in production. Now resolved. |
 | 5.15.18 | player_footer_bar.jsx | audio uploaded to aws s3 will not play due to Cross Origin Scripting. Images from same s3 bucket are visible. |
 | 5.15.18 | player_footer_bar.jsx | above issue caused by npm package 'react-audio-player'. Was not able to determine how to correctly set the crossOrigin prop. Replaced component with HTML5 audio component. |
+| 5.17.18 | ?? | an ajax call is being fired to /api/users/undefined resulting in a 404 error in the Javascript console |
