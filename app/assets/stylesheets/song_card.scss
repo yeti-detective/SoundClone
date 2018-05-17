@@ -17,26 +17,4 @@
     height: 60px;
   }
 
-  .tooltip {
-    position: absolute;
-    top: -29px;
-    left: 35px;
-    width: 100px;
-    color: #fff;
-    background: #eee;
-    padding: 0;
-    display: none;
-  }
-
-  button {
-    padding: 0;
-  }
-
-  .tooltip:hover {
-    display: table;
-  }
-  .song-card-link:hover .tooltip {
-    display: table;
-  }
-
 }
