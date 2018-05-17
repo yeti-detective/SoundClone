@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import FaComment from 'react-icons/lib/fa/comment';
 
 const SongBadge = (props) => (
   <figure className="song-badge">
@@ -7,6 +8,7 @@ const SongBadge = (props) => (
     <img src={props.song.image_url} />
     <h3>{props.song.title}</h3>
     <h4>{props.user}</h4>
+    <FAComment className="comment-icon" />{props.song.comments.length}
     </Link>
   </figure>
 );

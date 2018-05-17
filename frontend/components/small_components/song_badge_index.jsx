@@ -3,8 +3,7 @@ import SongBadge from './song_badge';
 
 export default class SongBadgeIndex extends Component {
   componentDidMount() {
-    this.props.getUsers();
-    this.props.getSongs();
+    this.props.getSongBadges();
   }
 
   render () {
