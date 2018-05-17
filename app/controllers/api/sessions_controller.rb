@@ -6,6 +6,7 @@ class Api::SessionsController < ApplicationController
     )
     if @user
       sign_in(@user)
+      @songs = Song.where(user_id: @user.id)
       render "api/users/show"
     else
       render json: ['Invalid credentials'], status: 401
