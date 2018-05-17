@@ -9,9 +9,10 @@ export default class PlayerFooterBar extends Component {
       currentTime: 0.0,
       duration: 0.0,
       isPlaying: false,
-      playQueue: [this.props.currentSong],
+      playQueue: [],
       playedQueue: [],
-      showQueue: false
+      showQueue: false,
+      repeat: false
     };
 
     this.play = this.play.bind(this);
@@ -35,26 +36,35 @@ export default class PlayerFooterBar extends Component {
   }
 
   componentDidUpdate() {
-    if (this.state.playQueue.indexOf(this.props.currentSong) < 0 ) {
+    if (this.state.playQueue.indexOf(this.props.currentSong) < 0 && !emptyOb(this.props.currentSong) ) {
       this.addCurrentSongToQueue();
     }
   }
 
   addCurrentSongToQueue() {
-    let play = false;
-    let newQueue = Object.assign([], this.state.playQueue);
-    if (emptyOb(newQueue[0])) {
-      newQueue.shift();
-      play = true;
-    }
-    newQueue.push(this.props.currentSong);
-    this.setState({
-      playQueue: newQueue
-    }, () => {
-      if (play) {
-        this.audio.play();
+    // if props.currentSong is not already in the song queue, add it
+    // UNLESS the LAST song in this.state.playedQueue IS this.props.currentSong
+    // SPOILER ALERT somtimes the playedQueue is empty
+    // debugger
+    if (
+      this.state.playQueue.indexOf(this.props.currentSong) === -1 &&
+      this.state.playQueue.length === 0 ||
+      this.state.playedQueue[this.state.playedQueue.length - 1] !== this.state.playQueue[0]
+    ) {
+      const newQueue = Object.assign([], this.state.playQueue);
+      newQueue.push(this.props.currentSong);
+      let play = false;
+      if (newQueue.length === 1) {
+        play = true;
       }
-    });
+      this.setState({
+        playQueue: newQueue
+      }, () => {
+        if (play) {
+          this.audio.play();
+        }
+      });
+    }
   }
 
   back() {
@@ -88,6 +98,27 @@ export default class PlayerFooterBar extends Component {
       this.setState({
         isPlaying: false
       });
+    }
+  }
+
+  currentSongImage () {
+    // debugger
+    if (this.state.playQueue.length) {
+      return (
+        <div className="song-info">
+          <img src={this.state.playQueue[0].image_url} />
+          <p className="title">{this.state.playQueue[0].title}</p>
+          <p className="artist">{this.props.users[this.state.playQueue[0].user_id].username}</p>
+        </div>
+      );
+    } else {
+      return null;
+    }
+  }
+
+  currentSongFilePath () {
+    if (this.state.playQueue.length) {
+      return this.state.playQueue[0].file_path;
     }
   }
 
@@ -136,7 +167,6 @@ export default class PlayerFooterBar extends Component {
     let play = true;
     newPlayed.push(newQueue.shift());
     if (newQueue.length < 1) {
-      newQueue.push({});
       play = false;
     }
     this.setState({
@@ -151,10 +181,11 @@ export default class PlayerFooterBar extends Component {
   render () {
     const duration = this.audio ? this.audio.duration : 0;
     const currentTime = this.audio ? this.audio.currentTime : 0;
+
     return (
       <footer className="player-footer-bar">
         <audio
-          src={this.state.playQueue[0].file_path}
+          src={this.currentSongFilePath()}
           ref={(el) => { this.audio = el; }}
           onEnded={this.songEnded}
         />
@@ -171,19 +202,14 @@ export default class PlayerFooterBar extends Component {
           </button>
         </ul>
         <nav className="slider">
-          {Math.round(currentTime * 100) / 100}
+          {Math.round(currentTime)}
           <progress value={Math.round(currentTime / duration * 100)} max={100} />
-          {isNaN(duration) ? 0.0 : Math.round(duration * 100) / 100}
+          {isNaN(duration) ? 0.0 : Math.round(duration)}
         </nav>
         <ul onClick={this.showQueue} className="song-info">
+          { this.currentSongImage() }
           <PlayQueue show={this.state.showQueue} songs={this.state.playQueue} />
-          <img src={this.state.playQueue[0].image_url} />
-          <p className="title">{this.state.playQueue[0].title}</p>
-          <p className="artist">{
-              this.props.users[this.state.playQueue[0].user_id] ?
-              this.props.users[this.state.playQueue[0].user_id].username :
-              ''
-            }</p>
+
         </ul>
       </footer>
     );
