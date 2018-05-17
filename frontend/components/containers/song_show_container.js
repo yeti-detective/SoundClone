@@ -16,8 +16,6 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     getSong: (id) => dispatch(getSong(id)),
-    getUser: () => dispatch(getUser(ownProps.match.params.userId)),
-    getUsersSongs: () => dispatch(getUsersSongs(ownProps.match.params.userId)),
     getCurrentSong: () => dispatch(getCurrentSong(ownProps.match.params.songId))
   };
 };

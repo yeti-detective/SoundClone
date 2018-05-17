@@ -11,9 +11,7 @@ export default class SongShow extends Component {
   }
 
   componentDidMount() {
-    this.props.getUser();
     this.props.getSong(this.props.match.params.songId);
-    this.props.getUsersSongs();
     window.scrollTo(0, 0);
   }
 
