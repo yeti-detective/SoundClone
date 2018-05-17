@@ -17,6 +17,10 @@ export default class SongShow extends Component {
     window.scrollTo(0, 0);
   }
 
+  artistName () {
+    return this.props.users[this.props.songs[this.props.thisSongId].user_id].username;
+  }
+
 
   render () {
     if (this.props.songs[this.props.thisSongId]) {
@@ -35,7 +39,7 @@ export default class SongShow extends Component {
               <h1 className="main-song-title">{this.props.songs[this.props.thisSongId].title}</h1>
               {!emptyOb(this.props.users) ? (
                 <Link to={"/users/" + this.props.songs[this.props.thisSongId].user_id}>
-                  <h3 className="artist-name">{this.props.users[this.props.songs[this.props.thisSongId].user_id].username}</h3>
+                  <h3 className="artist-name">{this.artistName()}</h3>
                 </Link>
               ) : null }
               <GetCurrentSongButton song={this.props.songs[this.props.thisSongId]} />
@@ -45,7 +49,7 @@ export default class SongShow extends Component {
             <h2>More by this user:</h2>
             <section className="song-cousins">
               <SongCardIndex
-                user={this.props.users[this.props.songs[this.props.thisSongId].user_id]} 
+                user={this.props.users[this.props.songs[this.props.thisSongId].user_id]}
                 songs={listifySliceOfState(this.props.songs)}
                 />
               <CommentCardIndex
