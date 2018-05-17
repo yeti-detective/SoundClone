@@ -45,7 +45,6 @@ export default class PlayerFooterBar extends Component {
     // if props.currentSong is not already in the song queue, add it
     // UNLESS the LAST song in this.state.playedQueue IS this.props.currentSong
     // SPOILER ALERT somtimes the playedQueue is empty
-    // debugger
     if (
       this.state.playQueue.indexOf(this.props.currentSong) === -1 &&
       this.state.playQueue.length === 0 ||
@@ -102,7 +101,6 @@ export default class PlayerFooterBar extends Component {
   }
 
   currentSongImage () {
-    // debugger
     if (this.state.playQueue.length) {
       return (
         <div className="song-info">
