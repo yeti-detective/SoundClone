@@ -5,6 +5,7 @@ class Api::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @songs = Song.where(user_id: params[:id])
   end
 
   def create

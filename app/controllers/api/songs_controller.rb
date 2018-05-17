@@ -16,7 +16,9 @@ class Api::SongsController < ApplicationController
 
   def show
     @song = Song.find(params[:id])
-    # @user = User.find(@song[:user_id])
+    @comments = Comment.where(song_id: params[:id])
+    @user = User.find(@song[:user_id])
+    @songs = Song.where(user_id: @user.id)
   end
 
   private
