@@ -11,6 +11,8 @@ class User < ApplicationRecord
 
   has_many :songs
 
+  has_many :comments
+
   before_validation :ensure_session_token
   attr_reader :password
 
