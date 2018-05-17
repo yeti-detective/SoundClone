@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import UserHeaderBar from '../containers/user_header_bar_container';
-import SongCardIndex from '../containers/song_card_index_container';
+import SongCardIndex from '../small_components/song_card_index';
 
 export default class UserShow extends Component {
   constructor(props) {
