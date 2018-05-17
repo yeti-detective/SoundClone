@@ -7,23 +7,6 @@
     display: flex;
     justify-content: space-between;
 
-    .play-this-song {
-      position: absolute;
-      left: 240px;
-      top: 50px;
-      height: 100px;
-      width: 100px;
-      border-radius: 50%;
-      padding-left: 30px;
-
-      .play {
-        height: 0;
-        width: 0;
-        border-left: 50px solid #fff;
-        border-top: 25px solid transparent;
-        border-bottom: 25px solid transparent;
-      }
-    }
   }
 
   .song-info-box {
