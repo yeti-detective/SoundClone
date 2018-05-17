@@ -102,7 +102,7 @@
     display: table;
   }
 
-  .play-queue:hover {
+  .play-queue:hover, .play-queue.show-queue {
     display: table
   }
 
@@ -112,6 +112,7 @@
     right: 50px;
     list-style: none;
     display: none;
+    background: #fff;
 
     h3 {
       border: 1px solid #ccc;
@@ -119,6 +120,7 @@
       font-weight: 300;
       margin: 0;
     }
+
   }
 
   .queue {

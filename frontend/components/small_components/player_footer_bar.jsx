@@ -10,7 +10,8 @@ export default class PlayerFooterBar extends Component {
       duration: 0.0,
       isPlaying: false,
       playQueue: [this.props.currentSong],
-      playedQueue: []
+      playedQueue: [],
+      showQueue: false
     };
 
     this.play = this.play.bind(this);
@@ -21,6 +22,7 @@ export default class PlayerFooterBar extends Component {
     this.isPlaying = this.isPlaying.bind(this);
     this.addCurrentSongToQueue = this.addCurrentSongToQueue.bind(this);
     this.songEnded = this.songEnded.bind(this);
+    this.showQueue = this.showQueue.bind(this);
   }
 
   componentDidMount() {
@@ -39,13 +41,19 @@ export default class PlayerFooterBar extends Component {
   }
 
   addCurrentSongToQueue() {
+    let play = false;
     let newQueue = Object.assign([], this.state.playQueue);
     if (emptyOb(newQueue[0])) {
       newQueue.shift();
+      play = true;
     }
     newQueue.push(this.props.currentSong);
     this.setState({
       playQueue: newQueue
+    }, () => {
+      if (play) {
+        this.audio.play();
+      }
     });
   }
 
@@ -94,6 +102,12 @@ export default class PlayerFooterBar extends Component {
     this.audio.play();
     this.setState({
       isPlaying: true
+    });
+  }
+
+  showQueue () {
+    this.setState({
+      showQueue: !this.state.showQueue
     });
   }
 
@@ -161,8 +175,8 @@ export default class PlayerFooterBar extends Component {
           <progress value={Math.round(currentTime / duration * 100)} max={100} />
           {isNaN(duration) ? 0.0 : Math.round(duration * 100) / 100}
         </nav>
-        <ul className="song-info">
-          <PlayQueue songs={this.state.playQueue} />
+        <ul onClick={this.showQueue} className="song-info">
+          <PlayQueue show={this.state.showQueue} songs={this.state.playQueue} />
           <img src={this.state.playQueue[0].image_url} />
           <p className="title">{this.state.playQueue[0].title}</p>
           <p className="artist">{

@@ -4,7 +4,7 @@ import QueueCard from './queue_card';
 const PlayQueue = (props) => {
 
   return (
-    <ul className="play-queue">
+    <ul className={`play-queue ${props.show ? 'show-queue' : null}`}>
       <h3>Next Up</h3>
       {
         props.songs.map ((song) => {
