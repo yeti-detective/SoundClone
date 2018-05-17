@@ -57,5 +57,5 @@ export const getSongBadges = () => dispatch => {
   return (
     SongsAPI.getSongBadges()
       .then((payload) => dispatch(getBadges(payload)))
-  )
-}
+  );
+};
