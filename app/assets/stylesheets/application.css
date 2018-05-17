@@ -26,12 +26,14 @@ html, body {
 body {
   background: #f3f3f2;
   font-family: 'Gothic A1', sans-serif;
+  padding-bottom: 50px;
 }
 
 .app {
   background: #fff;
   width: 90%;
   margin: auto;
+  margin-bottom: 60px;
 }
 
 button {
