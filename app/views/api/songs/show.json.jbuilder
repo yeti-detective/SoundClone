@@ -7,9 +7,6 @@ json.song do
       song_file = asset_path(@song.song_file.url)
     end
     json.file_path song_file
-    json.comments do
-      json.array!(@song.comments.map(&:id))
-    end
   end
 end
 json.songs do
