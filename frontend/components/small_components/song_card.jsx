@@ -4,7 +4,10 @@ import SongCardToolTip from './song_card_tool_tip';
 import FaComment from 'react-icons/lib/fa/comment';
 
 const SongCard = (props) => {
-
+  let numComments = null;
+  if (props.song.comments) {
+    numComments = props.song.comments.length;
+  }
   return (
     <div className="song-card">
       <Link
@@ -19,7 +22,7 @@ const SongCard = (props) => {
         <p>
           {props.song.title}
         </p>
-        <FaComment />{props.song.comments.length}
+        <FaComment />{numComments}
       </Link>
     </div>
   );

@@ -8,7 +8,8 @@ import CommentCardIndex from '../small_components/comment_card_index';
 const mapStateToProps = ( state, ownProps ) => {
   const comments = listifySliceOfState(state.entities.comments);
   return ({
-      comments: comments
+      comments: comments,
+      users: state.entities.users
   });
 };
 

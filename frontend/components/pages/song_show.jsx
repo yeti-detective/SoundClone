@@ -50,7 +50,6 @@ export default class SongShow extends Component {
           </section>
           <section>
             <CommentCardIndex
-              author={this.props.users[this.props.match.params.userId]}
               song={this.props.songs[this.props.match.params.songId]}
               />
           </section>
