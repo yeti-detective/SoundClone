@@ -10,3 +10,7 @@ export const getSong = (id) => (
 export const getUsersSongs = id => (
   $.ajax(`/api/users/${id}/songs`)
 );
+
+export const getSongBadges = () => (
+  $.ajax('api/songs/badges')
+);

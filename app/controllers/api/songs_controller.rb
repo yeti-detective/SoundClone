@@ -21,6 +21,11 @@ class Api::SongsController < ApplicationController
     @songs = Song.where(user_id: @user.id)
   end
 
+  def badge_index
+    @songs = Song.all
+    @users = User.all
+  end
+
   private
   def song_params
     params.require(:song).permit(:title, :song_file, :image)

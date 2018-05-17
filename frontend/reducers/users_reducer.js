@@ -2,7 +2,7 @@ import merge from 'lodash/merge';
 
 import { RECEIVE_CURRENT_USER } from '../actions/session_actions';
 import { RECEIVE_USER, RECEIVE_USERS, REMOVE_USER } from '../actions/users_actions';
-import { RECEIVE_SONG } from '../actions/songs_actions';
+import { RECEIVE_SONG, RECEIVE_BADGES } from '../actions/songs_actions';
 
 const usersReducer = (state = {}, action) => {
   Object.freeze(state);
@@ -14,8 +14,9 @@ const usersReducer = (state = {}, action) => {
     case RECEIVE_USERS:
       return merge({}, state, action.users);
     case RECEIVE_SONG:
-      // debugger
       return merge({}, state, action.song.user);
+    case RECEIVE_BADGES:
+      return merge({}, state, action.payload.users);
     default:
       return state;
   }
