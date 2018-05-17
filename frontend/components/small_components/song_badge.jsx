@@ -8,7 +8,7 @@ const SongBadge = (props) => (
     <img src={props.song.image_url} />
     <h3>{props.song.title}</h3>
     <h4>{props.user}</h4>
-    <FAComment className="comment-icon" />{props.song.comments.length}
+    <FaComment className="comment-icon" />{props.song.comments.length}
     </Link>
   </figure>
 );
