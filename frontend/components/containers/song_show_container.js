@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import React from 'react';
 // import { withRouter } from 'react-router-dom';
-import { getSong, getUsersSongs, getCurrentSong } from '../../actions/songs_actions';
+import { getSong, getUsersSongs } from '../../actions/songs_actions';
 import { getUser } from '../../actions/users_actions';
 import SongShow from '../pages/song_show';
 
@@ -15,8 +15,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    getSong: (id) => dispatch(getSong(id)),
-    getCurrentSong: () => dispatch(getCurrentSong(ownProps.match.params.songId))
+    getSong: (id) => dispatch(getSong(id))
   };
 };
 

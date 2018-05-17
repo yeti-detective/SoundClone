@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import UserHeaderBar from '../containers/user_header_bar_container';
 import listifySliceOfState from '../../util/listify_slice_of_state';
 import SongCardIndex from '../containers/song_card_index_container';
+import GetCurrentSongButton from '../containers/get_current_song_button_container';
 
 export default class SongShow extends Component {
   constructor(props) {
@@ -39,12 +40,7 @@ export default class SongShow extends Component {
                   <h3 className="artist-name">{this.props.users[this.props.songs[this.props.thisSongId].user_id].username}</h3>
                 </Link>
               ) : null }
-              <button
-                className="play-this-song"
-                onClick={this.props.getCurrentSong}
-                >
-                <div className="play" />
-              </button>
+              <GetCurrentSongButton song={this.props.songs[this.props.thisSongId]} />
             </div>
             </section>
           <section className="song-cousins">
