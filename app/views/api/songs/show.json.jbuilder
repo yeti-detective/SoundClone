@@ -1,3 +1,4 @@
+users = []
 json.song do
   json.set! @song.id do
     json.partial! 'song.json.jbuilder', song: @song
@@ -27,6 +28,14 @@ json.comments do
   @comments.each do |comment|
     json.set! comment.id do
       json.partial! 'api/comments/comment', comment: comment
+      users.push comment.user
+    end
+  end
+end
+json.users do
+  users.each do |user|
+    json.set! user.id do
+      json.partial! 'api/users/user', user: user
     end
   end
 end

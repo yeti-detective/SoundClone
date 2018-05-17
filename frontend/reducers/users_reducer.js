@@ -14,7 +14,8 @@ const usersReducer = (state = {}, action) => {
     case RECEIVE_USERS:
       return merge({}, state, action.users);
     case RECEIVE_SONG:
-      return merge({}, state, action.song.user);
+      const newState = merge({}, state, action.song.users);
+      return merge({}, newState, action.song.user);
     case RECEIVE_BADGES:
       return merge({}, state, action.payload.users);
     default:
