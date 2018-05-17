@@ -9,7 +9,7 @@ const SongCard = (props) => {
     numComments = props.song.comments.length;
   }
   return (
-    <div className="song-card">
+    <div className="song-card" onClick={() => { props.getSong(props.song.id); }}>
       <Link
         className="song-card-link"
          to={`/users/${props.song.user_id}/${props.song.id}`}

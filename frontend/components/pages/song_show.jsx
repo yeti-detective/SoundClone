@@ -9,7 +9,6 @@ import CommentCardIndex from '../containers/comment_card_index_container';
 export default class SongShow extends Component {
   constructor(props) {
     super(props);
-    this.newSong = this.newSong.bind(this);
   }
 
   componentDidMount() {
@@ -17,9 +16,6 @@ export default class SongShow extends Component {
     window.scrollTo(0, 0);
   }
 
-  newSong (song) {
-    this.props.getSong(song.id);
-  }
 
   render () {
     if (this.props.songs[this.props.thisSongId]) {
@@ -44,14 +40,14 @@ export default class SongShow extends Component {
               <GetCurrentSongButton song={this.props.songs[this.props.thisSongId]} />
             </div>
             </section>
-          <section className="song-cousins">
-            <h2>More by this user:</h2>
-            <SongCardIndex songs={listifySliceOfState(this.props.songs)} />
-          </section>
           <section>
-            <CommentCardIndex
-              song={this.props.songs[this.props.match.params.songId]}
-              />
+            <h2>More by this user:</h2>
+            <section className="song-cousins">
+              <SongCardIndex songs={listifySliceOfState(this.props.songs)} />
+              <CommentCardIndex
+                song={this.props.songs[this.props.match.params.songId]}
+                />
+            </section>
           </section>
         </main> );
     } else {
