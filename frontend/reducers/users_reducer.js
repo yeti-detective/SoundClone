@@ -2,6 +2,7 @@ import merge from 'lodash/merge';
 
 import { RECEIVE_CURRENT_USER } from '../actions/session_actions';
 import { RECEIVE_USER, RECEIVE_USERS, REMOVE_USER } from '../actions/users_actions';
+import { RECEIVE_SONG } from '../actions/songs_actions';
 
 const usersReducer = (state = {}, action) => {
   Object.freeze(state);
@@ -16,6 +17,8 @@ const usersReducer = (state = {}, action) => {
       newState = merge({}, state);
       delete newState[action.userId];
       return newState;
+    case RECEIVE_SONG:
+      return merge({}, state, action.user);
     default:
       return state;
   }
