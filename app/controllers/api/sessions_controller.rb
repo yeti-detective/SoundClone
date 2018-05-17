@@ -15,6 +15,7 @@ class Api::SessionsController < ApplicationController
 
   def destroy
     @user = current_user
+    @songs = Song.where(user_id: @user.id)
     sign_out
     render 'api/users/show'
   end
