@@ -4,6 +4,7 @@ import UserHeaderBar from '../containers/user_header_bar_container';
 import listifySliceOfState from '../../util/listify_slice_of_state';
 import SongCardIndex from '../containers/song_card_index_container';
 import GetCurrentSongButton from '../containers/get_current_song_button_container';
+import CommentCardIndex from '../containers/comment_card_index_container';
 
 export default class SongShow extends Component {
   constructor(props) {
@@ -46,6 +47,12 @@ export default class SongShow extends Component {
           <section className="song-cousins">
             <h2>More by this user:</h2>
             <SongCardIndex songs={listifySliceOfState(this.props.songs)} />
+          </section>
+          <section>
+            <CommentCardIndex
+              author={this.props.users[this.props.match.params.userId]}
+              song={this.props.songs[this.props.match.params.songId]}
+              />
           </section>
         </main> );
     } else {

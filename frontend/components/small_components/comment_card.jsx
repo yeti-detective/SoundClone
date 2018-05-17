@@ -1,11 +1,14 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const CommentCard = props => {
   return (
-    <article>
+    <li>
       <p>{props.comment.body}</p>
-      <h4>{props.comment.author}</h4>
-    </article>
+      <Link to={`/users/${props.author.id}`}>
+        <h4>{props.author.username}</h4>
+      </Link>
+    </li>
   );
 };
 

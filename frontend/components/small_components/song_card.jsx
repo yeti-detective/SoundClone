@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import SongCardToolTip from './song_card_tool_tip';
+import FaComment from 'react-icons/lib/fa/comment';
 
 const SongCard = (props) => {
 
@@ -18,6 +19,7 @@ const SongCard = (props) => {
         <p>
           {props.song.title}
         </p>
+        <FaComment />{props.song.comments.length}
       </Link>
     </div>
   );
