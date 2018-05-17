@@ -5,7 +5,7 @@ const commentsReducer = ( state = {}, action ) => {
   Object.freeze(state);
   switch(action.type) {
     case RECEIVE_SONG:
-      return merge({}, state, action.comments);
+      return merge({}, state, action.song.comments);
     default:
       return state;
   }

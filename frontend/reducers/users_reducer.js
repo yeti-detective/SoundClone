@@ -10,15 +10,12 @@ const usersReducer = (state = {}, action) => {
     case RECEIVE_CURRENT_USER:
       return merge({}, state, { [action.currentUser.id]: action.currentUser });
     case RECEIVE_USER:
-      return merge({}, state, {[action.user.id]: action.user});
+      return merge({}, state, {[action.user.user.id]: action.user.user});
     case RECEIVE_USERS:
       return merge({}, state, action.users);
-    case REMOVE_USER:
-      newState = merge({}, state);
-      delete newState[action.userId];
-      return newState;
     case RECEIVE_SONG:
-      return merge({}, state, action.user);
+      // debugger
+      return merge({}, state, action.song.user);
     default:
       return state;
   }

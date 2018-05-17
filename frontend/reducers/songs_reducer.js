@@ -7,7 +7,8 @@ const songsReducer = (state = {}, action) => {
   Object.freeze(state);
   switch(action.type) {
     case RECEIVE_SONG:
-      return merge({}, state, action.song);
+      let newState = merge({}, action.song.song, action.song.songs);
+      return merge({}, state, newState);
     case RECEIVE_SONGS:
       return merge({}, state, action.songs);
     case RECEIVE_USER:
