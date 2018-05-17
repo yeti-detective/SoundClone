@@ -5,6 +5,7 @@ const GetCurrentSongButton = props => {
     <button
       className="play-this-song"
       onClick={() => { props.getCurrentSong(props.song.id); }}
+      title="add to currently playing"
       >
       <div className="play" />
     </button>
