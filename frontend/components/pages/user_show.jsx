@@ -5,18 +5,11 @@ import SongCardIndex from '../containers/song_card_index_container';
 export default class UserShow extends Component {
   constructor(props) {
     super(props);
-    this.newSong = this.newSong.bind(this);
   }
 
   componentDidMount() {
-
-    this.props.getUser()
-      .then(this.props.getUsersSongs());
+    this.props.getUser();
     window.scrollTo(0, 0);
-  }
-
-  newSong (song) {
-    this.props.getSong(song.id);
   }
 
   render () {
