@@ -12,7 +12,7 @@ const songsReducer = (state = {}, action) => {
     case RECEIVE_SONGS:
       return merge({}, state, action.songs);
     case RECEIVE_USER:
-      return merge({}, state, action.songs);
+      return merge({}, state, action.user.songs);
     case RECEIVE_BADGES:
       return merge({}, state, action.payload.songs);
     default:
