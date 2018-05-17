@@ -15,8 +15,6 @@ import { Link, withRouter } from 'react-router-dom';
 import LogInModal from '../containers/login_form_container';
 import SignUpModal from '../containers/signup_form_container';
 
-// class fakeNotifications = [1, 2, 3, 4];
-
 
 class UserHeaderBar extends Component {
   constructor (props) {
@@ -30,7 +28,7 @@ class UserHeaderBar extends Component {
   }
 
   componentDidMount() {
-    if (!Object.keys(this.props.currentUser).length) {
+    if (!this.props.currentUser.id) {
       this.props.getUser(this.props.currentUserId);
     }
   }
