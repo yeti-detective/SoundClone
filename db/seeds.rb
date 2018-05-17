@@ -7,6 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 User.destroy_all
 Song.destroy_all
+Comment.destroy_all
 User.create({username: 'GuestUser', password: 'starwars'})
 
 10.times do
@@ -17,4 +18,10 @@ USER_IDS = User.all.map { |user| user.id }
 
 25.times do
   Song.create({title: Faker::HitchhikersGuideToTheGalaxy.specie, user_id: USER_IDS.sample})
+end
+
+SONG_IDS = Song.all.map { |song| song.id }
+
+50.times do
+  Comment.create({body: Faker::Hipster.sentence, user_id: USER_IDS.sample, song_id: SONG_IDS.sample})
 end
