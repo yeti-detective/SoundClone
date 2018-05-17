@@ -5,10 +5,7 @@ const SongCardIndex = props => {
   return (
     <div className="song-card-index">
       {props.songs.map((song) => {
-        if (!song.id) {
-          song.id = 1;
-        }
-        return <SongCard key={song.id} song={song} getCurrentSong={props.getCurrentSong} />;
+        return <SongCard key={song.id || 1} song={song} getCurrentSong={props.getCurrentSong} />;
       })}
     </div>
   );
