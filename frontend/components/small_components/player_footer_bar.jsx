@@ -82,24 +82,6 @@ export default class PlayerFooterBar extends Component {
     }
   }
 
-  getSong(song) {
-    this.setState({
-      currentSong: song
-    });
-  }
-
-  isPlaying() {
-    if (this.audio.duration > 0 && !this.audio.paused) {
-      this.setState({
-        isPlaying: true
-      });
-    } else {
-      this.setState({
-        isPlaying: false
-      });
-    }
-  }
-
   currentSongImage () {
     if (this.state.playQueue.length) {
       return (
@@ -117,6 +99,34 @@ export default class PlayerFooterBar extends Component {
   currentSongFilePath () {
     if (this.state.playQueue.length) {
       return this.state.playQueue[0].file_path;
+    }
+  }
+
+  getSong(song) {
+    this.setState({
+      currentSong: song
+    });
+  }
+
+  getTime(seconds) {
+    // debugger
+    if (isNaN(seconds)) {
+      return "00:00:00";
+    }
+    let time = new Date(null);
+    time.setSeconds(seconds);
+    return time.toISOString().substr(11, 8);
+  }
+
+  isPlaying() {
+    if (this.audio.duration > 0 && !this.audio.paused) {
+      this.setState({
+        isPlaying: true
+      });
+    } else {
+      this.setState({
+        isPlaying: false
+      });
     }
   }
 
@@ -177,6 +187,7 @@ export default class PlayerFooterBar extends Component {
   }
 
   render () {
+    // debugger
     const duration = this.audio ? this.audio.duration : 0;
     const currentTime = this.audio ? this.audio.currentTime : 0;
 
@@ -200,9 +211,9 @@ export default class PlayerFooterBar extends Component {
           </button>
         </ul>
         <nav className="slider">
-          {Math.round(currentTime)}
+          {this.getTime(currentTime)}
           <progress value={Math.round(currentTime / duration * 100)} max={100} />
-          {isNaN(duration) ? 0.0 : Math.round(duration)}
+          {this.getTime(duration)}
         </nav>
         <ul onClick={this.showQueue} className="song-info">
           { this.currentSongImage() }
