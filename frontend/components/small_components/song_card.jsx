@@ -6,7 +6,7 @@ import GetCurrentSongButton from '../containers/get_current_song_button_containe
 const SongCard = (props) => {
   let numComments = null;
   if (props.song.comments) {
-    numComments = props.song.comments.length;
+    numComments = new Set(props.song.comments);
   }
   return (
     <div className="song-card" onClick={() => { props.getSong(props.song.id); }}>
@@ -21,7 +21,7 @@ const SongCard = (props) => {
         <p>
           {props.song.title}
         </p>
-        <FaComment />{numComments}
+        <FaComment />{numComments.size}
       </Link>
     </div>
   );
