@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     post '/upload/avatar', to: 'users#avatar'
 
     get '/songs/badges', to: 'songs#badge_index'
-
+    get '/songs/:songId/comments', to: 'songs#get_comments'
 
     resource :sessions, only: [:create, :destroy, :show]
 

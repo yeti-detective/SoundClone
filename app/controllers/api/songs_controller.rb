@@ -26,6 +26,10 @@ class Api::SongsController < ApplicationController
     @users = User.all
   end
 
+  def get_comments
+    @song = Song.where(id: params[:songId]).includes(:comments)
+  end
+
   private
   def song_params
     params.require(:song).permit(:title, :song_file, :image)
