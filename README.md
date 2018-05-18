@@ -21,11 +21,10 @@ Don't actually contribute to this project. That would technically be doing my ho
 ***
 ***
 
-useful link, courtesy of [Josh](https://github.com/joshmleslie): [paperclip gem](https://github.com/appacademy/curriculum/tree/master/full-stack-project/resources/cdns/file_upload_demo)
-
-useful link, courtesy of Maya: [React Icons](https://gorangajic.github.io/react-icons/fa.html)
+useful links,
+* [paperclip gem](https://github.com/appacademy/curriculum/tree/master/full-stack-project/resources/cdns/file_upload_demo)
+* [React Icons](https://gorangajic.github.io/react-icons/fa.html)
+* [pg_search](https://medium.com/@leighsn/simple-pg-search-example-postgresql-for-your-heroku-rails-app-f218127663bb)
 
 
 bugtracking -> [here](./bugtracking.md)
-
-[pg_search](https://medium.com/@leighsn/simple-pg-search-example-postgresql-for-your-heroku-rails-app-f218127663bb)
