@@ -4,6 +4,10 @@ class Api::SongsController < ApplicationController
     @song = Song.new(song_params)
     @song.user = user
     if @song.save
+      # TODO: probably clean this up
+      @comments = Comment.where(song_id: @song.id).includes(:user)
+      @user = @song.user
+      @songs = Song.where(user_id: @user.id)
       render :show
     else
       render json: @song.errors.full_messages, status: 422
