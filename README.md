@@ -1,4 +1,4 @@
-# SoundClone by Chris B
+# SoundClone by [Chris B](http://www.motomorphosis-ind.com/)
 App Academy, March 2018 cohort, full stack project.
 
 
