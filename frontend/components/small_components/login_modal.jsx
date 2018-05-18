@@ -20,7 +20,9 @@ class LoginModal extends Component {
 
   close() {
     return () => {
-      // TODO: fix this, see lines 47, 59, 106
+
+      // TODO: fix this, see lines 47 60 107
+
       this.props.close(null);
     };
   }

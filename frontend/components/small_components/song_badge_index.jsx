@@ -7,15 +7,14 @@ export default class SongBadgeIndex extends Component {
   }
 
   render () {
+    let songs;
     if (this.props.songs.length > 0) {
-      const songs = this.props.songs.sort((a, b) => {
-        const aDate = new Date(a.created_at);
-        const bDate = new Date(b.created_at);
-        return bDate > aDate;
+      songs = this.props.songs.sort((a, b) => {
+        return b.id - a.id;
       });
       return (
         <section className="song-badge-index">
-          {this.props.songs.map((song) => {
+          {songs.map((song) => {
             return (
               <SongBadge
                 key={song.id}
