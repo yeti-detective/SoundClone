@@ -20,7 +20,7 @@ class LoginModal extends Component {
 
   close() {
     return () => {
-      // TODO: fix this
+      // TODO: fix this, see lines 47 60 107
       this.props.close(null);
     };
   }
@@ -43,12 +43,13 @@ class LoginModal extends Component {
       this.props.processForm({
         username: this.state.username,
         password: this.state.password
-      }).then(null, (err)=> {
+      }).then(() => {
+        this.close()();
+      }, (err)=> {
         this.setState({
           loginErrors: err.responseJSON
         });
       });
-      this.close()();
     }
   }
 
