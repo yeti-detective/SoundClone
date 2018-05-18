@@ -13,7 +13,7 @@ export default class Stream extends Component {
   componentDidMount() {
     this.props.getUsers();
     this.props.getSongs();
-    
+
     window.scrollTo(0, 0);
   }
 
@@ -24,7 +24,8 @@ export default class Stream extends Component {
   render() {
     let songs;
     if (this.props.songs.length > 1) {
-      songs = this.props.songs.map((song) => {
+      songs = this.props.songs.sort((a, b) => { return b.id - a.id; });
+      songs = songs.map((song) => {
         return (
           <SongBadgeCard
             key={song.id}
