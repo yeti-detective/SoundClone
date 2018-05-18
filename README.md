@@ -1,4 +1,4 @@
-# [SoundClone](http://chris-b-soundclone.herokuapp.com/) by [Chris B](http://www.motomorphosis-ind.com/)
+# [SoundClone](http://chris-b-soundclone.herokuapp.com/) by <a href="http://www.motomorphosis-ind.com/" target="_blank">Chris B"</a>
 *App Academy, March 2018 cohort, full stack project.*
 ***
 ## SoundClone is my attempt to mimic the functionality of the popular social song-sharing website [SoundCloud](https;//soundcloud.com)
