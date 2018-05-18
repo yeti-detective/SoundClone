@@ -9,3 +9,6 @@
 | 5.17.18 | ?? | an ajax call is being fired to /api/users/undefined resulting in a 404 error in the Javascript console |
 | 5.17.18 | ?? | after cleaning up reducers, the above bug is now only occurring when loading the user show page. |
 | 5.17.18 | player_footer_bar.jsx | when final song in queue finishes playing, it is added back to the queue and plays again, appending itself to the playedQueue many times unless it is manually paused. |
+| 5.17.18 | player_footer_bar.jsx | above issue is intrinsic to my code. A refactor is required to resolve it |
+| 5.17.18 | song/show.json.jbuilder | songs are entering state with doubled-up comment arrays (e.g. [5, 8, 5, 8]) |
+| 5.17.18 | song/show.json.jbuilder | refreshed page and above issue did not persist (???) |
