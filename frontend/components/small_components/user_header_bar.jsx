@@ -20,11 +20,14 @@ class UserHeaderBar extends Component {
   constructor (props) {
     super(props);
     this.state = {
-      modal: false
+      modal: false,
+      searchText: ''
     };
     this.whichForm = this.whichForm.bind(this);
     this.logout = this.logout.bind(this);
     this.toggleModal = this.toggleModal.bind(this);
+    this.updateSearch = this.updateSearch.bind(this);
+    this.submitSearch = this.submitSearch.bind(this);
   }
 
   componentDidMount() {
@@ -39,15 +42,9 @@ class UserHeaderBar extends Component {
     });
   }
 
-  whichForm(choose) {
-    switch (choose) {
-      case 'login':
-        return <LogInModal close={this.toggleModal()} />;
-      case 'signup':
-        return <SignUpModal close={this.toggleModal()} />;
-      default:
-        return null;
-    }
+  submitSearch (e) {
+    e.preventDefault();
+    window.open(`https://google.com/search?q=${encodeURI(this.state.searchText)}`);
   }
 
   toggleModal(choose) {
@@ -58,6 +55,23 @@ class UserHeaderBar extends Component {
     };
   }
 
+  updateSearch (e) {
+    this.setState({
+      searchText: e.target.value
+    });
+  }
+
+  whichForm(choose) {
+    switch (choose) {
+      case 'login':
+      return <LogInModal close={this.toggleModal()} />;
+      case 'signup':
+      return <SignUpModal close={this.toggleModal()} />;
+      default:
+      return null;
+    }
+  }
+
   render () {
     return (
 
@@ -66,7 +80,7 @@ class UserHeaderBar extends Component {
         <header className="user-header-bar">
           <div className="big-hugs">
             <ul className="header-wrapper-daddy">
-              <Link to='/'>
+              <Link className="cloud-icon" to='/'>
                 <li className="logo-hugger header-wrapper">
                   <SoundCloud size={45} className="sc-logo"/>
                 </li>
@@ -77,15 +91,26 @@ class UserHeaderBar extends Component {
               <li className="header-wrapper">
                 <Link to={`/users/${this.props.currentUserId}`}>Collection</Link>
               </li>
-              <section className="header-wrapper-daddy header-middle">
-                <div className="header-wrapper search-wrapper">
-                  <input className="header-search" type="search" placeholder="Search" />
+            </ul>
+            <section className="header-wrapper-daddy header-middle">
+              <div className="header-wrapper search-wrapper">
+                <form
+                  className="search-wrapper header-wrapper"
+                  onSubmit={this.submitSearch}
+                  >
+                  <input
+                    className="header-search"
+                    type="search"
+                    placeholder="Search"
+                    value={this.state.searchText}
+                    onChange={this.updateSearch}
+                    />
                   <button className="header-search search-button">
                     <Search id="magnifyingGlass" size={15} />
                   </button>
-                </div>
-              </section>
-            </ul>
+                </form>
+              </div>
+            </section>
             <nav className="header-wrapper-right">
               <ul>
                 <li className="header-wrapper">
