@@ -118,6 +118,14 @@ export default class PlayerFooterBar extends Component {
     return time.toISOString().substr(11, 8);
   }
 
+  hide() {
+    if (this.state.currentSong === undefined) {
+      return {display: "none"};
+    } else {
+      return {display: "flex"};
+    }
+  }
+
   isPlaying() {
     if (this.audio.duration > 0 && !this.audio.paused) {
       this.setState({
@@ -187,12 +195,11 @@ export default class PlayerFooterBar extends Component {
   }
 
   render () {
-    // debugger
     const duration = this.audio ? this.audio.duration : 0;
     const currentTime = this.audio ? this.audio.currentTime : 0;
-
+    debugger
     return (
-      <footer className="player-footer-bar">
+      <footer className="player-footer-bar" style={this.hide()}>
         <audio
           src={this.currentSongFilePath()}
           ref={(el) => { this.audio = el; }}
