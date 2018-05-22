@@ -119,7 +119,7 @@ export default class PlayerFooterBar extends Component {
   }
 
   hide() {
-    if (this.state.currentSong === undefined) {
+    if (emptyOb(this.props.currentSong)) {
       return {display: "none"};
     } else {
       return {display: "flex"};
