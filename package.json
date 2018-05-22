@@ -26,8 +26,8 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "postinstall": "webpack --mode=production",
-    "watch": "webpack --mode=development --watch"
+    "postinstall": "webpack --config webpack.prod.js --mode=production",
+    "watch": "webpack --config webpack.dev.js --mode=development --watch"
   },
   "repository": {
     "type": "git",
@@ -44,6 +44,8 @@
   "homepage": "https://github.com/yeti-detective/SoundClone#readme",
   "devDependencies": {
     "redux-logger": "^3.0.6",
-    "webpack-cli": "^2.1.3"
+    "uglifyjs-webpack-plugin": "^1.2.5",
+    "webpack-cli": "^2.1.3",
+    "webpack-merge": "^4.1.2"
   }
 }
