@@ -34,7 +34,7 @@ class UserHeaderBar extends Component {
 
   componentDidMount() {
     if (this.props.currentUser.id) {
-      this.props.getUser(this.props.currentUserId);
+      this.props.getUser(this.props.currentUser.id);
     }
   }
 
@@ -114,7 +114,7 @@ class UserHeaderBar extends Component {
                 <Link to='/'>Home</Link>
               </li>
               <li className="header-wrapper">
-                <Link to={`/users/${this.props.currentUserId}`}>Collection</Link>
+                <Link to={`/users/${this.props.currentUser.id}`}>Collection</Link>
               </li>
             </ul>
             <section className="header-wrapper-daddy header-middle">
