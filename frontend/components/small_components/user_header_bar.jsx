@@ -12,6 +12,8 @@ import DownAngle from 'react-icons/lib/fa/angle-down';
 import ThreeDots from 'react-icons/lib/io/android-more-horizontal';
 import { Link, withRouter } from 'react-router-dom';
 
+import emptyOb from '../../util/empty_ob';
+
 import LogInModal from '../containers/login_form_container';
 import SignUpModal from '../containers/signup_form_container';
 
@@ -40,6 +42,29 @@ class UserHeaderBar extends Component {
     this.props.logout().then(()=> {
       this.props.history.push('/');
     });
+  }
+
+  noCurrentUser() {
+    if (emptyOb(this.props.currentUser)) {
+      return (
+        <li
+          className="header-wrapper three-dots"
+          onClick={this.toggleModal('signup')}
+          >
+          <span className="temp-logout-icon">Sign Up</span>
+        </li>
+      )
+    } else {
+      return (
+        <li className="header-wrapper logo-wrapper">
+          <div>
+            <img className="user-logo-sm" src={this.props.currentUser.icon_url} />
+            <p><span><Link to={`users/${this.props.currentUser.id}`}>{this.props.currentUser.username}</Link></span></p>
+            <DownAngle className="down-angle" size={15} />
+          </div>
+        </li>
+      )
+    }
   }
 
   submitSearch (e) {
@@ -119,13 +144,7 @@ class UserHeaderBar extends Component {
                 <li className="header-wrapper">
                   <Link to="/upload">Upload</Link>
                 </li>
-                <li className="header-wrapper logo-wrapper">
-                  <div>
-                    <img className="user-logo-sm" src={this.props.currentUser.icon_url} />
-                    <p><span><Link to={`users/${this.props.currentUser.id}`}>{this.props.currentUser.username}</Link></span></p>
-                    <DownAngle className="down-angle" size={15} />
-                  </div>
-                </li>
+                { this.noCurrentUser() }
                 <li className="header-wrapper">
                   <Bell size={17} />
                 </li>
