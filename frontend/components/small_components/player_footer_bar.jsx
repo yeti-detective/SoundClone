@@ -109,7 +109,6 @@ export default class PlayerFooterBar extends Component {
   }
 
   getTime(seconds) {
-    // debugger
     if (isNaN(seconds)) {
       return "00:00:00";
     }
@@ -197,7 +196,6 @@ export default class PlayerFooterBar extends Component {
   render () {
     const duration = this.audio ? this.audio.duration : 0;
     const currentTime = this.audio ? this.audio.currentTime : 0;
-    debugger
     return (
       <footer className="player-footer-bar" style={this.hide()}>
         <audio
