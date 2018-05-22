@@ -1,8 +1,12 @@
 const emptyOb = (ob) => {
-  if (Object.keys(ob).length === 0) {
-    return true;
+  if (ob) {
+    if (Object.keys(ob).length === 0) {
+      return true;
+    } else {
+      return false;
+    }
   } else {
-    return false;
+    return ob;
   }
 };
 
