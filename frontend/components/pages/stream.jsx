@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import UserHeaderBar from '../containers/user_header_bar_container';
-// import UserIndexCard from '../small_components/user_index_card';
 import SongBadgeCard from '../small_components/song_badge_card';
 
 export default class Stream extends Component {
