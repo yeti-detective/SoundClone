@@ -79,13 +79,13 @@ class LoginModal extends Component {
     let buttonText = 'Sign in';
     let inputField = 'password';
     let inputType = 'password';
-    let placeHolder = 'enter your password';
+    let placeHolder = this.props.formType === 'signup' ? 'choose a password' : 'enter your password';
     let inpValue = this.state.password;
     if (this.state.loginStep < 2) {
       buttonText = 'Continue';
       inputField = 'username';
       inputType = 'text';
-      placeHolder = 'Enter your username';
+      placeHolder = this.props.formType === 'signup' ? 'Choose a username' : 'Enter your username';
       inpValue = this.state.username;
     }
 
