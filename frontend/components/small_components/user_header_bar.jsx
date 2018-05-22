@@ -30,11 +30,28 @@ class UserHeaderBar extends Component {
     this.toggleModal = this.toggleModal.bind(this);
     this.updateSearch = this.updateSearch.bind(this);
     this.submitSearch = this.submitSearch.bind(this);
+    this.collectionLink = this.collectionLink.bind(this);
   }
 
   componentDidMount() {
     if (this.props.currentUser.id) {
       this.props.getUser(this.props.currentUser.id);
+    }
+  }
+
+  collectionLink () {
+    if (emptyOb(this.props.currentUser)) {
+      return (
+        <li className="header-wrapper" onClick={this.toggleModal('login')}>
+          <p>Collection</p>
+        </li>
+      )
+    } else {
+      return (
+        <li className="header-wrapper">
+          <Link to={`/users/${this.props.currentUser.id}`}>Collection</Link>
+        </li>
+      )
     }
   }
 
@@ -113,9 +130,7 @@ class UserHeaderBar extends Component {
               <li className="header-wrapper">
                 <Link to='/'>Home</Link>
               </li>
-              <li className="header-wrapper">
-                <Link to={`/users/${this.props.currentUser.id}`}>Collection</Link>
-              </li>
+              { this.collectionLink() }
             </ul>
             <section className="header-wrapper-daddy header-middle">
               <div className="header-wrapper search-wrapper">

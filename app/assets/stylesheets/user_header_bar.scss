@@ -23,10 +23,11 @@
     display: flex;
   }
 
-  a {
+  a, .header-wrapper p {
     color: #ccc;
     text-decoration: none;
     margin: auto;
+    cursor: pointer;
   }
 
   a.cloud-icon {
