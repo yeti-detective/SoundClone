@@ -4,6 +4,7 @@ export const RECEIVE_SONGS = 'RECEIVE_SONGS';
 export const RECEIVE_SONG = 'RECEIVE_SONG';
 export const RECEIVE_CURRENT_SONG = 'RECEIVE_CURRENT_SONG';
 export const REMOVE_SONG_FROM_QUEUE = 'REMOVE_SONG_FROM_QUEUE';
+export const CLEAR_SONG_QUEUE = 'CLEAR_SONG_QUEUE';
 export const RECEIVE_BADGES = 'RECEIVE_BADGES';
 
 const receiveSongs = songs => ({
@@ -29,6 +30,10 @@ const getBadges = payload => ({
 const removeSong = id => ({
   type: REMOVE_SONG_FROM_QUEUE,
   id
+})
+
+const clearQueue = () => ({
+  type: CLEAR_SONG_QUEUE
 })
 
 export const getSong = id => dispatch => {
@@ -68,4 +73,8 @@ export const getSongBadges = () => dispatch => {
 
 export const removeSongFromQueue = () => dispatch => {
   return (id) => dispatch(removeSong(id))
+}
+
+export const clearSongQueue = () => dispatch => {
+  return () => dispatch(clearQueue())
 }
