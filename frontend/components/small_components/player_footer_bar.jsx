@@ -80,6 +80,8 @@ export default class PlayerFooterBar extends Component {
         this.audio.play();
       });
     }
+    // debugger
+    this.props.previousSong()();
   }
 
   currentSongImage () {
@@ -174,6 +176,7 @@ export default class PlayerFooterBar extends Component {
       this.audio.pause();
       this.audio.currentTime = 0;
     }
+    this.props.nextSong()();
   }
 
   songEnded(e) {
