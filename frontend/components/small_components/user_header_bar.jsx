@@ -153,8 +153,11 @@ class UserHeaderBar extends Component {
             </section>
             <nav className="header-wrapper-right">
               <ul>
-                <li className="header-wrapper">
-                  <Link to="/upsell">Try Pro</Link>
+                <li className="header-wrapper repo-link">
+                  {/* <Link to="/upsell">Try Pro</Link> */}
+                  <a href="https://github.com/yeti-detective/SoundClone">
+                    See the Code
+                  </a>
                 </li>
                 <li className="header-wrapper">
                   <Link to="/upload">Upload</Link>
