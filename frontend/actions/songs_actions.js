@@ -3,6 +3,7 @@ import * as SongsAPI from '../util/songs_api_util';
 export const RECEIVE_SONGS = 'RECEIVE_SONGS';
 export const RECEIVE_SONG = 'RECEIVE_SONG';
 export const RECEIVE_CURRENT_SONG = 'RECEIVE_CURRENT_SONG';
+export const REMOVE_SONG_FROM_QUEUE = 'REMOVE_SONG_FROM_QUEUE';
 export const RECEIVE_BADGES = 'RECEIVE_BADGES';
 
 const receiveSongs = songs => ({
@@ -24,6 +25,11 @@ const getBadges = payload => ({
   type: RECEIVE_BADGES,
   payload
 });
+
+const removeSong = id => ({
+  type: REMOVE_SONG_FROM_QUEUE,
+  id
+})
 
 export const getSong = id => dispatch => {
   return (
@@ -59,3 +65,7 @@ export const getSongBadges = () => dispatch => {
       .then((payload) => dispatch(getBadges(payload)))
   );
 };
+
+export const removeSongFromQueue = () => dispatch => {
+  return (id) => dispatch(removeSong(id))
+}
