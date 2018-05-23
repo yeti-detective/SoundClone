@@ -9,7 +9,7 @@ import Root from './components/root';
 // import * as SessionAPI from './util/session_api_util';
 import { login, signup, logout } from './actions/session_actions';
 import { getUser, getUsers, removeUserFromState } from './actions/users_actions';
-import { getSong, getSongs } from './actions/songs_actions';
+import { getSong, getSongs, removeSongFromQueue, clearSongQueue } from './actions/songs_actions';
 
 document.addEventListener('DOMContentLoaded', () => {
   let store;
@@ -25,15 +25,19 @@ document.addEventListener('DOMContentLoaded', () => {
   store = configureStore();
 }
   // TEST CODE //
-  window.store = store;
-  window.signup = signup;
-  window.login = login;
-  window.logout = logout;
-  window.getUsers = getUsers;
-  window.getUser = getUser;
-  window.getSong = getSong;
-  window.getSongs = getSongs;
-  window.removeUserFromState = removeUserFromState;
+  if (process.env.NODE_ENV !== 'production') {
+    window.store = store;
+    window.signup = signup;
+    window.login = login;
+    window.logout = logout;
+    window.getUsers = getUsers;
+    window.getUser = getUser;
+    window.getSong = getSong;
+    window.getSongs = getSongs;
+    window.removeUserFromState = removeUserFromState;
+    window.removeSongFromQueue = removeSongFromQueue;
+    window.clearSongQueue = clearSongQueue;
+  }
   // END TEST CODE //
 
   ReactDOM.render(<Root store={store} />, document.getElementById('root'));
