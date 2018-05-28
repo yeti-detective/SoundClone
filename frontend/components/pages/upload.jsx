@@ -67,7 +67,9 @@ class Upload extends Component {
     let formData = new FormData();
     formData.append('song[song_file]', this.state.songFile);
     formData.append('song[title]', this.state.songTitle);
-    formData.append('song[image]', this.state.songImage);
+    if (this.state.songImage !== null) {
+      formData.append('song[image]', this.state.songImage);
+    }
     $.ajax({
       method: 'post',
       url: 'api/songs',
