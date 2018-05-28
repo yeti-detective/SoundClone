@@ -16,6 +16,7 @@ import PlayerFooterBar from '../small_components/player_footer_bar';
 const mapStateToProps = state => {
   return {
     currentSong: state.currentSong,
+    songs: state.entities.songs,
     users: state.entities.users,
     playQueue: state.playQueue,
     pointer: state.playQueuePointer

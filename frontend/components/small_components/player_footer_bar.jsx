@@ -45,25 +45,26 @@ export default class PlayerFooterBar extends Component {
     // if props.currentSong is not already in the song queue, add it
     // UNLESS the LAST song in this.state.playedQueue IS this.props.currentSong
     // SPOILER ALERT somtimes the playedQueue is empty
-    if (
-      this.state.playQueue.indexOf(this.props.currentSong) === -1 &&
-      this.state.playQueue.length === 0 ||
-      this.state.playedQueue[this.state.playedQueue.length - 1] !== this.state.playQueue[0]
-    ) {
-      const newQueue = Object.assign([], this.state.playQueue);
-      newQueue.push(this.props.currentSong);
-      let play = false;
-      if (newQueue.length === 1) {
-        play = true;
-      }
-      this.setState({
-        playQueue: newQueue
-      }, () => {
-        if (play) {
-          this.audio.play();
-        }
-      });
-    }
+
+    // if (
+    //   this.state.playQueue.indexOf(this.props.currentSong) === -1 &&
+    //   this.state.playQueue.length === 0 ||
+    //   this.state.playedQueue[this.state.playedQueue.length - 1] !== this.state.playQueue[0]
+    // ) {
+    //   const newQueue = Object.assign([], this.state.playQueue);
+    //   newQueue.push(this.props.currentSong);
+    //   let play = false;
+    //   if (newQueue.length === 1) {
+    //     play = true;
+    //   }
+    //   this.setState({
+    //     playQueue: newQueue
+    //   }, () => {
+    //     if (play) {
+    //       this.audio.play();
+    //     }
+    //   });
+    // }
   }
 
   back() {
@@ -84,13 +85,18 @@ export default class PlayerFooterBar extends Component {
     this.props.previousSong()();
   }
 
+  currentSong () {
+    return this.props.songs[[this.props.playQueue][this.props.pointer]]
+  }
+
   currentSongImage () {
-    if (this.state.playQueue.length) {
+    if (this.props.playQueue.length) {
+      const song = this.currentSong();
       return (
         <div className="song-info">
-          <img src={this.state.playQueue[0].image_url} />
-          <p className="title">{this.state.playQueue[0].title}</p>
-          <p className="artist">{this.props.users[this.state.playQueue[0].user_id].username}</p>
+          <img src={song.image_url} />
+          <p className="title">{song.title}</p>
+          <p className="artist">{this.props.users[song.user_id].username}</p>
         </div>
       );
     } else {
@@ -199,10 +205,12 @@ export default class PlayerFooterBar extends Component {
   render () {
     const duration = this.audio ? this.audio.duration : 0;
     const currentTime = this.audio ? this.audio.currentTime : 0;
+    const song = this.currentSong();
+    debugger
     return (
       <footer className="player-footer-bar" style={this.hide()}>
         <audio
-          src={this.currentSongFilePath()}
+          src={song.file_path}
           ref={(el) => { this.audio = el; }}
           onEnded={this.songEnded}
         />
