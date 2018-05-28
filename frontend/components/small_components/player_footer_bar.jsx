@@ -24,6 +24,7 @@ export default class PlayerFooterBar extends Component {
     this.addCurrentSongToQueue = this.addCurrentSongToQueue.bind(this);
     this.songEnded = this.songEnded.bind(this);
     this.showQueue = this.showQueue.bind(this);
+    this.currentSong = this.currentSong.bind(this);
   }
 
   componentDidMount() {
@@ -81,12 +82,11 @@ export default class PlayerFooterBar extends Component {
         this.audio.play();
       });
     }
-    // debugger
     this.props.previousSong()();
   }
 
   currentSong () {
-    return this.props.songs[[this.props.playQueue][this.props.pointer]]
+    return this.props.songs[[this.props.playQueue][this.props.pointer]] || {};
   }
 
   currentSongImage () {
@@ -206,7 +206,6 @@ export default class PlayerFooterBar extends Component {
     const duration = this.audio ? this.audio.duration : 0;
     const currentTime = this.audio ? this.audio.currentTime : 0;
     const song = this.currentSong();
-    debugger
     return (
       <footer className="player-footer-bar" style={this.hide()}>
         <audio
