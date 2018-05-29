@@ -1,5 +1,4 @@
 import { connect } from 'react-redux';
-import React from 'react'; // is this really needed here? // looks like it's not
 import { getUser } from '../../actions/users_actions';
 import {
   getSong,
@@ -15,7 +14,6 @@ import PlayerFooterBar from '../small_components/player_footer_bar';
 
 const mapStateToProps = state => {
   return {
-    currentSong: state.currentSong,
     songs: state.entities.songs,
     users: state.entities.users,
     playQueue: state.playQueue,

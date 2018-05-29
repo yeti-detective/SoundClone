@@ -9,7 +9,6 @@ export default class PlayerFooterBar extends Component {
       currentTime: 0.0,
       duration: 0.0,
       isPlaying: false,
-      playQueue: [],
       playedQueue: [],
       showQueue: false,
       repeat: false
@@ -21,7 +20,6 @@ export default class PlayerFooterBar extends Component {
     this.skip = this.skip.bind(this);
     this.getSong = this.getSong.bind(this);
     this.isPlaying = this.isPlaying.bind(this);
-    this.addCurrentSongToQueue = this.addCurrentSongToQueue.bind(this);
     this.songEnded = this.songEnded.bind(this);
     this.showQueue = this.showQueue.bind(this);
     this.currentSong = this.currentSong.bind(this);
@@ -37,7 +35,7 @@ export default class PlayerFooterBar extends Component {
   }
 
   componentDidUpdate() {
-    if (this.state.playQueue.indexOf(this.currentSong) < 0 && !emptyOb(this.currentSong) ) {
+    if (this.props.playQueue.indexOf(this.currentSong) < 0 && !emptyOb(this.currentSong) ) {
       this.addCurrentSongToQueue();
     }
   }
@@ -45,7 +43,7 @@ export default class PlayerFooterBar extends Component {
   back() {
     if (this.state.playedQueue.length > 0) {
       this.audio.pause();
-      const newQueue = Object.assign([], this.state.playQueue);
+      const newQueue = Object.assign([], this.props.playQueue);
       const newPlayed = Object.assign([], this.state.playedQueue);
       newQueue.unshift(newPlayed.pop());
       this.setState({
@@ -79,8 +77,8 @@ export default class PlayerFooterBar extends Component {
   }
 
   currentSongFilePath () {
-    if (this.state.playQueue.length) {
-      return this.state.playQueue[0].file_path;
+    if (this.props.playQueue.length) {
+      return this.props.playQueue[0].file_path;
     }
   }
 
@@ -100,7 +98,7 @@ export default class PlayerFooterBar extends Component {
   }
 
   hide() {
-    if (emptyOb(this.currentSong)) {
+    if (emptyOb(this.currentSong())) {
       return {display: "none"};
     } else {
       return {display: "flex"};
@@ -140,8 +138,8 @@ export default class PlayerFooterBar extends Component {
   }
 
   skip() {
-    if (this.state.playQueue.length > 1) {
-      const newQueue = Object.assign([], this.state.playQueue);
+    if (this.props.playQueue.length > 1) {
+      const newQueue = Object.assign([], this.props.playQueue);
       const newPlayed = Object.assign([], this.state.playedQueue);
       this.audio.pause();
       newPlayed.push(newQueue.shift());
@@ -160,7 +158,7 @@ export default class PlayerFooterBar extends Component {
   }
 
   songEnded(e) {
-    const newQueue = Object.assign([], this.state.playQueue);
+    const newQueue = Object.assign([], this.props.playQueue);
     const newPlayed = Object.assign([], this.state.playedQueue);
     let play = true;
     newPlayed.push(newQueue.shift());
@@ -206,7 +204,7 @@ export default class PlayerFooterBar extends Component {
         </nav>
         <ul onClick={this.showQueue} className="song-info">
           { this.currentSongImage() }
-          <PlayQueue show={this.state.showQueue} songs={this.state.playQueue} />
+          <PlayQueue show={this.state.showQueue} songs={this.props.playQueue} />
 
         </ul>
       </footer>
