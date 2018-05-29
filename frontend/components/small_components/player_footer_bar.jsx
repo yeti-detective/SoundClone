@@ -204,7 +204,11 @@ export default class PlayerFooterBar extends Component {
         </nav>
         <ul onClick={this.showQueue} className="song-info">
           { this.currentSongImage() }
-          <PlayQueue show={this.state.showQueue} songs={this.props.playQueue} />
+          <PlayQueue
+            show={this.state.showQueue}
+            songs={this.props.songs}
+            queue={this.props.playQueue}
+            />
 
         </ul>
       </footer>
