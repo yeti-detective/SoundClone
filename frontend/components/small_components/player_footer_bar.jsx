@@ -86,7 +86,7 @@ export default class PlayerFooterBar extends Component {
   }
 
   currentSong () {
-    return this.props.songs[[this.props.playQueue][this.props.pointer]] || {};
+    return this.props.songs[this.props.playQueue[this.props.pointer]] || {};
   }
 
   currentSongImage () {
