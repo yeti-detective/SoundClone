@@ -1,7 +1,7 @@
 import React from 'react';
 import SongPlayer from './song_player';
 import SongBadge from './song_badge';
-import GetCurrentSongButton from '../containers/get_current_song_button_container';
+import GetCurrentSongButton from '../containers/get_song_button_container';
 
 const SongBadgeCard = (props) => {
   return (

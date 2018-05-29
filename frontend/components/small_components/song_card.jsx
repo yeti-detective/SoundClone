@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import FaComment from 'react-icons/lib/fa/comment';
-import GetCurrentSongButton from '../containers/get_current_song_button_container';
+import GetCurrentSongButton from '../containers/get_song_button_container';
 
 const SongCard = (props) => {
   let numComments = null;

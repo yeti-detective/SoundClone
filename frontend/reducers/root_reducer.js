@@ -12,8 +12,7 @@ const rootReducer = combineReducers({
   session: sessionReducer,
   errors: errorsReducer,
   playQueue: playQueueReducer,
-  playQueuePointer: playQueuePointerReducer,
-  currentSong: currentSongReducer
+  playQueuePointer: playQueuePointerReducer
 });
 
 export default rootReducer;
