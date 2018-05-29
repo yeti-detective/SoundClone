@@ -12,3 +12,4 @@
 | 5.17.18 | player_footer_bar.jsx | above issue is intrinsic to my code. A refactor is required to resolve it |
 | 5.17.18 | song/show.json.jbuilder | songs are entering state with doubled-up comment arrays (e.g. [5, 8, 5, 8]) |
 | 5.17.18 | song/show.json.jbuilder | refreshed page and above issue did not persist (???) |
+| 5.29.18 | song_show | need page to fire getComments action (does not yet exist) |
