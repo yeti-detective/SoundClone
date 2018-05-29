@@ -7,9 +7,21 @@ export default class GetCurrentSongButton extends Component {
     this.buttClick = this.buttClick.bind(this);
   }
 
-  buttClick () {
+  buttClick (e) {
+    e.stopPropagation();
     this.props.getSong(this.props.song.id);
     this.props.enqueueSong()(this.props.song.id);
+  }
+
+  className () {
+    if (
+      this.props.playQueue[this.props.pointer] == this.props.song.id &&
+      this.props.playing
+    ) {
+      return "pause"
+    } else {
+      return "play"
+    }
   }
 
   isPlayingSong () {
@@ -27,7 +39,7 @@ export default class GetCurrentSongButton extends Component {
         onClick={this.buttClick}
         title="add to currently playing"
         >
-          <div className="play" />
+          <div className={this.className()} />
       </button>
 
     );
