@@ -1,15 +1,23 @@
 import { connect } from 'react-redux';
-import { getSong } from '../../actions/songs_actions';
+import { getSong, enqueueSong } from '../../actions/songs_actions';
 
 import GetCurrentSongButton from '../small_components/get_song_button';
 
+const mapStateToProps = state => {
+  return {
+    playQueue: state.playQueue,
+    playQueuePointer: state.playQueuePointer
+  }
+}
+
 const mapDispatchToProps = dispatch => {
   return {
-    getSong: (id) => dispatch(getSong(id))
+    getSong: (id) => dispatch(getSong(id)),
+    enqueueSong: (id) => dispatch(enqueueSong(id))
   };
 };
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(GetCurrentSongButton);
