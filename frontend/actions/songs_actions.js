@@ -2,10 +2,10 @@ import * as SongsAPI from '../util/songs_api_util';
 
 export const RECEIVE_SONGS = 'RECEIVE_SONGS';
 export const RECEIVE_SONG = 'RECEIVE_SONG';
-export const RECEIVE_CURRENT_SONG = 'RECEIVE_CURRENT_SONG';
 export const REMOVE_SONG_FROM_QUEUE = 'REMOVE_SONG_FROM_QUEUE';
 export const CLEAR_SONG_QUEUE = 'CLEAR_SONG_QUEUE';
 export const RECEIVE_BADGES = 'RECEIVE_BADGES';
+export const ENQUEUE_SONG = 'ENQUEUE_SONG';
 
 const receiveSongs = songs => ({
   type: RECEIVE_SONGS,
@@ -14,11 +14,6 @@ const receiveSongs = songs => ({
 
 const receiveSong = song => ({
   type: RECEIVE_SONG,
-  song
-});
-
-const receiveCurrentSong = song => ({
-  type: RECEIVE_CURRENT_SONG,
   song
 });
 
@@ -36,6 +31,11 @@ const clearQueue = () => ({
   type: CLEAR_SONG_QUEUE
 })
 
+const enqueueNextSong = (id) => ({
+  type: ENQUEUE_SONG,
+  id
+})
+
 export const getSong = id => dispatch => {
   return (
     SongsAPI.getSong(id)
@@ -43,10 +43,9 @@ export const getSong = id => dispatch => {
   );
 };
 
-export const getCurrentSong = id => dispatch => {
+export const enqueueSong = id => dispatch => {
   return (
-    SongsAPI.getSong(id)
-      .then((song) => dispatch(receiveCurrentSong(song)))
+    (id) => dispatch(enqueueNextSong(id))
   );
 };
 
