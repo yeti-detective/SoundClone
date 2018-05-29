@@ -14,3 +14,4 @@
 | 5.17.18 | song/show.json.jbuilder | refreshed page and above issue did not persist (???) |
 | 5.29.18 | song_show | need page to fire getComments action (does not yet exist) |
 | 5.29.18 | player_footer_bar.jsx | Back method throws a CORS error. Skip method is almost identical code & does not throw error. File does not affect error. Skip can play songs that Back cannot. |
+| 5.29.18 | player_footer_bar.jsx | above CORS error does not prevent playback entirely. If song is skipped or accessed through back method, then Play is clicked again after the CORS error is logged, the audio will play |
