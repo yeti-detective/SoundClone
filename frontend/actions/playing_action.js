@@ -5,3 +5,7 @@ export const isPlaying = () => {
     type: PLAYING
   }
 }
+
+export const togglePlaying = () => dispatch => {
+  return dispatch(isPlaying());
+}
