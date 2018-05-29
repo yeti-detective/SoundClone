@@ -6,7 +6,8 @@ import GetCurrentSongButton from '../small_components/get_song_button';
 const mapStateToProps = state => {
   return {
     playQueue: state.playQueue,
-    playQueuePointer: state.playQueuePointer
+    playQueuePointer: state.playQueuePointer,
+    playing: state.playing
   }
 }
 

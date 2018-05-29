@@ -12,8 +12,12 @@ export default class GetCurrentSongButton extends Component {
     this.props.enqueueSong()(this.props.song.id);
   }
 
-  buttonSymbol () {
-    if (this.props.playQueue[this.props.playQueuePointer] === this.props.song.id)
+  isPlayingSong () {
+    return this.pointerIndex() === this.props.song.id && this.props.playing
+  }
+
+  pointerIndex () {
+    return this.props.playQueue[this.props.playQueuePointer]
   }
 
   render () {
