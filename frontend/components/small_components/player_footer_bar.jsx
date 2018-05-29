@@ -28,8 +28,8 @@ export default class PlayerFooterBar extends Component {
   }
 
   componentDidMount() {
-    if ( this.props.users[this.props.currentSong.user_id] === undefined ) {
-      this.props.getUser(this.props.currentSong.user_id);
+    if ( this.props.users[this.currentSong.user_id] === undefined ) {
+      this.props.getUser(this.currentSong.user_id);
     }
     setInterval(() => {
       this.isPlaying();
@@ -37,35 +37,9 @@ export default class PlayerFooterBar extends Component {
   }
 
   componentDidUpdate() {
-    if (this.state.playQueue.indexOf(this.props.currentSong) < 0 && !emptyOb(this.props.currentSong) ) {
+    if (this.state.playQueue.indexOf(this.currentSong) < 0 && !emptyOb(this.currentSong) ) {
       this.addCurrentSongToQueue();
     }
-  }
-
-  addCurrentSongToQueue() {
-    // if props.currentSong is not already in the song queue, add it
-    // UNLESS the LAST song in this.state.playedQueue IS this.props.currentSong
-    // SPOILER ALERT somtimes the playedQueue is empty
-
-    // if (
-    //   this.state.playQueue.indexOf(this.props.currentSong) === -1 &&
-    //   this.state.playQueue.length === 0 ||
-    //   this.state.playedQueue[this.state.playedQueue.length - 1] !== this.state.playQueue[0]
-    // ) {
-    //   const newQueue = Object.assign([], this.state.playQueue);
-    //   newQueue.push(this.props.currentSong);
-    //   let play = false;
-    //   if (newQueue.length === 1) {
-    //     play = true;
-    //   }
-    //   this.setState({
-    //     playQueue: newQueue
-    //   }, () => {
-    //     if (play) {
-    //       this.audio.play();
-    //     }
-    //   });
-    // }
   }
 
   back() {
@@ -126,7 +100,7 @@ export default class PlayerFooterBar extends Component {
   }
 
   hide() {
-    if (emptyOb(this.props.currentSong)) {
+    if (emptyOb(this.currentSong)) {
       return {display: "none"};
     } else {
       return {display: "flex"};
