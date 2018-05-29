@@ -13,7 +13,6 @@ export default class SongShow extends Component {
   }
 
   componentDidMount() {
-    // this.props.getSong(this.props.match.params.songId);
     window.scrollTo(0, 0);
   }
 
