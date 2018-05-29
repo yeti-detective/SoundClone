@@ -9,6 +9,7 @@ import {
   incrementPointer,
   decrementPointer
 } from '../../actions/pointer_actions';
+import { togglePlaying } from '../../actions/playing_action';
 
 import PlayerFooterBar from '../small_components/player_footer_bar';
 
@@ -17,7 +18,8 @@ const mapStateToProps = state => {
     songs: state.entities.songs,
     users: state.entities.users,
     playQueue: state.playQueue,
-    pointer: state.playQueuePointer
+    pointer: state.playQueuePointer,
+    playing: state.playing
   };
 };
 
@@ -26,7 +28,8 @@ const mapDispatchToProps = dispatch => {
     getSong: () => dispatch(getSong),
     getUser: () => dispatch(getUser),
     nextSong: () => dispatch(incrementPointer()),
-    previousSong: () => dispatch(decrementPointer())
+    previousSong: () => dispatch(decrementPointer()),
+    togglePlaying: () => dispatch(togglePlaying())
   };
 };
 

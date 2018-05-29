@@ -8,7 +8,6 @@ export default class PlayerFooterBar extends Component {
     this.state = {
       currentTime: 0.0,
       duration: 0.0,
-      isPlaying: false,
       playedQueue: [],
       showQueue: false,
       repeat: false
@@ -19,7 +18,6 @@ export default class PlayerFooterBar extends Component {
     this.back = this.back.bind(this);
     this.skip = this.skip.bind(this);
     this.getSong = this.getSong.bind(this);
-    this.isPlaying = this.isPlaying.bind(this);
     this.songEnded = this.songEnded.bind(this);
     this.showQueue = this.showQueue.bind(this);
     this.currentSong = this.currentSong.bind(this);
@@ -29,9 +27,6 @@ export default class PlayerFooterBar extends Component {
     if ( this.props.users[this.currentSong.user_id] === undefined ) {
       this.props.getUser(this.currentSong.user_id);
     }
-    setInterval(() => {
-      this.isPlaying();
-    }, 32);
   }
 
   componentDidUpdate() {
@@ -41,20 +36,18 @@ export default class PlayerFooterBar extends Component {
   }
 
   back() {
-    if (this.state.playedQueue.length > 0) {
-      this.audio.pause();
-      const newQueue = Object.assign([], this.props.playQueue);
-      const newPlayed = Object.assign([], this.state.playedQueue);
-      newQueue.unshift(newPlayed.pop());
-      this.setState({
-        playQueue: newQueue,
-        playedQueue: newPlayed
-      }, () => {
+    if (
+      this.props.playQueue.length &&
+      this.props.pointer > 0
+    ) {
+        this.audio.pause();
+        this.props.previousSong()();
         this.audio.currentTime = 0;
-        this.audio.play();
-      });
-    }
-    this.props.previousSong()();
+        fetch(this.audio.src)
+          .then(() => {
+            this.audio.play()
+          })
+      }
   }
 
   currentSong () {
@@ -82,6 +75,10 @@ export default class PlayerFooterBar extends Component {
     }
   }
 
+  currentTime () {
+
+  }
+
   getSong(song) {
     this.setState({
       currentSong: song
@@ -105,30 +102,30 @@ export default class PlayerFooterBar extends Component {
     }
   }
 
-  isPlaying() {
-    if (this.audio.duration > 0 && !this.audio.paused) {
-      this.setState({
-        isPlaying: true
-      });
-    } else {
-      this.setState({
-        isPlaying: false
-      });
-    }
-  }
+  // isPlaying() {
+  //   if (this.audio.duration > 0 && !this.audio.paused) {
+  //     this.setState({
+  //       isPlaying: true
+  //     });
+  //   } else {
+  //     this.setState({
+  //       isPlaying: false
+  //     });
+  //   }
+  // }
 
   pause () {
     this.audio.pause();
-    this.setState({
-      isPlaying: false
-    });
+    if (this.props.playing) {
+      this.props.togglePlaying();
+    }
   }
 
   play() {
     this.audio.play();
-    this.setState({
-      isPlaying: true
-    });
+    if (!this.props.playing) {
+      this.props.togglePlaying()
+    }
   }
 
   showQueue () {
@@ -138,39 +135,23 @@ export default class PlayerFooterBar extends Component {
   }
 
   skip() {
-    if (this.props.playQueue.length > 1) {
-      const newQueue = Object.assign([], this.props.playQueue);
-      const newPlayed = Object.assign([], this.state.playedQueue);
+    if (
+      this.props.playQueue.length &&
+      this.props.pointer < this.props.playQueue.length - 1
+    ) {
       this.audio.pause();
-      newPlayed.push(newQueue.shift());
-      this.setState({
-        playQueue: newQueue,
-        playedQueue: newPlayed
-      }, ()=> {
-        this.audio.currentTime = 0;
-        this.play();
-      });
-    } else {
-      this.audio.pause();
+      this.props.nextSong()();
       this.audio.currentTime = 0;
+      fetch(this.audio.src)
+        .then(() => {
+          this.audio.play()
+        })
     }
-    this.props.nextSong()();
   }
 
   songEnded(e) {
-    const newQueue = Object.assign([], this.props.playQueue);
-    const newPlayed = Object.assign([], this.state.playedQueue);
-    let play = true;
-    newPlayed.push(newQueue.shift());
-    if (newQueue.length < 1) {
-      play = false;
-    }
-    this.setState({
-      playQueue: newQueue,
-      playedQueue: newPlayed
-    });
-    if (play) {
-      this.audio.play();
+    if (this.props.pointer < this.props.playQueue.length) {
+      this.skip();
     }
   }
 
@@ -189,7 +170,7 @@ export default class PlayerFooterBar extends Component {
           <button id="back-button" onClick={this.back}>
             <div className="up-bar" /><div className="left-triangle" />
           </button>
-          { this.state.isPlaying ? <button id="pause" onClick={this.pause} />
+          { this.props.playing ? <button id="pause" onClick={this.pause} />
               :
             <button id="play-button" onClick={this.play} />
           }
