@@ -1,5 +1,5 @@
 import {
-  RECEIVE_CURRENT_SONG,
+  RECEIVE_SONG,
   REMOVE_SONG_FROM_QUEUE,
   CLEAR_SONG_QUEUE
  } from '../actions/songs_actions';
@@ -7,7 +7,7 @@ import {
 const playQueueReducer = (state = [], action) => {
   Object.freeze(state);
   switch(action.type) {
-    case RECEIVE_CURRENT_SONG:
+    case RECEIVE_SONG:
       const newState = Object.assign([], state);
       newState.push(Object.keys(action.song.song)[0])
       return newState;
