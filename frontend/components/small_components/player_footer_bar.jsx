@@ -16,6 +16,8 @@ export default class PlayerFooterBar extends Component {
     this.play = this.play.bind(this);
     this.pause = this.pause.bind(this);
     this.back = this.back.bind(this);
+    this.checkTime = this.checkTime.bind(this);
+    this.currentTime = this.currentTime.bind(this);
     this.skip = this.skip.bind(this);
     this.getSong = this.getSong.bind(this);
     this.songEnded = this.songEnded.bind(this);
@@ -50,6 +52,12 @@ export default class PlayerFooterBar extends Component {
       }
   }
 
+  checkTime () {
+    setTimeout(() => {
+      this.currentTime();
+    }, 32)
+  }
+
   currentSong () {
     return this.props.songs[this.props.playQueue[this.props.pointer]] || {};
   }
@@ -71,12 +79,24 @@ export default class PlayerFooterBar extends Component {
 
   currentSongFilePath () {
     if (this.props.playQueue.length) {
-      return this.props.playQueue[0].file_path;
+      return this.currentSong().file_path;
     }
   }
 
   currentTime () {
-
+    let timeState = {
+      currentTime: this.audio.currentTime
+    }
+    if (this.audio.duration !== this.state.duration) {
+      timeState = Object.assign({}, timeState, { duration: this.audio.duration })
+    }
+    this.setState(
+      timeState,
+      () => {
+      if (this.props.playing) {
+        this.checkTime();
+      }
+    })
   }
 
   getSong(song) {
@@ -126,6 +146,7 @@ export default class PlayerFooterBar extends Component {
     if (!this.props.playing) {
       this.props.togglePlaying()
     }
+    this.checkTime();
   }
 
   showQueue () {
@@ -156,8 +177,6 @@ export default class PlayerFooterBar extends Component {
   }
 
   render () {
-    const duration = this.audio ? this.audio.duration : 0;
-    const currentTime = this.audio ? this.audio.currentTime : 0;
     const song = this.currentSong();
     return (
       <footer className="player-footer-bar" style={this.hide()}>
@@ -179,9 +198,9 @@ export default class PlayerFooterBar extends Component {
           </button>
         </ul>
         <nav className="slider">
-          {this.getTime(currentTime)}
-          <progress value={Math.round(currentTime / duration * 100)} max={100} />
-          {this.getTime(duration)}
+          {this.getTime(this.state.currentTime)}
+          <progress value={Math.round(this.state.currentTime / this.state.duration * 100)} max={100} />
+          {this.getTime(this.state.duration)}
         </nav>
         <ul onClick={this.showQueue} className="song-info">
           { this.currentSongImage() }
