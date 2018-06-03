@@ -1,4 +1,6 @@
 class Song < ApplicationRecord
+  include PgSearch
+  multisearchable :agains => [:title, :user]
   validates :title, presence: true
 
   has_attached_file :image, default_url: 'user_icons/default_icon.png'
