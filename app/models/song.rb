@@ -1,7 +1,7 @@
 class Song < ApplicationRecord
   include PgSearch
   PgSearch.multisearch_options = { using: { tsearch: { prefix: true } }}
-  multisearchable against: [:title, :user]
+  multisearchable against: [:title]
 
   validates :title, presence: true
 
