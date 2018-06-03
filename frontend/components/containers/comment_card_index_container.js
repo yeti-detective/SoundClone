@@ -1,5 +1,4 @@
 import { connect } from 'react-redux';
-import React from 'react';
 
 import listifySliceOfState from '../../util/listify_slice_of_state';
 

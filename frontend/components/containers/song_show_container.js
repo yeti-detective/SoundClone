@@ -1,6 +1,4 @@
 import { connect } from 'react-redux';
-import React from 'react';
-// import { withRouter } from 'react-router-dom';
 import { getSong, getUsersSongs } from '../../actions/songs_actions';
 import { getUser } from '../../actions/users_actions';
 import { getComments } from '../../actions/comments_actions';

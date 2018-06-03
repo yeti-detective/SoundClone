@@ -1,5 +1,4 @@
 import { connect } from 'react-redux';
-import React from 'react';
 import { getSongs, getSongBadges } from '../../actions/songs_actions';
 import { getUsers } from '../../actions/users_actions';
 import SongBadgeIndex from '../small_components/song_badge_index';
