@@ -13,6 +13,8 @@ Rails.application.routes.draw do
     get '/songs/badges', to: 'songs#badge_index'
     get '/songs/:songId/comments', to: 'songs#get_comments'
 
+    get '/search', to: 'search#search'
+
     resource :sessions, only: [:create, :destroy, :show]
 
     resources :songs
