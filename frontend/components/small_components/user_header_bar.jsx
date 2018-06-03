@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import SoundCloud from 'react-icons/lib/fa/cloud';
-import Search from 'react-icons/lib/fa/search';
+
 import Bell from 'react-icons/lib/fa/bell';
 import Envelope from 'react-icons/lib/fa/envelope';
 import ListIcon from 'react-icons/lib/fa/list';
@@ -15,6 +15,7 @@ import { Link, withRouter } from 'react-router-dom';
 
 import emptyOb from '../../util/empty_ob';
 
+import Search from './search';
 import LogInModal from '../containers/login_form_container';
 import SignUpModal from '../containers/signup_form_container';
 
@@ -30,7 +31,7 @@ class UserHeaderBar extends Component {
     this.logout = this.logout.bind(this);
     this.toggleModal = this.toggleModal.bind(this);
     this.updateSearch = this.updateSearch.bind(this);
-    this.submitSearch = this.submitSearch.bind(this);
+    // this.submitSearch = this.submitSearch.bind(this);
     this.collectionLink = this.collectionLink.bind(this);
   }
 
@@ -85,10 +86,10 @@ class UserHeaderBar extends Component {
     }
   }
 
-  submitSearch (e) {
-    e.preventDefault();
-    window.open(`https://google.com/search?q=${encodeURI(this.state.searchText)}`);
-  }
+  // submitSearch (e) {
+  //   e.preventDefault();
+  //   window.open(`https://google.com/search?q=${encodeURI(this.state.searchText)}`);
+  // }
 
   toggleModal(choose) {
     return () => {
@@ -135,21 +136,7 @@ class UserHeaderBar extends Component {
             </ul>
             <section className="header-wrapper-daddy header-middle">
               <div className="header-wrapper search-wrapper">
-                <form
-                  className="search-wrapper header-wrapper"
-                  onSubmit={this.submitSearch}
-                  >
-                  <input
-                    className="header-search"
-                    type="search"
-                    placeholder="Search"
-                    value={this.state.searchText}
-                    onChange={this.updateSearch}
-                    />
-                  <button className="header-search search-button">
-                    <Search id="magnifyingGlass" size={15} />
-                  </button>
-                </form>
+                <Search />
               </div>
             </section>
             <nav className="header-wrapper-right">
