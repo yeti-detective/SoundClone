@@ -10,6 +10,7 @@ import Silhouette from 'react-icons/lib/fa/user';
 import Follow from 'react-icons/lib/fa/user-secret';
 import DownAngle from 'react-icons/lib/fa/angle-down';
 import ThreeDots from 'react-icons/lib/io/android-more-horizontal';
+import Github from 'react-icons/lib/fa/github';
 import { Link, withRouter } from 'react-router-dom';
 
 import emptyOb from '../../util/empty_ob';
@@ -153,21 +154,28 @@ class UserHeaderBar extends Component {
             </section>
             <nav className="header-wrapper-right">
               <ul>
-                <li className="header-wrapper repo-link">
+                <li title="See the code" className="header-wrapper repo-link">
                   {/* <Link to="/upsell">Try Pro</Link> */}
-                  <a href="https://github.com/yeti-detective/SoundClone">
-                    See the Code
+                  <a
+                    href="https://github.com/yeti-detective/SoundClone"
+                    target="_blank"
+                    >
+                    <Github size={17} />
                   </a>
                 </li>
                 <li className="header-wrapper">
                   <Link to="/upload">Upload</Link>
                 </li>
                 { this.noCurrentUser() }
-                <li className="header-wrapper">
-                  <Bell size={17} />
+                <li className="header-wrapper" title="no notifications at this time">
+                  <Link to="/notifications">
+                    <Bell size={17} />
+                  </Link>
                 </li>
-                <li className="header-wrapper">
-                  <Envelope size={17} />
+                <li className="header-wrapper" title='no messages at this time'>
+                  <Link to="/messages">
+                    <Envelope size={17} />
+                  </Link>
                 </li>
                 { this.props.currentUser.id ? (
                   <li

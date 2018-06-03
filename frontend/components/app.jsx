@@ -9,11 +9,13 @@ import {
 import { AuthRoute, NotLoggedInRoute } from '../util/route_util';
 
 import LandingPage from './pages/landing_page';
-import Stream from './containers/stream_container';
-import UserShow from './containers/user_show_container';
-import SongShow from './containers/song_show_container';
+import Messages from './pages/messages';
+import Notifications from './pages/notifications';
 import PlayerFooterBar from './containers/player_footer_bar_container';
+import SongShow from './containers/song_show_container';
+import Stream from './containers/stream_container';
 import Upload from './pages/upload';
+import UserShow from './containers/user_show_container';
 
 // temp //
 // temp //
@@ -26,6 +28,8 @@ const App = () => (
       <Route exact path="/users/:userId" component={UserShow} />
       <Route exact path="/users/:userId/:songId" component={SongShow} />
       <NotLoggedInRoute path="/upload" component={Upload} />
+      <NotLoggedInRoute path="/notifications" component={Notifications} />
+      <NotLoggedInRoute path="/messages" component={Messages} />
     </Switch>
     <Route path="/" component={PlayerFooterBar} />
   </div>
