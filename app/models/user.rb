@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   include PgSearch
+  PgSearch.multisearch_options = { using: { tsearch: { prefix: true } }}
   multisearchable against: [:username]
 
   validates :username, :session_token, presence: true, uniqueness: true
