@@ -1,2 +1,0 @@
-@results.each do |res|
-  
