@@ -24,13 +24,12 @@ class UserHeaderBar extends Component {
   constructor (props) {
     super(props);
     this.state = {
-      modal: false,
-      searchText: ''
+      modal: false
     };
     this.whichForm = this.whichForm.bind(this);
     this.logout = this.logout.bind(this);
     this.toggleModal = this.toggleModal.bind(this);
-    this.updateSearch = this.updateSearch.bind(this);
+    // this.updateSearch = this.updateSearch.bind(this);
     // this.submitSearch = this.submitSearch.bind(this);
     this.collectionLink = this.collectionLink.bind(this);
   }
@@ -98,12 +97,12 @@ class UserHeaderBar extends Component {
       });
     };
   }
-
-  updateSearch (e) {
-    this.setState({
-      searchText: e.target.value
-    });
-  }
+  // 
+  // updateSearch (e) {
+  //   this.setState({
+  //     searchText: e.target.value
+  //   });
+  // }
 
   whichForm(choose) {
     switch (choose) {
