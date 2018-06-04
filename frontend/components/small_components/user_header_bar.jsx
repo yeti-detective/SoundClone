@@ -15,7 +15,7 @@ import { Link, withRouter } from 'react-router-dom';
 
 import emptyOb from '../../util/empty_ob';
 
-import Search from '../containers/stream_container';
+import Search from '../containers/search_container';
 import LogInModal from '../containers/login_form_container';
 import SignUpModal from '../containers/signup_form_container';
 
