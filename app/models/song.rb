@@ -1,4 +1,8 @@
 class Song < ApplicationRecord
+  include PgSearch
+  PgSearch.multisearch_options = { using: { tsearch: { prefix: true } }}
+  multisearchable against: [:title]
+
   validates :title, presence: true
 
   has_attached_file :image, default_url: 'user_icons/default_icon.png'

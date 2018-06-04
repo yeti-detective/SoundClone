@@ -1,5 +1,4 @@
 import { connect } from 'react-redux';
-import React from 'react';
 import { getSong } from '../../actions/songs_actions';
 import SongCardIndex from '../small_components/song_card_index';
 

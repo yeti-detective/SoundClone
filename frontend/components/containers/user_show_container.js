@@ -1,5 +1,4 @@
 import { connect } from 'react-redux';
-import React from 'react';
 import { getUser } from '../../actions/users_actions';
 import { getSong } from '../../actions/songs_actions';
 import UserShow from '../pages/user_show';
