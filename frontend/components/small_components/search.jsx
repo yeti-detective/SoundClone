@@ -6,10 +6,25 @@ export default class Search extends Component {
   constructor (props) {
     super(props);
     this.state = {
-      query: ''
+      query: '',
+      searchPool: []
     }
-
+    this.buildSearchPool = this.buildSearchPool.bind(this);
     this.updateQuery = this.updateQuery.bind(this);
+  }
+
+  buildSearchPool () {
+    const pool = Object.keys(this.props.songs).map((songId) => ({
+      name: this.props.songs[songId].title,
+      img_url: this.props.songs[songId].image_url
+    })).concat(Object.keys(this.props.users).map((userId) => ({
+      name: this.props.users[userId].username,
+      img_url: this.props.users[userId].icon_url
+    })))
+    // const userPool =
+    this.setState({
+      searchPool: pool
+    })
   }
 
   submitSearch (e) {
@@ -21,6 +36,7 @@ export default class Search extends Component {
     this.setState({
       query: e.target.value
     })
+    this.buildSearchPool();
   }
 
   render () {
