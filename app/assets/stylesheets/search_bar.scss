@@ -1,0 +1,39 @@
+.search-wrapper {
+  position: relative;
+
+  .display-results {
+    position: absolute;
+    top: 23px;
+    left: 5px;
+    width: 200px;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+
+    .search-result {
+      border-top: 1px solid #ccc;
+
+      p {
+        color: #000;
+      }
+
+      a {
+        display: flex;
+      }
+    }
+
+    .song {
+      font-weight: 100;
+    }
+
+    .user img {
+      height: 60px;
+      width: auto;
+    }
+
+    .song img {
+      height: 50px;
+      width: auto;
+    }
+  }
+}
