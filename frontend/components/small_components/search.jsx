@@ -14,13 +14,28 @@ export default class Search extends Component {
   }
 
   buildSearchPool () {
-    const pool = Object.keys(this.props.songs).map((songId) => ({
-      name: this.props.songs[songId].title,
-      img_url: this.props.songs[songId].image_url
-    })).concat(Object.keys(this.props.users).map((userId) => ({
-      name: this.props.users[userId].username,
-      img_url: this.props.users[userId].icon_url
-    })))
+    const pool = [];
+    console.log(this.state.query)
+    Object.keys(this.props.songs).filter((songId) => {
+      const song = this.props.songs[songId];
+      if (song.title.toUpperCase().includes(this.state.query.toUpperCase())) {
+        pool.push({
+          name: song.title,
+          img_url: song.image_url,
+          url: `/users/${song.user_id}/${song.id}`
+        })
+      };
+    })
+    Object.keys(this.props.users).forEach((userId) => {
+      const user = this.props.users[userId];
+      if (user.username.toUpperCase().includes(this.state.query.toUpperCase())) {
+        pool.push({
+          name: user.username,
+          img_url: user.icon_url,
+          url: `/users/${user.id}`
+        });
+      }
+    })
     // const userPool =
     this.setState({
       searchPool: pool
@@ -35,8 +50,7 @@ export default class Search extends Component {
   updateQuery (e) {
     this.setState({
       query: e.target.value
-    })
-    this.buildSearchPool();
+    }, this.buildSearchPool);
   }
 
   render () {

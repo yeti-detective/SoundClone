@@ -8,3 +8,5 @@ const SearchResult = (props) => (
     </a>
   </li>
 )
+
+export default SearchResult;
