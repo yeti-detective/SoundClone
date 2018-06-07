@@ -15,9 +15,23 @@ User.create({username: 'GuestUser', password: 'starwars'})
 end
 
 USER_IDS = User.all.map { |user| user.id }
+SONG_IMAGE_URLS = [
+  '01.png',
+  '02.png',
+  '03.png',
+  '04.jpg',
+  '05.png',
+  '06.jpg',
+  '07.png',
+  '08.jpg',
+  '09.jpg',
+  '10.jpg'
+]
 
 25.times do
-  Song.create({title: Faker::HitchhikersGuideToTheGalaxy.specie, user_id: USER_IDS.sample})
+  song = Song.new({title: Faker::HitchhikersGuideToTheGalaxy.specie, user_id: USER_IDS.sample})
+  song.image = File.open("./app/assets/images/user_icons/#{SONG_IMAGE_URLS.sample}")
+  song.save
 end
 
 SONG_IDS = Song.all.map { |song| song.id }
