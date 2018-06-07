@@ -31,9 +31,23 @@ export default class PlayerFooterBar extends Component {
     }
   }
 
+  // componentWillUpdate () {
+  //   debugger
+  // }
+
   componentDidUpdate() {
     if (this.props.playQueue.indexOf(this.currentSong) < 0 && !emptyOb(this.currentSong) ) {
       this.addCurrentSongToQueue();
+    }
+    if (this.props.playing) {
+      if (!this.isPlaying()) {
+        this.audio.play();
+        this.checkTime()
+      }
+    } else {
+      if (this.isPlaying()) {
+        this.audio.pause();
+      }
     }
   }
 
@@ -122,27 +136,23 @@ export default class PlayerFooterBar extends Component {
     }
   }
 
-  // isPlaying() {
-  //   if (this.audio.duration > 0 && !this.audio.paused) {
-  //     this.setState({
-  //       isPlaying: true
-  //     });
-  //   } else {
-  //     this.setState({
-  //       isPlaying: false
-  //     });
-  //   }
-  // }
+  isPlaying() {
+    if (this.audio.duration > 0 && !this.audio.paused) {
+      return true;
+    } else {
+      return false
+    }
+  }
 
   pause () {
-    this.audio.pause();
+    // this.audio.pause();
     if (this.props.playing) {
       this.props.togglePlaying();
     }
   }
 
   play() {
-    this.audio.play();
+    // this.audio.play();
     if (!this.props.playing) {
       this.props.togglePlaying()
     }

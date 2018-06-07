@@ -9,8 +9,18 @@ export default class GetCurrentSongButton extends Component {
 
   buttClick (e) {
     e.stopPropagation();
-    this.props.getSong(this.props.song.id);
-    this.props.enqueueSong()(this.props.song.id);
+    switch (this.className()) {
+      case "play":
+      case "pause":
+         this.props.togglePlaying();
+        break;
+      case "add":
+        this.props.getSong(this.props.song.id);
+        this.props.enqueueSong()(this.props.song.id);
+        break;
+      default:
+        return null
+    }
   }
 
   className () {
@@ -19,8 +29,13 @@ export default class GetCurrentSongButton extends Component {
       this.props.playing
     ) {
       return "pause"
-    } else {
+    } else if (
+      this.props.playQueue[this.props.pointer] == this.props.song.id &&
+      !this.props.playing
+    ) {
       return "play"
+    } else {
+      return "add"
     }
   }
 
