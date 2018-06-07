@@ -19,6 +19,7 @@ end
 json.user do
   json.set! @user.id do
     json.partial! 'api/users/user', user: @user
+    json.background_image asset_path(@user.image)
   end
 end
 json.comments do
