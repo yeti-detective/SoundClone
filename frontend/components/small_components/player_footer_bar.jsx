@@ -31,6 +31,18 @@ export default class PlayerFooterBar extends Component {
     }
   }
 
+  componentWillUpdate () {
+    if (this.props.playing) {
+      if (!this.isPlaying()) {
+        this.audio.play();
+      }
+    } else {
+      if (this.isPlaying()) {
+        this.audio.pause();
+      }
+    }
+  }
+
   componentDidUpdate() {
     if (this.props.playQueue.indexOf(this.currentSong) < 0 && !emptyOb(this.currentSong) ) {
       this.addCurrentSongToQueue();
@@ -122,17 +134,13 @@ export default class PlayerFooterBar extends Component {
     }
   }
 
-  // isPlaying() {
-  //   if (this.audio.duration > 0 && !this.audio.paused) {
-  //     this.setState({
-  //       isPlaying: true
-  //     });
-  //   } else {
-  //     this.setState({
-  //       isPlaying: false
-  //     });
-  //   }
-  // }
+  isPlaying() {
+    if (this.audio.duration > 0 && !this.audio.paused) {
+      return true;
+    } else {
+      return false
+    }
+  }
 
   pause () {
     this.audio.pause();
