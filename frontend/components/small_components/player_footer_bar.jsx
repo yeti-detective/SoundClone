@@ -31,10 +31,6 @@ export default class PlayerFooterBar extends Component {
     }
   }
 
-  // componentWillUpdate () {
-  //   debugger
-  // }
-
   componentDidUpdate() {
     if (this.props.playQueue.indexOf(this.currentSong) < 0 && !emptyOb(this.currentSong) ) {
       this.addCurrentSongToQueue();
@@ -145,14 +141,12 @@ export default class PlayerFooterBar extends Component {
   }
 
   pause () {
-    // this.audio.pause();
     if (this.props.playing) {
       this.props.togglePlaying();
     }
   }
 
   play() {
-    // this.audio.play();
     if (!this.props.playing) {
       this.props.togglePlaying()
     }
