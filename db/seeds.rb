@@ -10,11 +10,19 @@ Song.destroy_all
 Comment.destroy_all
 User.create({username: 'GuestUser', password: 'starwars'})
 
-10.times do
-  User.create({username: Faker::Zelda.character, password: 'ocarina'})
-end
+BACKGROUND_IMAGE_URLS = [
+  '01.jpeg',
+  '02.jpeg',
+  '03.jpg',
+  '04.jpg',
+  '05.jpg',
+  '06.jpg',
+  '07.jpg',
+  '08.jpg',
+  '09.jpg',
+  '10.jpg'
+]
 
-USER_IDS = User.all.map { |user| user.id }
 SONG_IMAGE_URLS = [
   '01.png',
   '02.png',
@@ -27,6 +35,15 @@ SONG_IMAGE_URLS = [
   '09.jpg',
   '10.jpg'
 ]
+
+10.times do
+  user = User.new({username: Faker::Zelda.character, password: 'ocarina'})
+  user.avatar = File.open("./app/assets/images/user_icons/#{SONG_IMAGE_URLS.sample}")
+  user.image = File.open("./app/assets/images/background_images/#{BACKGROUND_IMAGE_URLS.sample}")
+  user.save
+end
+
+USER_IDS = User.all.map { |user| user.id }
 
 25.times do
   song = Song.new({title: Faker::HitchhikersGuideToTheGalaxy.specie, user_id: USER_IDS.sample})

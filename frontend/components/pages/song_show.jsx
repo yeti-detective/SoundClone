@@ -21,6 +21,11 @@ export default class SongShow extends Component {
     return this.props.users[this.props.songs[this.props.thisSongId].user_id].username;
   }
 
+  backgroundImg () {
+    debugger
+    return this.props.users[this.props.songs[this.props.thisSongId].user_id].background_image;
+  }
+
 
   render () {
     if (this.props.songs[this.props.thisSongId]) {
@@ -29,7 +34,7 @@ export default class SongShow extends Component {
           <UserHeaderBar />
           <section
             className="song-banner"
-            style={{background: 'linear-gradient(45deg, #959595, #555555)'}}
+            style={{backgroundImage: `url(${this.backgroundImg()})`}}
             >
             <div className="song-info-box">
               <img
