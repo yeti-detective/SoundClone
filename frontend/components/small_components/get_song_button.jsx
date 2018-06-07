@@ -12,7 +12,7 @@ export default class GetCurrentSongButton extends Component {
     switch (this.className()) {
       case "play":
       case "pause":
-        this.props.togglePlaying();
+         this.props.togglePlaying();
         break;
       case "add":
         this.props.getSong(this.props.song.id);
