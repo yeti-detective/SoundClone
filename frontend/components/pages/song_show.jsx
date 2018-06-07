@@ -22,7 +22,6 @@ export default class SongShow extends Component {
   }
 
   backgroundImg () {
-    debugger
     return this.props.users[this.props.songs[this.props.thisSongId].user_id].background_image;
   }
 
