@@ -59,11 +59,12 @@ export default class GetCurrentSongButton extends Component {
         setTimeout(() => {
           this.setState({
             toolTip: 'tool-tip show-added show-added-fadeout'
-          }, setTimeout(() => {
+          })
+          setTimeout(() => {
             this.setState({
               toolTip: 'tool-tip'
             })
-          }, 1500))
+          }, 1500)
         }, 1500)
       })
     }
