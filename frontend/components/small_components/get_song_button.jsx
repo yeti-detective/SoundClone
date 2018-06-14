@@ -47,6 +47,10 @@ export default class GetCurrentSongButton extends Component {
     return this.props.playQueue[this.props.playQueuePointer]
   }
 
+  songAdded () {
+
+  }
+
   render () {
     return (
       <button
