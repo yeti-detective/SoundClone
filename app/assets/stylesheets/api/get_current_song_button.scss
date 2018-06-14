@@ -49,8 +49,10 @@
     position: absolute;
     background: #f50;
     color: #fff;
-    bottom: -25px;
-    padding: 2px;
+    top: 5px;
+    left: -70px;
+    padding: 4px;
+    border-radius: 10px;
     opacity: 1;
     transition: opacity 1s;
   }
@@ -63,5 +65,5 @@
    opacity: 0;
    animation: fade-out 1.5s;
   }
-  
+
 }
