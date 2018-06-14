@@ -56,7 +56,7 @@ buildSearchPool () {
   }
 }
 ```
-![screen capture of front end search](./fe_search.png)
+![screen capture of front end search](./screenshots/fe_search.png)
 ***
 
 useful links,
