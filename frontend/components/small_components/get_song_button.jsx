@@ -3,8 +3,11 @@ import React, { Component } from 'react';
 export default class GetCurrentSongButton extends Component {
   constructor (props) {
     super(props);
-
+    this.state = {
+      toolTip: 'tool-tip'
+    }
     this.buttClick = this.buttClick.bind(this);
+    this.songAdded = this.songAdded.bind(this);
   }
 
   buttClick (e) {
@@ -17,6 +20,7 @@ export default class GetCurrentSongButton extends Component {
       case "add":
         this.props.getSong(this.props.song.id);
         this.props.enqueueSong()(this.props.song.id);
+        this.songAdded();
         break;
       default:
         return null
@@ -47,6 +51,25 @@ export default class GetCurrentSongButton extends Component {
     return this.props.playQueue[this.props.playQueuePointer]
   }
 
+  songAdded () {
+    if (this.className() === 'add') {
+      this.setState({
+        toolTip: 'tool-tip show-added'
+      },() => {
+        setTimeout(() => {
+          this.setState({
+            toolTip: 'tool-tip show-added show-added-fadeout'
+          })
+          setTimeout(() => {
+            this.setState({
+              toolTip: 'tool-tip'
+            })
+          }, 1500)
+        }, 1500)
+      })
+    }
+  }
+
   render () {
     return (
       <button
@@ -55,6 +78,9 @@ export default class GetCurrentSongButton extends Component {
         title="add to currently playing"
         >
           <div className={this.className()} />
+          <div className={this.state.toolTip}>
+            Song Added
+          </div>
       </button>
 
     );

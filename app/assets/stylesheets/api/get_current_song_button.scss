@@ -43,4 +43,27 @@
     width: 20px;
     background-color: #fff;
   }
+
+  .tool-tip {
+    display: none;
+    position: absolute;
+    background: #f50;
+    color: #fff;
+    top: 5px;
+    left: -70px;
+    padding: 4px;
+    border-radius: 10px;
+    opacity: 1;
+    transition: opacity 1s;
+  }
+
+  .show-added {
+    display: table;
+  }
+
+  .show-added-fadeout {
+   opacity: 0;
+   animation: fade-out 1.5s;
+  }
+
 }
