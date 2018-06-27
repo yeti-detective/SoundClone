@@ -25,8 +25,13 @@
     display: flex;
     justify-content: space-between;
 
+    .song-card-index {
+      width: 50%;
+    }
+
     ul {
       list-style: none;
+      width: 50%;
     }
 
     li {

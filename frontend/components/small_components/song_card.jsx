@@ -3,25 +3,26 @@ import { Link } from 'react-router-dom';
 import FaComment from 'react-icons/lib/fa/comment';
 import GetCurrentSongButton from '../containers/get_song_button_container';
 
-const SongCard = (props) => {
+const SongCard = props => {
   let numComments = null;
   if (props.song.comments) {
     numComments = new Set(props.song.comments);
   }
+
   return (
-    <div className="song-card" onClick={() => { props.getSong(props.song.id); }}>
+    <div
+      className="song-card"
+      onClick={() => {
+        props.getSong(props.song.id);
+      }}>
       <Link
         className="song-card-link"
-         to={`/users/${props.song.user_id}/${props.song.id}`}
-         >
-        <GetCurrentSongButton
-          song={props.song}
-          />
+        to={`/users/${props.song.user_id}/${props.song.id}`}>
+        <GetCurrentSongButton song={props.song} />
         <img className="song-icon" src={props.song.image_url} />
-        <p>
-          {props.song.title}
-        </p>
-        <FaComment />{numComments.size}
+        <p>{props.song.title}</p>
+        <FaComment />
+        {numComments.size}
       </Link>
     </div>
   );

@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { getSong, getUsersSongs } from '../../actions/songs_actions';
+import { getSong } from '../../actions/songs_actions';
 import { getUser } from '../../actions/users_actions';
 import { getComments } from '../../actions/comments_actions';
 import SongShow from '../pages/song_show';
