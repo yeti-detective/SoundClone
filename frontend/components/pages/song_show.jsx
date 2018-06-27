@@ -34,7 +34,11 @@ export default class SongShow extends Component {
           <UserHeaderBar />
           <section
             className="song-banner"
-            style={{ backgroundImage: `url(${this.backgroundImg()})` }}>
+            style={
+              this.backgroundImg() && {
+                backgroundImage: `url(${this.backgroundImg()})`
+              }
+            }>
             <div className="song-info-box">
               <img
                 className="song-logo-large"
