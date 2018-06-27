@@ -43,14 +43,14 @@ export default class SongShow extends Component {
               <h1 className="main-song-title">
                 {this.props.songs[this.props.thisSongId].title}
               </h1>
-              {!emptyOb(this.props.users) ? (
+              {!emptyOb(this.props.users) && (
                 <Link
-                  to={
-                    '/users/' + this.props.songs[this.props.thisSongId].user_id
-                  }>
+                  to={`/users/${
+                    this.props.songs[this.props.thisSongId].user_id
+                  }`}>
                   <h3 className="artist-name">{this.artistName()}</h3>
                 </Link>
-              ) : null}
+              )}
               <GetCurrentSongButton
                 song={this.props.songs[this.props.thisSongId]}
               />
