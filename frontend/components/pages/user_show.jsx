@@ -18,9 +18,11 @@ export default class UserShow extends Component {
         <UserHeaderBar />
         <section
           className="user-banner"
-          style={{
-            backgroundImage: `url(${this.props.user.background_image})`
-          }}>
+          style={
+            this.props.user.background_image && {
+              backgroundImage: `url(${this.props.user.background_image})`
+            }
+          }>
           <div className="big_user">
             <img className="big_icon" src={this.props.user.icon_url} />
             <h3>{this.props.user.username}</h3>
