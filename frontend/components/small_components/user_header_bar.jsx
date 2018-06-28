@@ -80,7 +80,7 @@ class UserHeaderBar extends Component {
             />
             <p>
               <span>
-                <Link to={`users/${this.props.currentUser.id}`}>
+                <Link to={`/users/${this.props.currentUser.id}`}>
                   {this.props.currentUser.username}
                 </Link>
               </span>
