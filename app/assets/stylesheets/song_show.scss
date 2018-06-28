@@ -1,5 +1,4 @@
 .song-show {
-
   .song-banner {
     position: relative;
     padding: 10px;
@@ -7,6 +6,11 @@
     display: flex;
     justify-content: space-between;
 
+    h3,
+    h4 {
+      margin-top: 5px;
+      margin-bottom: 5px;
+    }
   }
 
   .song-info-box {
@@ -39,9 +43,9 @@
       padding-left: 4px;
     }
 
-    h3, h4 {
+    h3,
+    h4 {
       font-weight: 100;
     }
   }
-
 }

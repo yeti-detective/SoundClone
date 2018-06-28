@@ -23,8 +23,8 @@ export default class UserShow extends Component {
           }}>
           <div className="big_user">
             <img className="big_icon" src={this.props.user.icon_url} />
-            <h4>user name</h4>
             <h3>{this.props.user.username}</h3>
+            <h4>user</h4>
           </div>
         </section>
         <section className="user-body">
