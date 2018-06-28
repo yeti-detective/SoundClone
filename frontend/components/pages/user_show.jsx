@@ -12,27 +12,24 @@ export default class UserShow extends Component {
     window.scrollTo(0, 0);
   }
 
-  render () {
+  render() {
     return (
       <main className="app user-show">
         <UserHeaderBar />
         <section
           className="user-banner"
-          style={{backgroundImage: `url(${this.props.user.background_image})`}}>
+          style={{
+            backgroundImage: `url(${this.props.user.background_image})`
+          }}>
           <div className="big_user">
-            <img
-              className="big_icon"
-              src={this.props.user.icon_url}
-            />
-          <h3>{this.props.user.username}</h3>
+            <img className="big_icon" src={this.props.user.icon_url} />
+            <h4>user name</h4>
+            <h3>{this.props.user.username}</h3>
           </div>
         </section>
         <section className="user-body">
           <h1>Songs by this user:</h1>
-          <SongCardIndex
-            user={this.props.user}
-            songs={this.props.songs}
-            />
+          <SongCardIndex user={this.props.user} songs={this.props.songs} />
         </section>
       </main>
     );
